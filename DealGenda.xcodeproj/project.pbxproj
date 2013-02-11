@@ -23,6 +23,9 @@
 		192D224016B7243D00F2D773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221B16B7243D00F2D773 /* Foundation.framework */; };
 		192D224816B7243D00F2D773 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 192D224616B7243D00F2D773 /* InfoPlist.strings */; };
 		192D224B16B7243D00F2D773 /* DealGendaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D224A16B7243D00F2D773 /* DealGendaTests.m */; };
+		196F8A0316C96DEE0016B69F /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0216C96DEE0016B69F /* FavoritesViewController.m */; };
+		196F8A0616C970920016B69F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0516C970920016B69F /* SignUpViewController.m */; };
+		196F8A0916C9762E0016B69F /* CouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0816C9762E0016B69F /* CouponListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,12 @@
 		192D224716B7243D00F2D773 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		192D224916B7243D00F2D773 /* DealGendaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealGendaTests.h; sourceTree = "<group>"; };
 		192D224A16B7243D00F2D773 /* DealGendaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealGendaTests.m; sourceTree = "<group>"; };
+		196F8A0116C96DEE0016B69F /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		196F8A0216C96DEE0016B69F /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		196F8A0416C970920016B69F /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		196F8A0516C970920016B69F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		196F8A0716C9762E0016B69F /* CouponListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListViewController.h; sourceTree = "<group>"; };
+		196F8A0816C9762E0016B69F /* CouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +132,12 @@
 				192D223416B7243D00F2D773 /* ViewController.h */,
 				192D223516B7243D00F2D773 /* ViewController.m */,
 				192D222016B7243D00F2D773 /* Supporting Files */,
+				196F8A0116C96DEE0016B69F /* FavoritesViewController.h */,
+				196F8A0216C96DEE0016B69F /* FavoritesViewController.m */,
+				196F8A0416C970920016B69F /* SignUpViewController.h */,
+				196F8A0516C970920016B69F /* SignUpViewController.m */,
+				196F8A0716C9762E0016B69F /* CouponListViewController.h */,
+				196F8A0816C9762E0016B69F /* CouponListViewController.m */,
 			);
 			path = DealGenda;
 			sourceTree = "<group>";
@@ -273,6 +288,9 @@
 				192D222616B7243D00F2D773 /* main.m in Sources */,
 				192D222A16B7243D00F2D773 /* AppDelegate.m in Sources */,
 				192D223616B7243D00F2D773 /* ViewController.m in Sources */,
+				196F8A0316C96DEE0016B69F /* FavoritesViewController.m in Sources */,
+				196F8A0616C970920016B69F /* SignUpViewController.m in Sources */,
+				196F8A0916C9762E0016B69F /* CouponListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
