@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface FavoritesViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UILabel *scene2Label;
-@property (strong, nonatomic) NSString *labelText;
+@property(nonatomic, readonly, copy) NSArray *subviews;
+@property (strong, nonatomic) IBOutlet UIView *itemSubView;
+@property (strong, nonatomic) IBOutlet UIView *retailerSubView;
+@property (strong, nonatomic) IBOutlet UILabel *testLabel;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (strong, nonatomic) IBOutlet UIView *favoritesView;
+
+-(IBAction)segmentedChartButtonChanged:(id)sender;
+
+
 @end

@@ -26,8 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    _scene2Label.text = _labelText;
+	_itemSubView.hidden = true;
+    _retailerSubView.hidden = false;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,6 +35,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(IBAction)segmentedChartButtonChanged:(id)sender
+{
+    //switch between selected states of the segment control
+    switch (_segmentControl.selectedSegmentIndex) {
+        //Retailers is selected
+        case 0:
+            _itemSubView.hidden = true;
+            _retailerSubView.hidden = false;
+            break;
+        //Items is selected
+        case 1:
+            _itemSubView.hidden = false;
+            _retailerSubView.hidden = true;
+            break;
+        default:
+            _itemSubView.hidden = true;
+            _retailerSubView.hidden = false;
+            break;
+    }
+    _testLabel.text = [_segmentControl titleForSegmentAtIndex:_segmentControl.selectedSegmentIndex];
+}
 
 @end

@@ -70,7 +70,7 @@
                                     </barButtonItem>
                                     <barButtonItem title="Favorites" id="ZDE-Wf-a3Y">
                                         <connections>
-                                            <segue destination="3nV-jt-9JW" kind="push" identifier="SegueFavorites" id="bhe-Uo-5dx"/>
+                                            <segue destination="3nV-jt-9JW" kind="push" identifier="SegueEditFavorites" id="mzA-Ov-yqy"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -268,7 +268,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3nV-jt-9JW" kind="push" identifier="SegueFavorites" id="23I-PR-F83"/>
+                                    <segue destination="3nV-jt-9JW" kind="push" identifier="SegueSetFavorites" id="23I-PR-F83"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -292,9 +292,23 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xf-X3-f2F" userLabel="ItemsSubView">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XM0-1n-Nwr">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1180921301" green="0.047977914859999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="bottom" secondItem="4Xf-X3-f2F" secondAttribute="bottom" type="default" id="6r8-BP-ORz"/>
+                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="leading" secondItem="4Xf-X3-f2F" secondAttribute="leading" type="default" id="SdS-aE-OAq"/>
+                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="trailing" secondItem="4Xf-X3-f2F" secondAttribute="trailing" type="default" id="f6M-mV-i42"/>
+                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="top" secondItem="4Xf-X3-f2F" secondAttribute="top" type="default" id="vAV-mr-Uzq"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86Q-Wo-dRg">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Done">
+                                <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -305,39 +319,71 @@
                                     <segue destination="jnk-IU-sd8" kind="unwind" unwindAction="returned:" id="e7D-zq-zRv"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uye-f9-4OJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cej-Ab-LHb">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jnk-IU-sd8" kind="unwind" unwindAction="returned:" id="jmn-Wc-kgp"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-PI-De4" userLabel="RetailersSubView">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-OH-LJL">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.011788656142404541" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="183" id="sF4-Bz-Zud"/>
+                                    <constraint firstItem="T0l-OH-LJL" firstAttribute="bottom" secondItem="Bv3-PI-De4" secondAttribute="bottom" type="default" id="1jE-Qf-dhU"/>
+                                    <constraint firstItem="T0l-OH-LJL" firstAttribute="top" secondItem="Bv3-PI-De4" secondAttribute="top" type="default" id="DNG-Ut-BeZ"/>
+                                    <constraint firstItem="T0l-OH-LJL" firstAttribute="trailing" secondItem="Bv3-PI-De4" secondAttribute="trailing" type="default" id="hTd-Fw-mtU"/>
+                                    <constraint firstItem="T0l-OH-LJL" firstAttribute="leading" secondItem="Bv3-PI-De4" secondAttribute="leading" type="default" id="hx6-km-Vwu"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-3T-pqb">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="183" id="FIJ-yc-arK"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Retailers"/>
                                     <segment title="Items"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedChartButtonChanged:" destination="3nV-jt-9JW" eventType="valueChanged" id="DdP-yV-ah7"/>
+                                </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wft-mL-2eH" userLabel="itemsSubView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" restorationIdentifier="" translatesAutoresizingMaskIntoConstraints="NO" id="O16-CM-3vR" userLabel="retailersSubView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O16-CM-3vR" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="27F-cp-9YE"/>
-                            <constraint firstItem="wft-mL-2eH" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="2yg-Bm-PYf"/>
-                            <constraint firstItem="wft-mL-2eH" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="7pg-a2-KYL"/>
-                            <constraint firstItem="uye-f9-4OJ" firstAttribute="top" secondItem="2vn-uM-eAW" secondAttribute="top" constant="25" id="Amm-MR-wLX"/>
-                            <constraint firstItem="O16-CM-3vR" firstAttribute="top" secondItem="uye-f9-4OJ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GxR-Ij-U05"/>
+                            <constraint firstItem="86Q-Wo-dRg" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="15B-d4-ToP"/>
+                            <constraint firstItem="Bv3-PI-De4" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="2La-bA-Qa6"/>
+                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="8fO-AF-18j"/>
+                            <constraint firstItem="Bv3-PI-De4" firstAttribute="top" secondItem="F2g-3T-pqb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HfU-36-NXj"/>
                             <constraint firstAttribute="bottom" secondItem="86Q-Wo-dRg" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="MDq-nW-1q5"/>
-                            <constraint firstItem="O16-CM-3vR" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="QEx-iR-6QB"/>
-                            <constraint firstItem="86Q-Wo-dRg" firstAttribute="top" secondItem="O16-CM-3vR" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SgJ-pF-L9M"/>
-                            <constraint firstItem="wft-mL-2eH" firstAttribute="centerY" secondItem="2vn-uM-eAW" secondAttribute="centerY" type="default" id="VwF-8I-d9c"/>
-                            <constraint firstItem="uye-f9-4OJ" firstAttribute="centerX" secondItem="O16-CM-3vR" secondAttribute="centerX" type="default" id="roA-2o-Opc"/>
-                            <constraint firstAttribute="trailing" secondItem="86Q-Wo-dRg" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ryW-vH-lZE"/>
-                            <constraint firstItem="wft-mL-2eH" firstAttribute="top" secondItem="2vn-uM-eAW" secondAttribute="top" constant="67" id="v4h-XN-apy"/>
+                            <constraint firstAttribute="bottom" secondItem="Cej-Ab-LHb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Oic-F4-zD6"/>
+                            <constraint firstItem="F2g-3T-pqb" firstAttribute="top" secondItem="2vn-uM-eAW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="P5i-ty-sHU"/>
+                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="TFg-uc-Exn"/>
+                            <constraint firstItem="86Q-Wo-dRg" firstAttribute="top" secondItem="4Xf-X3-f2F" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aRO-fU-BMy"/>
+                            <constraint firstItem="Bv3-PI-De4" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="buA-qi-4ha"/>
+                            <constraint firstItem="86Q-Wo-dRg" firstAttribute="top" secondItem="Bv3-PI-De4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dHX-KB-ZZa"/>
+                            <constraint firstAttribute="trailing" secondItem="Cej-Ab-LHb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qm9-Xt-EnL"/>
+                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="top" secondItem="F2g-3T-pqb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="z3A-rj-7dM"/>
+                            <constraint firstItem="F2g-3T-pqb" firstAttribute="centerX" secondItem="Bv3-PI-De4" secondAttribute="centerX" type="default" id="zgC-86-ddz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="L91-CL-xCH"/>
+                    <connections>
+                        <outlet property="favoritesView" destination="2vn-uM-eAW" id="SY9-IM-gki"/>
+                        <outlet property="itemSubView" destination="4Xf-X3-f2F" id="Tdq-HQ-hXA"/>
+                        <outlet property="retailerSubView" destination="Bv3-PI-De4" id="pAw-rw-zTA"/>
+                        <outlet property="segmentControl" destination="F2g-3T-pqb" id="D4d-4y-iCe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pT-ig-A9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jnk-IU-sd8" userLabel="Exit" sceneMemberID="exit"/>
@@ -373,7 +419,12 @@
         <class className="FavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="scene2Label" candidateClass="UILabel"/>
+                <relationship kind="action" name="segmentedChartButtonChanged:"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="itemSubView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="retailerSubView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="testLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -399,6 +450,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="23I-PR-F83"/>
+        <segue reference="mzA-Ov-yqy"/>
     </inferredMetricsTieBreakers>
 </document>
