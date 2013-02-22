@@ -14,6 +14,13 @@
 
 @implementation SettingsViewController
 
+enum {
+    emailTag = 0,
+    pwTag,
+    vPwTag
+
+};
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,19 +30,23 @@
                                                object:nil];
 }
 
-- (BOOL)validateInputWithString:(NSString *)emailField {
-    NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSError *error = NULL;
-    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regularExpression
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
-    if (error) {
-        NSLog(@"error %@", error);
+- (BOOL)validateInputWithString:(UITextField *)aTextField {
+    if(aTextField == _emailTextField) {
+        NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        NSError *error = NULL;
+        NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regularExpression
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        if (error) {
+            NSLog(@"error %@", error);
+        }
+        NSUInteger numberOfMatches = [regEx numberOfMatchesInString:aTextField.text
+                                                            options:0
+                                                              range:NSMakeRange(0, [aTextField.text length])];
+        return numberOfMatches > 0;
+    } else {
+        return [_pwTextField.text isEqualToString: _verifyTextField.text];
     }
-    NSUInteger numberOfMatches = [regEx numberOfMatchesInString:emailField
-                                                        options:0
-                                                            range:NSMakeRange(0, [emailField length])];
-    return numberOfMatches > 0;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
@@ -44,20 +55,37 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)aTextField
+- (void)textFieldShouldEndEditing:(UITextField *)aTextField
 {
-    return [self validateInputWithString:aTextField.text];
+    switch(aTextField.tag) {
+            
+        case emailTag:
+            [self validateInputWithString:aTextField];
+            break;
+        case vPwTag:
+            [self validateInputWithString:aTextField];
+            break;
+    }
 }
 
 - (void)validateInputCallback:(id)sender
 {
-    if ([self validateInputWithString:_emailTextField.text]) {
+    if ([self validateInputWithString:_emailTextField]) {
         _emailLabel.textColor = [UIColor greenColor];
         _emailLabel.text = @"Valid Email";
     }
     else {
         _emailLabel.textColor = [UIColor redColor];
         _emailLabel.text = @"Please enter a valid email.";
+    }
+    
+    if ([self validateInputWithString:_verifyTextField]) {
+        _pwLabel.textColor = [UIColor greenColor];
+        _pwLabel.text = @"✓";
+    }
+    else {
+        _pwLabel.textColor = [UIColor redColor];
+        _pwLabel.text = @"X";
     }
 }
 

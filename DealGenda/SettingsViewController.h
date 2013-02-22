@@ -11,5 +11,8 @@
 @interface SettingsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextField *pwTextField;
+@property (weak, nonatomic) IBOutlet UITextField *verifyTextField;
+@property (weak, nonatomic) IBOutlet UILabel *pwLabel;
 
 @end
