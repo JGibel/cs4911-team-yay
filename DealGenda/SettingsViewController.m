@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "FMDatabase.h"
 
 @interface SettingsViewController ()
 
@@ -28,6 +29,14 @@ enum {
                                              selector:@selector(validateInputCallback:)
                                                  name:@"UITextFieldTextDidChangeNotification"
                                                object:nil];
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:@"/tmp/dealGenda.db"];
+    if (![db open]) {
+        return;
+    }
+    
+    //[db executeUpdate:@"CREATE TABLE test (email varchar(255))"];
+    //[db executeUpdate:@"INSERT INTO test VALUES (?)", @"email@email.com"];
 }
 
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
