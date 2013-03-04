@@ -30,13 +30,24 @@ enum {
                                                  name:@"UITextFieldTextDidChangeNotification"
                                                object:nil];
     
-    FMDatabase *db = [FMDatabase databaseWithPath:@"/tmp/dealGenda.db"];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [libraryDirectory stringByAppendingPathComponent:@"Database/DealGenda.db"];
+    FMDatabase* db = [FMDatabase databaseWithPath:writableDBPath];
+    
     if (![db open]) {
         return;
     }
     
     //[db executeUpdate:@"CREATE TABLE test (email varchar(255))"];
     //[db executeUpdate:@"INSERT INTO test VALUES (?)", @"email@email.com"];
+//    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
+//    while([fm next]) {
+//        NSString *result = [fm stringForColumn:@"expdate"];
+//        NSLog(@"%@", result);
+//    }
+
 }
 
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
