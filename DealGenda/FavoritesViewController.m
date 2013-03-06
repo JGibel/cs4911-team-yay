@@ -7,12 +7,14 @@
 //
 
 #import "FavoritesViewController.h"
+#import "FMDatabase.h"
 
 @interface FavoritesViewController ()
 
 @end
 
 @implementation FavoritesViewController
+@synthesize retailersList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,9 +27,35 @@
 
 - (void)viewDidLoad
 {
+    retailersList = [[NSMutableArray alloc] init];
     [super viewDidLoad];
-	_itemSubView.hidden = true;
-    _retailerSubView.hidden = false;
+    
+    //Setup database stuff
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(validateInputCallback:)
+                                                 name:@"UITextFieldTextDidChangeNotification"
+                                               object:nil];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [libraryDirectory stringByAppendingPathComponent:@"Database/DealGenda.db"];
+    FMDatabase* db = [FMDatabase databaseWithPath:writableDBPath];
+    
+    if (![db open]) {
+        return;
+    }
+    
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailer"];
+    //For each result of the query, add to the array of retailers to be displayed
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"name"];
+        [retailersList addObject: result];
+        
+    }
+    
+//    [db close];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +82,27 @@
             _retailerSubView.hidden = false;
             break;
     }
-    _testLabel.text = [_segmentControl titleForSegmentAtIndex:_segmentControl.selectedSegmentIndex];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [retailersList count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = nil;
+    cell = [_retailersTable dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if(!cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    }
+    [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
+    [cell.detailTextLabel setText:(@"test description")];
+    return cell;
+    
 }
 
 @end
