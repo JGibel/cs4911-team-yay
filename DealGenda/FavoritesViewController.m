@@ -7,7 +7,7 @@
 //
 
 #import "FavoritesViewController.h"
-#import "FMDatabase.h"
+#import "AppDelegate.h"
 
 @interface FavoritesViewController ()
 
@@ -27,26 +27,13 @@
 
 - (void)viewDidLoad
 {
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
     retailersList = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     
-    //Setup database stuff
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(validateInputCallback:)
-                                                 name:@"UITextFieldTextDidChangeNotification"
-                                               object:nil];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [libraryDirectory stringByAppendingPathComponent:@"Database/DealGenda.db"];
-    FMDatabase* db = [FMDatabase databaseWithPath:writableDBPath];
-    
-    if (![db open]) {
-        return;
-    }
-    
     //Query database
-    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailer"];
+    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailers"];
     //For each result of the query, add to the array of retailers to be displayed
     while ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"name"];
