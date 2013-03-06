@@ -99,10 +99,32 @@
     if(!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
+    
+    //cell switches
+    UISwitch *retailerSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(215.0, 10.0, 94.0, 27.0)];
+    [retailerSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
+    [retailerSwitch setTag:indexPath.row];
+    
+    //load switch states
+    [retailerSwitch setOn:TRUE];
+    
+    
+    //set cell information
     [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
     [cell.detailTextLabel setText:(@"test description")];
+    [cell setAccessoryView:retailerSwitch];
     return cell;
     
+}
+
+//what happens whenever a switch is toggled
+- (void) switchToggled:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if ([mySwitch isOn]) {
+        NSLog(@"%ld is on!", (long)mySwitch.tag);
+    } else {
+        NSLog(@"%ld is off!", (long)mySwitch.tag);
+    }
 }
 
 @end
