@@ -27,11 +27,16 @@
 
 - (void)viewDidLoad
 {
-    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    FMDatabase* db = [appDelegate db];
     retailersList = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     
+    
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
     //Query database
     FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailers"];
     //For each result of the query, add to the array of retailers to be displayed
@@ -40,8 +45,8 @@
         [retailersList addObject: result];
         
     }
-    
-//    [db close];
+    //close database connection
+    [db close];
 
 }
 
@@ -108,9 +113,11 @@
 - (void) switchToggled:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        NSLog(@"%ld is on!", (long)mySwitch.tag);
+//        NSLog(@"%ld is on!", (long)mySwitch.tag);
+        NSLog(@"%@ is on",[retailersList objectAtIndex:mySwitch.tag]);
     } else {
-        NSLog(@"%ld is off!", (long)mySwitch.tag);
+//        NSLog(@"%ld is off!", (long)mySwitch.tag);
+        NSLog(@"%@ is off",[retailersList objectAtIndex:mySwitch.tag]);
     }
 }
 

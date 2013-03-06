@@ -16,10 +16,6 @@
 {
     [self createAndCheckDatabase];
     
-    if (![db open]) {
-        return YES;
-    }
-    
     // Override point for customization after application launch.
     return YES;
 }
