@@ -35,11 +35,11 @@ enum {
     
     //[db executeUpdate:@"CREATE TABLE test (email varchar(255))"];
     //[db executeUpdate:@"INSERT INTO test VALUES (?)", @"email@email.com"];
-    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
-    while([fm next]) {
-        NSString *result = [fm stringForColumn:@"expdate"];
-        NSLog(@"%@", result);
-    }
+//    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
+//    while([fm next]) {
+//        NSString *result = [fm stringForColumn:@"expdate"];
+//        NSLog(@"%@", result);
+//    }
 
 }
 
