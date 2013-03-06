@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    FMDatabase *db;   
+}
+
+@property (nonatomic, retain) FMDatabase *db;
 
 @property (strong, nonatomic) UIWindow *window;
 

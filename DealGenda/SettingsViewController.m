@@ -7,7 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-#import "FMDatabase.h"
+#import "AppDelegate.h"
 
 @interface SettingsViewController ()
 
@@ -24,29 +24,22 @@ enum {
 
 - (void)viewDidLoad
 {
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(validateInputCallback:)
                                                  name:@"UITextFieldTextDidChangeNotification"
                                                object:nil];
     
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *libraryDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [libraryDirectory stringByAppendingPathComponent:@"Database/DealGenda.db"];
-    FMDatabase* db = [FMDatabase databaseWithPath:writableDBPath];
-    
-    if (![db open]) {
-        return;
-    }
-    
     //[db executeUpdate:@"CREATE TABLE test (email varchar(255))"];
     //[db executeUpdate:@"INSERT INTO test VALUES (?)", @"email@email.com"];
-//    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
-//    while([fm next]) {
-//        NSString *result = [fm stringForColumn:@"expdate"];
-//        NSLog(@"%@", result);
-//    }
+    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
+    while([fm next]) {
+        NSString *result = [fm stringForColumn:@"expdate"];
+        NSLog(@"%@", result);
+    }
 
 }
 

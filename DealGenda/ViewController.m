@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FMDatabase.h"
 
 @interface ViewController ()
 
@@ -17,8 +18,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [libraryDirectory stringByAppendingPathComponent:@"Database/DealGenda.db"];
+    FMDatabase* db = [FMDatabase databaseWithPath:writableDBPath];
+    
+    if (![db open]) {
+        return;
+    }
 	// Do any additional setup after loading the view, typically from a nib.
-}
+    }
 
 - (void)didReceiveMemoryWarning
 {
