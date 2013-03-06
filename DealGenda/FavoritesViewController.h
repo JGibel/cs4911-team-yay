@@ -12,10 +12,10 @@
 @property(nonatomic, readonly, copy) NSArray *subviews;
 @property (strong, nonatomic) IBOutlet UIView *itemSubView;
 @property (strong, nonatomic) IBOutlet UIView *retailerSubView;
-@property (strong, nonatomic) IBOutlet UILabel *testLabel;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) IBOutlet UIView *favoritesView;
-
+@property (strong, nonatomic) IBOutlet UITableView *retailersTable;
+@property (strong, nonatomic) NSMutableArray *retailersList;
 -(IBAction)segmentedChartButtonChanged:(id)sender;
 
 
