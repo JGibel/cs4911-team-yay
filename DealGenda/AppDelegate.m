@@ -58,9 +58,14 @@
     NSString *databasePath = [[NSBundle mainBundle] pathForResource:@"DealGenda" ofType:@"db"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:databaseDirectory])	//Does datbase already exist?
+    NSString *writableDBPath = [databaseDirectory stringByAppendingPathComponent:@"DealGenda.db"];
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:databaseDirectory])
 	{
-		if (![[NSFileManager defaultManager] createDirectoryAtPath:databaseDirectory
+        [[NSFileManager defaultManager] copyItemAtPath:databasePath toPath:writableDBPath error:nil];
+        //NSLog(@"recreated");
+
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:databaseDirectory
 									   withIntermediateDirectories:NO
 														attributes:nil
 															 error:&error])
@@ -69,10 +74,8 @@
 		}
 	}
     
-    NSString *writableDBPath = [databaseDirectory stringByAppendingPathComponent:@"DealGenda.db"];
     db = [FMDatabase databaseWithPath:writableDBPath];
-    [[NSFileManager defaultManager] copyItemAtPath:databasePath toPath:writableDBPath error:nil];
-    
+
     if(!db)
     {
         NSLog(@"Failed moving database... %@",[error localizedDescription]);
