@@ -16,6 +16,10 @@
 @property (strong, nonatomic) IBOutlet UIView *favoritesView;
 @property (strong, nonatomic) IBOutlet UITableView *retailersTable;
 @property (strong, nonatomic) NSMutableArray *retailersList;
+
+//freakin get rid of these...  they're temporary
+@property (strong, nonatomic) NSString *username;
+
 -(IBAction)segmentedChartButtonChanged:(id)sender;
 
 
