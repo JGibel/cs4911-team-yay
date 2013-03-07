@@ -15,6 +15,7 @@
 
 @implementation FavoritesViewController
 @synthesize retailersList;
+@synthesize username;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +39,7 @@
         return;
     }
     //Query database
-    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailers"];
+    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailers ORDER BY name"];
     //For each result of the query, add to the array of retailers to be displayed
     while ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"name"];
@@ -48,6 +49,9 @@
     //close database connection
     [db close];
 
+    //THIS TEMPORARILY SETS THE USERNAME UNTIL LOGIN FUNCTION IS DONE
+    username = @"jdoe@email.com";
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,14 +101,35 @@
     [retailerSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
     [retailerSwitch setTag:indexPath.row];
     
-    //load switch states
-    [retailerSwitch setOn:TRUE];
-    
-    
     //set cell information
     [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
     [cell.detailTextLabel setText:(@"test description")];
     [cell setAccessoryView:retailerSwitch];
+    
+    //load switch states
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userRetailerPreferences WHERE user LIKE ?", username];
+    NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];;
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"retailer"];
+        [resultPrefs addObject:result];
+    }
+    for (int i = 0; i < [resultPrefs count]; i++) {
+        if ([cell.textLabel.text isEqualToString: [resultPrefs objectAtIndex:i]]) {
+            [retailerSwitch setOn:TRUE];
+            break;
+        }
+        else {
+            [retailerSwitch setOn:FALSE];
+        }
+    }
+    
+    [db close];
+    
     return cell;
     
 }
@@ -112,13 +137,30 @@
 //what happens whenever a switch is toggled
 - (void) switchToggled:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
-    if ([mySwitch isOn]) {
-//        NSLog(@"%ld is on!", (long)mySwitch.tag);
-        NSLog(@"%@ is on",[retailersList objectAtIndex:mySwitch.tag]);
-    } else {
-//        NSLog(@"%ld is off!", (long)mySwitch.tag);
-        NSLog(@"%@ is off",[retailersList objectAtIndex:mySwitch.tag]);
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
     }
+    if ([mySwitch isOn]) {
+        FMResultSet *queryResult = [db executeQuery:@"INSERT INTO userRetailerPreferences (user, retailer) VALUES (?,?)", username, [retailersList objectAtIndex:mySwitch.tag]];
+        while ([queryResult next]) {
+            NSString *result = [queryResult stringForColumn:@"name"];
+            [retailersList addObject: result];
+            
+        }
+
+//        NSLog(@"%@ is on",[retailersList objectAtIndex:mySwitch.tag]);
+    } else {
+        FMResultSet *queryResult = [db executeQuery:@"DELETE FROM userRetailerPreferences WHERE user LIKE ? AND retailer LIKE ?", username, [retailersList objectAtIndex:mySwitch.tag]];
+        while ([queryResult next]) {
+            NSString *result = [queryResult stringForColumn:@"name"];
+            [retailersList addObject: result];
+            
+        }
+//        NSLog(@"%@ is off",[retailersList objectAtIndex:mySwitch.tag]);
+    }
+    [db close];
 }
 
 @end
