@@ -36,6 +36,11 @@
     
     self.emailTextField.tag = 0;
     self.verifyTextField.tag = 1;
+    
+    self.emailTextField.delegate = self;
+    self.pwTextField.delegate = self;
+    self.verifyTextField.delegate = self;
+    
 
 }
 
