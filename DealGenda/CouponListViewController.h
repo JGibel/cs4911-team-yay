@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FavoritesViewController.h"
+#import "SettingsViewController.h"
 
 @interface CouponListViewController : UIViewController
 

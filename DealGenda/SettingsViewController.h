@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *pwTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verifyTextField;
 @property (weak, nonatomic) IBOutlet UILabel *pwLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pwLengthLabel;
+
 
 @end
