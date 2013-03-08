@@ -23,6 +23,11 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.navigationItem.hidesBackButton=YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
