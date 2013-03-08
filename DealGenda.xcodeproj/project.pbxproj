@@ -32,6 +32,7 @@
 		2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1616E313F100AA6BE5 /* FMDatabasePool.m */; };
 		2826CB1F16E313F100AA6BE5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1816E313F100AA6BE5 /* FMDatabaseQueue.m */; };
 		2826CB2116E313F100AA6BE5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1B16E313F100AA6BE5 /* FMResultSet.m */; };
+		2826CB2616EA740100AA6BE5 /* Queries.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB2516EA740100AA6BE5 /* Queries.m */; };
 		2864F2E216E311A600680516 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2864F2E116E311A600680516 /* libsqlite3.dylib */; };
 		287CA83116C96DD80091010F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287CA83016C96DD80091010F /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,8 @@
 		2826CB1816E313F100AA6BE5 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		2826CB1A16E313F100AA6BE5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		2826CB1B16E313F100AA6BE5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		2826CB2416EA740100AA6BE5 /* Queries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queries.h; sourceTree = "<group>"; };
+		2826CB2516EA740100AA6BE5 /* Queries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queries.m; sourceTree = "<group>"; };
 		2864F2E116E311A600680516 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		287CA82F16C96DD80091010F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		287CA83016C96DD80091010F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				196F8A0516C970920016B69F /* SignUpViewController.m */,
 				196F8A0716C9762E0016B69F /* CouponListViewController.h */,
 				196F8A0816C9762E0016B69F /* CouponListViewController.m */,
+				2826CB2416EA740100AA6BE5 /* Queries.h */,
+				2826CB2516EA740100AA6BE5 /* Queries.m */,
 			);
 			path = DealGenda;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */,
 				2826CB1F16E313F100AA6BE5 /* FMDatabaseQueue.m in Sources */,
 				2826CB2116E313F100AA6BE5 /* FMResultSet.m in Sources */,
+				2826CB2616EA740100AA6BE5 /* Queries.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *verifyTextField;
 @property (weak, nonatomic) IBOutlet UILabel *pwLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pwLengthLabel;
+@property (weak) UITextField *activeField;
+@property (weak) UIScrollView *scrollView;
 
 
 @end

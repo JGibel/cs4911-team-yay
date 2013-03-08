@@ -169,19 +169,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCf-Wm-rLa">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="H32-Ac-PHF" kind="unwind" unwindAction="returned:" id="v4M-Q7-Q3k"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5k-Rx-pVI">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -207,29 +194,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Psx-F8-bf5" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="193" id="30Z-wu-0CZ"/>
                             <constraint firstItem="pCj-HW-YqI" firstAttribute="trailing" secondItem="6cr-Tw-Pd7" secondAttribute="trailing" type="default" id="5gq-vB-v9b"/>
+                            <constraint firstItem="Qgk-Ud-zKj" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5ug-5p-ZUp"/>
                             <constraint firstItem="IhG-x9-Xij" firstAttribute="trailing" secondItem="vfF-Rz-7jD" secondAttribute="trailing" type="default" id="AKQ-dz-MgT"/>
-                            <constraint firstItem="oCf-Wm-rLa" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="256" id="AQd-90-f8f"/>
                             <constraint firstItem="Psx-F8-bf5" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EE1-Cw-08g"/>
+                            <constraint firstItem="Psx-F8-bf5" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="197" id="EWg-FM-FAR"/>
                             <constraint firstAttribute="trailing" secondItem="kyR-du-18j" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="EgT-XK-lAP"/>
                             <constraint firstItem="kyH-Qr-Gq8" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gg7-Bj-PHu"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="6cr-Tw-Pd7" secondAttribute="leading" type="default" id="Jrn-no-SeI"/>
-                            <constraint firstItem="vfF-Rz-7jD" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="172" id="Jx5-wO-a9a"/>
-                            <constraint firstItem="oCf-Wm-rLa" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ROm-Ed-89R"/>
-                            <constraint firstItem="kyR-du-18j" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="83" id="Rtn-sT-zbN"/>
                             <constraint firstItem="Rfc-iY-Z8J" firstAttribute="bottom" secondItem="kyR-du-18j" secondAttribute="bottom" type="default" id="TAp-Ol-UPz"/>
+                            <constraint firstItem="IhG-x9-Xij" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="213" id="UFo-I8-30M"/>
                             <constraint firstItem="pCj-HW-YqI" firstAttribute="bottom" secondItem="Psx-F8-bf5" secondAttribute="bottom" type="default" id="UU0-kt-Y04"/>
                             <constraint firstItem="Rfc-iY-Z8J" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Umc-Nz-gSs"/>
+                            <constraint firstItem="6cr-Tw-Pd7" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="148" id="UuZ-wW-cVt"/>
+                            <constraint firstAttribute="bottom" secondItem="Qgk-Ud-zKj" secondAttribute="bottom" constant="152" id="WQI-QN-S3B"/>
                             <constraint firstItem="IhG-x9-Xij" firstAttribute="leading" secondItem="pCj-HW-YqI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aGs-1B-Sv5"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="6cr-Tw-Pd7" secondAttribute="leading" type="default" id="aYW-Pm-uQ2"/>
                             <constraint firstItem="6cr-Tw-Pd7" firstAttribute="bottom" secondItem="kyH-Qr-Gq8" secondAttribute="bottom" type="default" id="bMa-Hu-YLN"/>
                             <constraint firstAttribute="trailing" secondItem="Qgk-Ud-zKj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dZq-mi-FmE"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="top" secondItem="kyR-du-18j" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eF7-1F-dJY"/>
-                            <constraint firstItem="oCf-Wm-rLa" firstAttribute="baseline" secondItem="Qgk-Ud-zKj" secondAttribute="baseline" type="default" id="fBL-fn-FGf"/>
-                            <constraint firstItem="6cr-Tw-Pd7" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="144" id="ptP-HZ-cGz"/>
+                            <constraint firstItem="kyR-du-18j" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="87" id="qiq-y3-RDf"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="pCj-HW-YqI" secondAttribute="leading" type="default" id="sbk-Vm-q39"/>
-                            <constraint firstItem="IhG-x9-Xij" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="209" id="xMG-bM-yue"/>
+                            <constraint firstItem="vfF-Rz-7jD" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="176" id="x3d-UG-tcH"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="kyR-du-18j" secondAttribute="leading" type="default" id="zBd-Ah-nhL"/>
                         </constraints>
                     </view>
@@ -245,7 +231,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpF-Kv-w2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="H32-Ac-PHF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1598" y="-293"/>
         </scene>
@@ -492,6 +477,9 @@
     <classes>
         <class className="CouponListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
         </class>
         <class className="FavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
@@ -521,8 +509,12 @@
         <class className="SignUpViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
             <relationships>
+                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="scene1Label" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
@@ -534,7 +526,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e5r-8I-EVB"/>
         <segue reference="23I-PR-F83"/>
+        <segue reference="vRv-tr-uJs"/>
     </inferredMetricsTieBreakers>
 </document>
