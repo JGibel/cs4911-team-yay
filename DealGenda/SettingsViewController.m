@@ -15,13 +15,6 @@
 
 @implementation SettingsViewController
 
-enum {
-    emailTag = 0,
-    pwTag,
-    vPwTag
-
-};
-
 - (void)viewDidLoad
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -40,11 +33,18 @@ enum {
 //        NSString *result = [fm stringForColumn:@"expdate"];
 //        NSLog(@"%@", result);
 //    }
+    
+    self.emailTextField.tag = 0;
+    self.verifyTextField.tag = 1;
+    
+    self.emailTextField.delegate = self;
+    self.pwTextField.delegate = self;
+    self.verifyTextField.delegate = self;
 
 }
 
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
-    if(aTextField == _emailTextField) {
+    if(aTextField.tag == 0) {
         NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
         NSError *error = NULL;
         NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regularExpression
@@ -68,37 +68,50 @@ enum {
     return YES;
 }
 
-- (void)textFieldShouldEndEditing:(UITextField *)aTextField
+- (BOOL)textFieldShouldEndEditing:(UITextField *)aTextField
 {
-    switch(aTextField.tag) {
-            
-        case emailTag:
-            [self validateInputWithString:aTextField];
-            break;
-        case vPwTag:
-            [self validateInputWithString:aTextField];
-            break;
-    }
+    [self validateInputWithString:aTextField];
+    return YES;
 }
 
 - (void)validateInputCallback:(id)sender
 {
-    if ([self validateInputWithString:_emailTextField]) {
-        _emailLabel.textColor = [UIColor greenColor];
-        _emailLabel.text = @"Valid Email";
-    }
-    else {
-        _emailLabel.textColor = [UIColor redColor];
-        _emailLabel.text = @"Please enter a valid email.";
+    
+    if(_emailTextField.isFirstResponder)
+    {
+        if ([self validateInputWithString:_emailTextField]) {
+            _emailLabel.textColor = [UIColor greenColor];
+            _emailLabel.text = @"Valid Email";
+        }
+        else {
+            _emailLabel.textColor = [UIColor redColor];
+            _emailLabel.text = @"Please enter a valid email.";
+        }
     }
     
-    if ([self validateInputWithString:_verifyTextField]) {
-        _pwLabel.textColor = [UIColor greenColor];
-        _pwLabel.text = @"✓";
+    if(_pwTextField.isFirstResponder)
+    {
+        if(_pwTextField.text.length < 6)
+        {
+            _pwLengthLabel.font = [_pwLengthLabel.font fontWithSize:10];
+            _pwLengthLabel.textColor = [UIColor redColor];
+            _pwLengthLabel.text =@"Must be at least 6 characters long.";
+        }
+        else {
+            _pwLengthLabel.text=@"";
+        }
     }
-    else {
-        _pwLabel.textColor = [UIColor redColor];
-        _pwLabel.text = @"X";
+    
+    if(_verifyTextField.isFirstResponder)
+    {
+        if ([self validateInputWithString:_verifyTextField]) {
+            _pwLabel.textColor = [UIColor greenColor];
+            _pwLabel.text = @"✓";
+        }
+        else {
+            _pwLabel.textColor = [UIColor redColor];
+            _pwLabel.text = @"X";
+        }
     }
 }
 

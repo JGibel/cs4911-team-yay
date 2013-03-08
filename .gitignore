@@ -112,8 +112,9 @@ xcuserdata
 #         xcschememanagement.plist
 #
 #
- 
+
 ####
+*.xcworkspace
 # Xcode 4 - Deprecated classes
 #
 # Allegedly, if you manually "deprecate" your classes, they get moved here.
