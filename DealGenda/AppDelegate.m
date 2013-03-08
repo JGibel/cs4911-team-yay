@@ -57,13 +57,21 @@
     NSError *error;
     NSString *databasePath = [[NSBundle mainBundle] pathForResource:@"DealGenda" ofType:@"db"];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database"];
+    NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database/"];
     NSString *writableDBPath = [databaseDirectory stringByAppendingPathComponent:@"DealGenda.db"];
-
-    if (![[NSFileManager defaultManager] fileExistsAtPath:databaseDirectory])
+    NSDictionary *attr = [[NSFileManager defaultManager] attributesOfItemAtPath:writableDBPath error:&error];
+       
+    if([[NSFileManager defaultManager] fileExistsAtPath:writableDBPath] && [attr fileSize] == 0)
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:writableDBPath error:&error];
+        NSLog(@"File erased");
+    }
+    
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:writableDBPath])
 	{
-        [[NSFileManager defaultManager] copyItemAtPath:databasePath toPath:writableDBPath error:nil];
-        //NSLog(@"recreated");
+        [[NSFileManager defaultManager] copyItemAtPath:databasePath toPath:writableDBPath error:&error];
+        NSLog(@"recreated");
 
         if (![[NSFileManager defaultManager] createDirectoryAtPath:databaseDirectory
 									   withIntermediateDirectories:NO
@@ -83,31 +91,6 @@
     }
 }
 
--(BOOL) validateUser: (NSString *) username
-{
-    bool userExists = false;
-    FMResultSet *fm = [db executeQuery:@"SELECT username FROM users"];
-    while([fm next]) {
-        NSString* result = [fm stringForColumn:@"username"];
-        if(result == username) {
-            userExists = true;
-        }
-    }
-    return userExists;
-}
 
--(BOOL) validatePassword: (NSString *) password
-{
-    bool passwordCorrect = false;
-    FMResultSet *fm = [db executeQuery:@"SELECT password FROM users"];
-    while([fm next]) {
-        NSString* result = [fm stringForColumn:@"password"];
-        if(result == password) {
-            passwordCorrect = true;
-        }
-    }
-    return passwordCorrect;
-    
-}
 
 @end
