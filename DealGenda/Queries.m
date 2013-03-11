@@ -12,31 +12,31 @@
 @implementation Queries
 
 
-//-(BOOL) validateUser: (NSString *) username
-//{
-//    bool userExists = false;
-//    FMResultSet *fm = [db executeQuery:@"SELECT username FROM users"];
-//    while([fm next]) {
-//        NSString* result = [fm stringForColumn:@"username"];
-//        if(result == username) {
-//            userExists = true;
-//        }
-//    }
-//    return userExists;
-//}
-//
-//-(BOOL) validatePassword: (NSString *) password
-//{
-//    bool passwordCorrect = false;
-//    FMResultSet *fm = [db executeQuery:@"SELECT password FROM users"];
-//    while([fm next]) {
-//        NSString* result = [fm stringForColumn:@"password"];
-//        if(result == password) {
-//            passwordCorrect = true;
-//        }
-//    }
-//    return passwordCorrect;
-//    
-//}
++(BOOL) validateEmail: (NSString *) email : (FMDatabase *) db
+{
+    bool emailExists = false;
+    FMResultSet *fm = [db executeQuery:@"SELECT email FROM users"];
+    while([fm next]) {
+        NSString* result = [fm stringForColumn:@"email"];
+        if(result == email) {
+            emailExists = true;
+        }
+    }
+    return emailExists;
+}
+
++(BOOL) validatePassword: (NSString *) password : (FMDatabase *) db
+{
+    bool passwordCorrect = false;
+    FMResultSet *fm = [db executeQuery:@"SELECT password FROM users"];
+    while([fm next]) {
+        NSString* result = [fm stringForColumn:@"password"];
+        if(result == password) {
+            passwordCorrect = true;
+        }
+    }
+    return passwordCorrect;
+    
+}
 
 @end

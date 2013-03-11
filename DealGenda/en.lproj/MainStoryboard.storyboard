@@ -180,6 +180,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveSettings:" destination="9Lu-mf-hFf" eventType="touchUpInside" id="aFg-C6-u3e"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5k-Rx-pVI">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -210,24 +213,24 @@
                             <constraint firstItem="Qgk-Ud-zKj" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5ug-5p-ZUp"/>
                             <constraint firstItem="IhG-x9-Xij" firstAttribute="trailing" secondItem="vfF-Rz-7jD" secondAttribute="trailing" type="default" id="AKQ-dz-MgT"/>
                             <constraint firstItem="Psx-F8-bf5" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EE1-Cw-08g"/>
-                            <constraint firstItem="Psx-F8-bf5" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="197" id="EWg-FM-FAR"/>
                             <constraint firstAttribute="trailing" secondItem="kyR-du-18j" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="EgT-XK-lAP"/>
                             <constraint firstItem="kyH-Qr-Gq8" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gg7-Bj-PHu"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="6cr-Tw-Pd7" secondAttribute="leading" type="default" id="Jrn-no-SeI"/>
+                            <constraint firstItem="Psx-F8-bf5" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="130" id="Om3-3P-l9B"/>
+                            <constraint firstItem="6cr-Tw-Pd7" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="81" id="Sxo-yo-Cht"/>
                             <constraint firstItem="Rfc-iY-Z8J" firstAttribute="bottom" secondItem="kyR-du-18j" secondAttribute="bottom" type="default" id="TAp-Ol-UPz"/>
-                            <constraint firstItem="IhG-x9-Xij" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="213" id="UFo-I8-30M"/>
                             <constraint firstItem="pCj-HW-YqI" firstAttribute="bottom" secondItem="Psx-F8-bf5" secondAttribute="bottom" type="default" id="UU0-kt-Y04"/>
                             <constraint firstItem="Rfc-iY-Z8J" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Umc-Nz-gSs"/>
-                            <constraint firstItem="6cr-Tw-Pd7" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="148" id="UuZ-wW-cVt"/>
-                            <constraint firstAttribute="bottom" secondItem="Qgk-Ud-zKj" secondAttribute="bottom" constant="152" id="WQI-QN-S3B"/>
+                            <constraint firstItem="vfF-Rz-7jD" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="109" id="Ye1-jT-T3n"/>
                             <constraint firstItem="IhG-x9-Xij" firstAttribute="leading" secondItem="pCj-HW-YqI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aGs-1B-Sv5"/>
+                            <constraint firstItem="IhG-x9-Xij" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="146" id="aQR-FH-XJf"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="6cr-Tw-Pd7" secondAttribute="leading" type="default" id="aYW-Pm-uQ2"/>
                             <constraint firstItem="6cr-Tw-Pd7" firstAttribute="bottom" secondItem="kyH-Qr-Gq8" secondAttribute="bottom" type="default" id="bMa-Hu-YLN"/>
                             <constraint firstAttribute="trailing" secondItem="Qgk-Ud-zKj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dZq-mi-FmE"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="top" secondItem="kyR-du-18j" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eF7-1F-dJY"/>
-                            <constraint firstItem="kyR-du-18j" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="87" id="qiq-y3-RDf"/>
+                            <constraint firstItem="kyR-du-18j" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="20" symbolic="YES" type="default" id="flS-GL-GVu"/>
+                            <constraint firstItem="Qgk-Ud-zKj" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="193" id="hlY-vk-yRk"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="pCj-HW-YqI" secondAttribute="leading" type="default" id="sbk-Vm-q39"/>
-                            <constraint firstItem="vfF-Rz-7jD" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="176" id="x3d-UG-tcH"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="kyR-du-18j" secondAttribute="leading" type="default" id="zBd-Ah-nhL"/>
                         </constraints>
                     </view>
@@ -572,6 +575,7 @@
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="saveSettings:"/>
                 <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
