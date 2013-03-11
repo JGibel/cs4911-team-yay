@@ -10,4 +10,7 @@
 
 @interface Queries : FMDatabase
 
++(BOOL) validateEmail: (NSString *) email : (FMDatabase *) db;
++(BOOL) validatePassword: (NSString *) password : (FMDatabase *) db;
+
 @end

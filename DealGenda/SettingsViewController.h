@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface SettingsViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -17,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *pwLengthLabel;
 @property (weak) UITextField *activeField;
 @property (weak) UIScrollView *scrollView;
+@property (nonatomic) FMDatabase *db;
+
+- (IBAction)saveSettings:(id)sender;
 
 
 @end
