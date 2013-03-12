@@ -408,21 +408,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xf-X3-f2F" userLabel="ItemsSubView">
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XM0-1n-Nwr">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1180921301" green="0.047977914859999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="bottom" secondItem="4Xf-X3-f2F" secondAttribute="bottom" type="default" id="6r8-BP-ORz"/>
-                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="leading" secondItem="4Xf-X3-f2F" secondAttribute="leading" type="default" id="SdS-aE-OAq"/>
-                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="trailing" secondItem="4Xf-X3-f2F" secondAttribute="trailing" type="default" id="f6M-mV-i42"/>
-                                    <constraint firstItem="XM0-1n-Nwr" firstAttribute="top" secondItem="4Xf-X3-f2F" secondAttribute="top" type="default" id="vAV-mr-Uzq"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-PI-De4" userLabel="RetailersSubView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-PI-De4" userLabel="subView">
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-OH-LJL">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -481,17 +467,13 @@
                         <constraints>
                             <constraint firstItem="Bv3-PI-De4" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="2La-bA-Qa6"/>
                             <constraint firstItem="F2g-3T-pqb" firstAttribute="top" secondItem="2vn-uM-eAW" secondAttribute="top" constant="14" id="4hy-o5-z3p"/>
-                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="55v-qd-beK"/>
                             <constraint firstItem="Cej-Ab-LHb" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="HFo-uR-TB7"/>
                             <constraint firstAttribute="trailing" secondItem="Cej-Ab-LHb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="JCD-zs-xH9"/>
                             <constraint firstItem="Bv3-PI-De4" firstAttribute="top" secondItem="2vn-uM-eAW" secondAttribute="top" constant="57" id="Rto-3p-MNe"/>
-                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="leading" secondItem="2vn-uM-eAW" secondAttribute="leading" type="default" id="TFg-uc-Exn"/>
                             <constraint firstItem="Bv3-PI-De4" firstAttribute="trailing" secondItem="2vn-uM-eAW" secondAttribute="trailing" type="default" id="buA-qi-4ha"/>
-                            <constraint firstItem="Cej-Ab-LHb" firstAttribute="top" secondItem="4Xf-X3-f2F" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fud-ki-rX0"/>
-                            <constraint firstItem="4Xf-X3-f2F" firstAttribute="top" secondItem="Bv3-PI-De4" secondAttribute="top" type="default" id="gt2-zX-eh2"/>
-                            <constraint firstItem="F2g-3T-pqb" firstAttribute="centerX" secondItem="4Xf-X3-f2F" secondAttribute="centerX" type="default" id="nii-gk-7cZ"/>
                             <constraint firstItem="Cej-Ab-LHb" firstAttribute="top" secondItem="Bv3-PI-De4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rZI-3E-bOs"/>
                             <constraint firstAttribute="bottom" secondItem="Cej-Ab-LHb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yEv-7B-M3k"/>
+                            <constraint firstItem="F2g-3T-pqb" firstAttribute="centerX" secondItem="Bv3-PI-De4" secondAttribute="centerX" type="default" id="zxb-yB-lH8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" id="cgP-l8-aR5"/>
@@ -499,10 +481,9 @@
                     <connections>
                         <outlet property="doneButton" destination="Cej-Ab-LHb" id="oYZ-ax-19G"/>
                         <outlet property="favoritesView" destination="2vn-uM-eAW" id="SY9-IM-gki"/>
-                        <outlet property="itemSubView" destination="4Xf-X3-f2F" id="Tdq-HQ-hXA"/>
-                        <outlet property="retailerSubView" destination="Bv3-PI-De4" id="pAw-rw-zTA"/>
-                        <outlet property="retailersTable" destination="T0l-OH-LJL" id="cM8-0G-j81"/>
                         <outlet property="segmentControl" destination="F2g-3T-pqb" id="D4d-4y-iCe"/>
+                        <outlet property="subView" destination="Bv3-PI-De4" id="khf-CH-gpg"/>
+                        <outlet property="table" destination="T0l-OH-LJL" id="Ffm-TP-6Vx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pT-ig-A9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -563,10 +544,9 @@
                 <relationship kind="action" name="segmentedChartButtonChanged:"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="itemSubView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="retailerSubView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="retailersTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
