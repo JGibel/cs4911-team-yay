@@ -84,9 +84,10 @@
     FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email LIKE ?", _username];
     while ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"password"];
-        NSLog(result);
+        NSLog(@"%@",result);
         if([passwordValue isEqualToString:(result)]) {
             NSLog(@"TRUE");
+            appDelegate.username = _username;
             _canSegue = @"YES";
             
         }
