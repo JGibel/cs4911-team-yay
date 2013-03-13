@@ -20,6 +20,18 @@
 @synthesize scrollView;
 @synthesize username;
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    _emailTextField.textColor = [UIColor grayColor];
+    _emailTextField.text = username;
+    _pwTextField.text = @"";
+    _verifyTextField.text = @"";
+    _emailLabel.text = @"";
+    _pwLengthLabel.text = @"";
+    _pwLabel.text = @"";
+    _loginLabel.text = @"";
+}
+
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
@@ -28,13 +40,6 @@
                                                  name:@"UITextFieldTextDidChangeNotification"
                                                object:nil];
     
-    //[db executeUpdate:@"CREATE TABLE test (email varchar(255))"];
-    //[db executeUpdate:@"INSERT INTO test VALUES (?)", @"email@email.com"];
-//    FMResultSet *fm = [db executeQuery:@"SELECT expdate FROM coupons WHERE retailername='Staples'"];
-//    while([fm next]) {
-//        NSString *result = [fm stringForColumn:@"expdate"];
-//        NSLog(@"%@", result);
-//    }
     
     self.emailTextField.tag = 0;
     self.verifyTextField.tag = 1;
@@ -44,6 +49,8 @@
     self.verifyTextField.delegate = self;
     
     username = @"jdoe@email.com";
+    _emailTextField.textColor = [UIColor grayColor];
+    _emailTextField.text = username;
     [_saveButton setEnabled:NO];
 
 }
@@ -93,7 +100,8 @@
     
     if(_emailTextField.isFirstResponder)
     {
-        if ([self validateInputWithString:_emailTextField]) {
+        _emailTextField.textColor = [UIColor blackColor];
+        if ([self validateInputWithString:_emailTextField] && _emailTextField.text.length > 5) {
             _emailLabel.text = @"";
             emailGo = true;
         }
