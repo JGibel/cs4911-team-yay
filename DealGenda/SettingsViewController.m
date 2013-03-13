@@ -18,13 +18,10 @@
 
 @synthesize activeField;
 @synthesize scrollView;
-@synthesize db;
+@synthesize username;
 
 - (void)viewDidLoad
-{
-    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    FMDatabase* db = [appDelegate db];
-        
+{    
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(validateInputCallback:)
@@ -45,6 +42,9 @@
     self.emailTextField.delegate = self;
     self.pwTextField.delegate = self;
     self.verifyTextField.delegate = self;
+    
+    username = @"jdoe@email.com";
+    [_saveButton setEnabled:NO];
 
 }
 
@@ -63,7 +63,7 @@
                                                               range:NSMakeRange(0, [aTextField.text length])];
         return numberOfMatches > 0;
     } else {
-        return [_pwTextField.text isEqualToString: _verifyTextField.text];
+        return [_verifyTextField.text isEqualToString: _pwTextField.text];
     }
 }
 
@@ -87,11 +87,15 @@
 
 - (void)validateInputCallback:(id)sender
 {
+    bool emailGo = true;
+    bool allSystemsGo = false;
+    bool passwordGo = true;
     
     if(_emailTextField.isFirstResponder)
     {
         if ([self validateInputWithString:_emailTextField]) {
             _emailLabel.text = @"";
+            emailGo = true;
         }
         else {
             _emailLabel.textColor = [UIColor redColor];
@@ -99,28 +103,31 @@
         }
     }
     
-    if(_pwTextField.isFirstResponder)
+    if(_pwTextField.isFirstResponder || _verifyTextField.isFirstResponder)
     {
         if(_pwTextField.text.length < 6)
         {
             _pwLengthLabel.font = [_pwLengthLabel.font fontWithSize:10];
             _pwLengthLabel.textColor = [UIColor redColor];
             _pwLengthLabel.text =@"Must be at least 6 characters long.";
-        }
-        else {
-            _pwLengthLabel.text=@"";
-        }
-    }
-    
-    if(_verifyTextField.isFirstResponder)
-    {
-        if ([self validateInputWithString:_verifyTextField]) {
-            _pwLabel.textColor = [UIColor greenColor];
-            _pwLabel.text = @"✓";
-        }
-        else {
             _pwLabel.textColor = [UIColor redColor];
             _pwLabel.text = @"X";
+        } else {
+            if ([self validateInputWithString:_verifyTextField]) {
+                _pwLabel.textColor = [UIColor greenColor];
+                _pwLabel.text = @"✓";
+                passwordGo = true;
+            }
+            _pwLengthLabel.text=@"";
+        }
+        if(emailGo && passwordGo) {
+            allSystemsGo = true;
+        } else {
+            allSystemsGo = false;
+        }
+        
+        if(allSystemsGo == true) {
+            [_saveButton setEnabled:YES];
         }
     }
 }
@@ -133,9 +140,25 @@
 }
 
 - (IBAction)saveSettings:(id)sender {
-    NSLog(@"?");
-    if(![Queries validateEmail:_emailTextField.text :db]) {
-        NSLog(@"!");
+    
+    if([Queries validateEmail:_emailTextField.text]) {
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor redColor];
+        _loginLabel.text = @"Email already in use.";
+    } else {
+        [Queries updateEmail: username : _emailTextField.text];
+        username = _emailTextField.text;
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.text = @"Save Successful";
     }
+    
+    if(_verifyTextField.text.length > 5) {
+        [Queries updatePassword:username : _pwTextField.text];
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.text = @"Save Successful";
+    } 
+
+    
+    
 }
 @end

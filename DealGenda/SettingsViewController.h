@@ -18,7 +18,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *pwLengthLabel;
 @property (weak) UITextField *activeField;
 @property (weak) UIScrollView *scrollView;
-@property (nonatomic) FMDatabase *db;
+@property (weak, nonatomic) IBOutlet UILabel *loginLabel;
+@property (retain) IBOutlet UIButton *saveButton;
+
+//temp
+@property (strong, retain) NSString *username;
 
 - (IBAction)saveSettings:(id)sender;
 
