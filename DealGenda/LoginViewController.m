@@ -104,8 +104,12 @@
         return YES;
     }
     
-    else{        
+    if([_canSegue isEqualToString:(@"NO")] && [_buttonID isEqualToString:(@"loginButton")]){
         return NO;
+    }
+    
+    else{        
+        return YES;
     }
 }
 
