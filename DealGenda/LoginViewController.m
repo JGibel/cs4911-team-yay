@@ -23,6 +23,11 @@
     }
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    backButton = nil;
+}
 
 - (void)viewDidLoad
 {

@@ -327,7 +327,7 @@
             <objects>
                 <viewController title="PassExtensionView" id="8sU-tu-T97" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L6k-3n-fH7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-e7-FSl">
@@ -361,7 +361,7 @@
             <objects>
                 <viewController title="PaymentView" id="SDJ-Qc-UOX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DG4-r9-gqc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -376,7 +376,7 @@
             <objects>
                 <viewController title="CouponDetailsView" id="zVV-Ca-j3R" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xXd-0Z-MaP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xka-Iw-1VX">
@@ -410,7 +410,7 @@
             <objects>
                 <viewController title="PassView" id="Syb-3o-cUJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wzG-Sx-YZa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-dC-HTs">
@@ -478,7 +478,7 @@
             <objects>
                 <viewController title="FavoritesView" id="3nV-jt-9JW" customClass="FavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2vn-uM-eAW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-PI-De4" userLabel="subView">
@@ -604,60 +604,13 @@
             <point key="canvasLocation" x="821" y="-288"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CouponListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
-        </class>
-        <class className="FavoritesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedChartButtonChanged:"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveSettings:"/>
-                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SignUpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="scene1Label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="awD-fs-SxR"/>
-        <segue reference="KMm-SZ-x4i"/>
+        <segue reference="vRv-tr-uJs"/>
+        <segue reference="23I-PR-F83"/>
     </inferredMetricsTieBreakers>
 </document>
