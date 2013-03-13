@@ -35,7 +35,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4UK-wq-X0q" kind="push" identifier="SegueSignMeUp" id="paY-xL-R8Y"/>
+                                    <action selector="signUpButton:" destination="2" eventType="touchUpInside" id="oOU-6M-oRt"/>
+                                    <segue destination="4UK-wq-X0q" kind="push" id="cbg-Gd-R3X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sq-da-wCk">
@@ -80,6 +81,14 @@
                                     <outlet property="delegate" destination="2" id="4KC-c4-Bx1"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vo-Qy-524">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="74H-7f-jH1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,19 +96,22 @@
                             <constraint firstItem="tUA-xm-02E" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1CS-B1-SWZ"/>
                             <constraint firstItem="VnQ-Nc-zfq" firstAttribute="top" secondItem="3" secondAttribute="top" constant="134" id="8lI-Rm-HF6"/>
                             <constraint firstAttribute="bottom" secondItem="tUA-xm-02E" secondAttribute="bottom" constant="80" id="ATl-7B-SDG"/>
+                            <constraint firstItem="fCt-wO-JlE" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="ESv-IU-JhM"/>
                             <constraint firstAttribute="trailing" secondItem="fFv-Fh-fyJ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GE9-zl-GfO"/>
                             <constraint firstItem="fCt-wO-JlE" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ITO-Qi-kcr"/>
+                            <constraint firstAttribute="bottom" secondItem="1Sq-da-wCk" secondAttribute="bottom" constant="151" id="JNz-wQ-hYu"/>
+                            <constraint firstAttribute="trailing" secondItem="2Vo-Qy-524" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="JwE-TD-hq8"/>
                             <constraint firstItem="fFv-Fh-fyJ" firstAttribute="bottom" secondItem="13r-aM-0qo" secondAttribute="bottom" type="default" id="KHP-Wq-fDL"/>
                             <constraint firstAttribute="trailing" secondItem="tUA-xm-02E" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Puv-Oa-oHh"/>
                             <constraint firstItem="fFv-Fh-fyJ" firstAttribute="leading" secondItem="VnQ-Nc-zfq" secondAttribute="leading" type="default" id="UTe-tH-Uuy"/>
+                            <constraint firstItem="2Vo-Qy-524" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aGp-KA-QJ4"/>
                             <constraint firstItem="1Sq-da-wCk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dKe-ee-bmh"/>
-                            <constraint firstAttribute="bottom" secondItem="1Sq-da-wCk" secondAttribute="bottom" constant="151" id="dOt-F3-vQR"/>
                             <constraint firstAttribute="trailing" secondItem="1Sq-da-wCk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eM5-GO-SNv"/>
                             <constraint firstAttribute="trailing" secondItem="VnQ-Nc-zfq" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fdp-3t-jAx"/>
                             <constraint firstItem="13r-aM-0qo" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fds-bc-dPp"/>
                             <constraint firstItem="fCt-wO-JlE" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="j4D-kB-J9h"/>
-                            <constraint firstItem="fCt-wO-JlE" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="nbJ-47-m1p"/>
                             <constraint firstItem="fFv-Fh-fyJ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="73" id="qHG-vi-jgI"/>
+                            <constraint firstItem="2Vo-Qy-524" firstAttribute="top" secondItem="3" secondAttribute="top" constant="184" id="qom-R0-RBm"/>
                             <constraint firstItem="fCt-wO-JlE" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="xsc-2d-nbL"/>
                             <constraint firstItem="VnQ-Nc-zfq" firstAttribute="bottom" secondItem="IUh-z2-muP" secondAttribute="bottom" type="default" id="z9E-jr-v3n"/>
                         </constraints>
@@ -107,6 +119,7 @@
                     <navigationItem key="navigationItem" title="Welcome to DealGenda" id="z86-kf-sKe"/>
                     <connections>
                         <outlet property="emailTextField" destination="fFv-Fh-fyJ" id="ay8-Dc-hPg"/>
+                        <outlet property="errorLabel" destination="2Vo-Qy-524" id="U7n-jd-eVU"/>
                         <outlet property="passwordTextField" destination="VnQ-Nc-zfq" id="UyW-4z-a9X"/>
                     </connections>
                 </viewController>
@@ -537,9 +550,6 @@
     <classes>
         <class className="CouponListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
         </class>
         <class className="FavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
@@ -557,7 +567,9 @@
             <relationships>
                 <relationship kind="action" name="dismissKeyboard:"/>
                 <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="signUpButton:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -580,9 +592,6 @@
             <relationships>
                 <relationship kind="outlet" name="scene1Label" candidateClass="UILabel"/>
             </relationships>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

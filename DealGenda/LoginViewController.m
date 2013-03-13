@@ -30,8 +30,6 @@
 	// Do any additional setup after loading the view.
     
 
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,56 +38,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Keyboard Retracting
 - (IBAction)dismissKeyboard:(id)sender {
     [_emailTextField resignFirstResponder];
     [_passwordTextField resignFirstResponder];
 }
 
 - (IBAction)loginButton:(UIButton *)sender {
+    
     NSString *emailValue =  [[NSString alloc] initWithFormat:(@"%@", _emailTextField.text)];
     NSString *passwordValue =  [[NSString alloc] initWithFormat:(@"%@", _passwordTextField.text)];
-
+    _buttonID = @"loginButton";
+     _canSegue = @"NO";
+    
     NSLog(@"The entered email is: %@", emailValue);
     NSLog(@"The entered password is: %@", passwordValue);
-
+    
+    //Lines to open the Database
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
 
     if (![db open]) {
         return;
     }
-    
-    
-//    BOOL userExists = NO;
-//    BOOL passwordCorrect = NO;
-//    FMResultSet *queryResult = [db executeQuery:@"SELECT email FROM users"];
-//    
-//    while ([queryResult next]) {
-//        NSString *users = [queryResult stringForColumn:@"email"];
-//        NSLog(users);
-//        if([users isEqualToString:(emailValue)]) {
-//            userExists = YES;
-//            
-//            FMResultSet *passwordQueryResult = [db executeQuery:@"SELECT * FROM user WHERE password LIKE ?", queryResult];
-//
-//            NSString* passwords = [queryResult stringForColumn:@"password"];
-//            if([passwords isEqualToString:passwordValue]) {
-//            BOOL passwordCorrect = YES;
-//        }
-//        
-//    }
-//
-//    NSLog(@"Email Bool value: %d",userExists);
-//    NSLog(@"Password Bool value: %d",passwordCorrect);
-//
-//
-//    }
-
-    
-    
-//    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE user LIKE ?", emailValue];
-//    NSString *result = [queryResult stringForColumn:@"password"];
-//    NSLog(result);
 
     FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email LIKE ?", emailValue];
     while ([queryResult next]) {
@@ -97,29 +68,48 @@
         NSLog(result);
         if([passwordValue isEqualToString:(result)]) {
             NSLog(@"TRUE");
-            _loggedIn = @"YES";
+            _canSegue = @"YES";
+            
         }
         else{
             NSLog(@"FALSE");
-            _loggedIn = @"NO";
+            _canSegue = @"NO";
 
         }
+    }
+    
+    if([_canSegue isEqualToString:(@"NO")] && [_buttonID isEqualToString:(@"loginButton")]){
+        _errorLabel.textColor = [UIColor redColor];
+        _errorLabel.text = @"Incorrect Email or Password";
+    }
+    if([_canSegue isEqualToString:(@"YES")]){
+        _errorLabel.text = @"";
     }
     
     [db close];
     
 }
 
+- (IBAction)signUpButton:(id)sender;{
+    _buttonID = @"signUpButton";
+    _errorLabel.text = @"";
+}
+
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if([_loggedIn isEqualToString:(@"YES")]){
+    if([_buttonID isEqualToString:(@"signUpButton")]){
         return YES;
     }
     
-    else{
+    if([_canSegue isEqualToString:(@"YES")] && [_buttonID isEqualToString:(@"loginButton")]){
+        return YES;
+    }
+    
+    else{        
         return NO;
     }
 }
 
+//Keyboard Retracting
 
 -(BOOL)textFieldShouldReturn:(UITextView *)textField{
     if(_emailTextField.isFirstResponder){

@@ -11,14 +11,15 @@
 @interface LoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
-//temp
 @property (strong, nonatomic) NSString *username;
-@property (strong, nonatomic) NSString *loggedIn;
-
+@property (strong, nonatomic) NSString *canSegue;
+@property (strong, nonatomic) NSString *buttonID;
 
 
 - (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)loginButton:(UIButton *)sender;
+- (IBAction)signUpButton:(id)sender;
 
 @end
