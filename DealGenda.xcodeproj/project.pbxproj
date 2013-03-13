@@ -35,6 +35,7 @@
 		2826CB2616EA740100AA6BE5 /* Queries.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB2516EA740100AA6BE5 /* Queries.m */; };
 		2864F2E216E311A600680516 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2864F2E116E311A600680516 /* libsqlite3.dylib */; };
 		287CA83116C96DD80091010F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287CA83016C96DD80091010F /* SettingsViewController.m */; };
+		678941C416EE4A98007999F5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678941C316EE4A98007999F5 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		2864F2E116E311A600680516 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		287CA82F16C96DD80091010F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		287CA83016C96DD80091010F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		678941C216EE4A98007999F5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		678941C316EE4A98007999F5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 			children = (
 				2826CB1016E313F100AA6BE5 /* fmdb */,
 				192D222816B7243D00F2D773 /* AppDelegate.h */,
+				678941C216EE4A98007999F5 /* LoginViewController.h */,
+				678941C316EE4A98007999F5 /* LoginViewController.m */,
 				192D222916B7243D00F2D773 /* AppDelegate.m */,
 				192D223116B7243D00F2D773 /* MainStoryboard.storyboard */,
 				287CA82F16C96DD80091010F /* SettingsViewController.h */,
@@ -349,6 +354,7 @@
 				2826CB1F16E313F100AA6BE5 /* FMDatabaseQueue.m in Sources */,
 				2826CB2116E313F100AA6BE5 /* FMResultSet.m in Sources */,
 				2826CB2616EA740100AA6BE5 /* Queries.m in Sources */,
+				678941C416EE4A98007999F5 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
