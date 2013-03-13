@@ -8,9 +8,10 @@
 
 #import "FMDatabase.h"
 
-@interface Queries : FMDatabase
+@interface Queries : FMDatabase <UIApplicationDelegate>
 
-+(BOOL) validateEmail: (NSString *) email : (FMDatabase *) db;
-+(BOOL) validatePassword: (NSString *) password : (FMDatabase *) db;
-
++(BOOL) validateEmail: (NSString *) email;
++(BOOL) validatePassword: (NSString *) email : (NSString *) password;
++(void) updateEmail: (NSString *) email : (NSString *) newEmail;
++(void) updatePassword: (NSString *) email : (NSString *) password;
 @end

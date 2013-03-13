@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C2034" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JGA-8Q-o7k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JGA-8Q-o7k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -279,17 +279,25 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu3-f3-GPK">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Qgk-Ud-zKj" firstAttribute="top" secondItem="cu3-f3-GPK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0KV-Sp-phB"/>
                             <constraint firstItem="pCj-HW-YqI" firstAttribute="trailing" secondItem="6cr-Tw-Pd7" secondAttribute="trailing" type="default" id="5gq-vB-v9b"/>
                             <constraint firstItem="Qgk-Ud-zKj" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5ug-5p-ZUp"/>
+                            <constraint firstItem="cu3-f3-GPK" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8zm-iz-gru"/>
                             <constraint firstItem="IhG-x9-Xij" firstAttribute="trailing" secondItem="vfF-Rz-7jD" secondAttribute="trailing" type="default" id="AKQ-dz-MgT"/>
                             <constraint firstItem="Psx-F8-bf5" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EE1-Cw-08g"/>
                             <constraint firstAttribute="trailing" secondItem="kyR-du-18j" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="EgT-XK-lAP"/>
                             <constraint firstItem="kyH-Qr-Gq8" firstAttribute="leading" secondItem="eCM-rz-TUg" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gg7-Bj-PHu"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="6cr-Tw-Pd7" secondAttribute="leading" type="default" id="Jrn-no-SeI"/>
                             <constraint firstItem="Psx-F8-bf5" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="130" id="Om3-3P-l9B"/>
+                            <constraint firstItem="cu3-f3-GPK" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="188" id="QjK-2N-doF"/>
                             <constraint firstItem="6cr-Tw-Pd7" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="81" id="Sxo-yo-Cht"/>
                             <constraint firstItem="Rfc-iY-Z8J" firstAttribute="bottom" secondItem="kyR-du-18j" secondAttribute="bottom" type="default" id="TAp-Ol-UPz"/>
                             <constraint firstItem="pCj-HW-YqI" firstAttribute="bottom" secondItem="Psx-F8-bf5" secondAttribute="bottom" type="default" id="UU0-kt-Y04"/>
@@ -302,7 +310,6 @@
                             <constraint firstAttribute="trailing" secondItem="Qgk-Ud-zKj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dZq-mi-FmE"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="top" secondItem="kyR-du-18j" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eF7-1F-dJY"/>
                             <constraint firstItem="kyR-du-18j" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="20" symbolic="YES" type="default" id="flS-GL-GVu"/>
-                            <constraint firstItem="Qgk-Ud-zKj" firstAttribute="top" secondItem="eCM-rz-TUg" secondAttribute="top" constant="193" id="hlY-vk-yRk"/>
                             <constraint firstItem="vfF-Rz-7jD" firstAttribute="leading" secondItem="pCj-HW-YqI" secondAttribute="leading" type="default" id="sbk-Vm-q39"/>
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="kyR-du-18j" secondAttribute="leading" type="default" id="zBd-Ah-nhL"/>
                         </constraints>
@@ -312,9 +319,11 @@
                     <connections>
                         <outlet property="emailLabel" destination="Q5k-Rx-pVI" id="muI-9D-YTA"/>
                         <outlet property="emailTextField" destination="kyR-du-18j" id="5p4-KW-awC"/>
+                        <outlet property="loginLabel" destination="cu3-f3-GPK" id="cTP-6o-u76"/>
                         <outlet property="pwLabel" destination="IhG-x9-Xij" id="iuh-sq-Dwp"/>
                         <outlet property="pwLengthLabel" destination="vfF-Rz-7jD" id="Ovp-l8-jTB"/>
                         <outlet property="pwTextField" destination="6cr-Tw-Pd7" id="rIV-aN-YPf"/>
+                        <outlet property="saveButton" destination="Qgk-Ud-zKj" id="ABE-fh-0Qu"/>
                         <outlet property="verifyTextField" destination="pCj-HW-YqI" id="hCZ-jH-uCu"/>
                     </connections>
                 </viewController>

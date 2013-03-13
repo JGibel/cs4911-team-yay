@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-
 @synthesize db;
 @synthesize username;
 
