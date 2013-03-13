@@ -11,4 +11,5 @@
 
 @interface SignUpViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *scene1Label;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end

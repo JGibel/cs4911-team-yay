@@ -85,5 +85,18 @@
     [db close];
 }
 
++(void) addUser: (NSString *) firstName : (NSString *) lastName : (NSDate *) birthDate : (NSString *) email : (NSString *) password :(NSString *) gender
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return;
+    }
+    
+    [db executeUpdate:@"insert into users values(? , ?, ? ,?, ?, ?)", email, password, firstName, lastName, gender, birthDate];
+    
+    [db close];
+}
+
 
 @end
