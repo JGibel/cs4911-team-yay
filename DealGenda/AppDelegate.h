@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, retain) FMDatabase *db;
+@property (nonatomic, retain) NSString *username;
 
 @property (strong, nonatomic) UIWindow *window;
 

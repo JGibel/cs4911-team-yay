@@ -11,10 +11,14 @@
 @implementation AppDelegate
 
 @synthesize db;
+@synthesize username;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self createAndCheckDatabase];
+    
+    //THIS TEMPORARILY SETS THE USERNAME UNTIL LOGIN FUNCTION IS DONE
+    username = @"jdoe@email.com";
     
     // Override point for customization after application launch.
     return YES;

@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface FavoritesViewController : UIViewController
-@property(nonatomic, readonly, copy) NSArray *subviews;
-@property (strong, nonatomic) IBOutlet UIView *itemSubView;
-@property (strong, nonatomic) IBOutlet UIView *retailerSubView;
+@property (strong, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) IBOutlet UIView *favoritesView;
-@property (strong, nonatomic) IBOutlet UITableView *retailersTable;
+@property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) NSMutableArray *retailersList;
+@property (strong, nonatomic) NSMutableArray *itemsList;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+@property NSInteger *state;
 
 //freakin get rid of these...  they're temporary
-@property (strong, nonatomic) NSString *username;
+//@property (strong, nonatomic) NSString *username;
 
 -(IBAction)segmentedChartButtonChanged:(id)sender;
 
