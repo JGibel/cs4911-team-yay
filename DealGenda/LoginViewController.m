@@ -38,20 +38,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-//Keyboard Retracting
+// Retract Keyboard Functionality for tapping in the background
+// Tie this action to a button the size of the entire view, pushed to the back so that everything else sits on top
 - (IBAction)dismissKeyboard:(id)sender {
+    
+    // Causes the keyboard to retract if the emailTextField is active
     [_emailTextField resignFirstResponder];
+    
+    // Causes the keyboard to retract if the passwordTextField is active
     [_passwordTextField resignFirstResponder];
 }
 
 - (IBAction)loginButton:(UIButton *)sender {
     
-    NSString *emailValue =  [[NSString alloc] initWithFormat:(@"%@", _emailTextField.text)];
+    //NSString *emailValue =  [[NSString alloc] initWithFormat:(@"%@", _emailTextField.text)];
+    _username = _emailTextField.text;
     NSString *passwordValue =  [[NSString alloc] initWithFormat:(@"%@", _passwordTextField.text)];
-    _buttonID = @"loginButton";
-     _canSegue = @"NO";
     
-    NSLog(@"The entered email is: %@", emailValue);
+    
+    
+    //identifier to determine which button was pressed
+    _buttonID = @"loginButton";
+    
+    //identifier to determine if the view is in a state allowed to segue
+    _canSegue = @"NO";
+    
+    //Print statements for testing
+    NSLog(@"The entered email is: %@", _username);
     NSLog(@"The entered password is: %@", passwordValue);
     
     //Lines to open the Database
@@ -62,7 +75,8 @@
         return;
     }
 
-    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email LIKE ?", emailValue];
+    //Query pulls all passwords from the users table where the email is equal to the emailValue, set above
+    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email LIKE ?", _username];
     while ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"password"];
         NSLog(result);
