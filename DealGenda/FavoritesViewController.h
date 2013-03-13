@@ -19,7 +19,7 @@
 @property NSInteger *state;
 
 //freakin get rid of these...  they're temporary
-@property (strong, nonatomic) NSString *username;
+//@property (strong, nonatomic) NSString *username;
 
 -(IBAction)segmentedChartButtonChanged:(id)sender;
 
