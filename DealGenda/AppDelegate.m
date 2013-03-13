@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-
 @synthesize db;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
