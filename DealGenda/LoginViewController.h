@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
 @property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *passwordValue;
 @property (strong, nonatomic) NSString *canSegue;
 @property (strong, nonatomic) NSString *buttonID;
 

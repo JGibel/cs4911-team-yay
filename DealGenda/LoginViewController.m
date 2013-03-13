@@ -58,7 +58,7 @@
     
     //NSString *emailValue =  [[NSString alloc] initWithFormat:(@"%@", _emailTextField.text)];
     _username = _emailTextField.text;
-    NSString *passwordValue =  [[NSString alloc] initWithFormat:(@"%@", _passwordTextField.text)];
+    _passwordValue = _passwordTextField.text;
     
     
     
@@ -70,7 +70,7 @@
     
     //Print statements for testing
     NSLog(@"The entered email is: %@", _username);
-    NSLog(@"The entered password is: %@", passwordValue);
+    NSLog(@"The entered password is: %@", _passwordValue);
     
     //Lines to open the Database
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -81,11 +81,11 @@
     }
 
     //Query pulls all passwords from the users table where the email is equal to the emailValue, set above
-    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email LIKE ?", _username];
+    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email = ?", _username];
     while ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"password"];
         NSLog(@"%@",result);
-        if([passwordValue isEqualToString:(result)]) {
+        if([_passwordValue isEqualToString:(result)]) {
             NSLog(@"TRUE");
             appDelegate.username = _username;
             _canSegue = @"YES";
