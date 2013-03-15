@@ -95,8 +95,10 @@
 - (void)validateInputCallback:(id)sender
 {
     bool emailGo = true;
-    bool allSystemsGo = false;
     bool passwordGo = true;
+    
+    //reset this label when changing input
+    _loginLabel.text = @"";
     
     if(_emailTextField.isFirstResponder)
     {
@@ -108,6 +110,7 @@
         else {
             _emailLabel.textColor = [UIColor redColor];
             _emailLabel.text = @"Please enter a valid email.";
+            emailGo = false;
         }
     }
     
@@ -120,6 +123,7 @@
             _pwLengthLabel.text =@"Must be at least 6 characters long.";
             _pwLabel.textColor = [UIColor redColor];
             _pwLabel.text = @"X";
+            passwordGo = false;
         } else {
             if ([self validateInputWithString:_verifyTextField]) {
                 _pwLabel.textColor = [UIColor greenColor];
@@ -128,15 +132,9 @@
             }
             _pwLengthLabel.text=@"";
         }
-        if(emailGo && passwordGo) {
-            allSystemsGo = true;
-        } else {
-            allSystemsGo = false;
-        }
-        
-        if(allSystemsGo == true) {
-            [_saveButton setEnabled:YES];
-        }
+    }
+    if(emailGo == true || passwordGo == true) {
+        [_saveButton setEnabled:YES];
     }
 }
 
@@ -153,20 +151,21 @@
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor redColor];
         _loginLabel.text = @"Email already in use.";
+    } else if (_emailTextField.text.length < 3){
+    
     } else {
         [Queries updateEmail: username : _emailTextField.text];
         username = _emailTextField.text;
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
     }
     
     if(_verifyTextField.text.length > 5) {
         [Queries updatePassword:username : _pwTextField.text];
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
-    } 
-
-    
-    
+    }
 }
 @end
