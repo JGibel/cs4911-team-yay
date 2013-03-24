@@ -12,6 +12,51 @@
 @implementation Queries
 
 
++(void) migrateToAppFromSchema
+{
+    
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return;
+    }
+    
+    NSInteger userVersion = 0;
+    FMResultSet *fm = [db executeQuery:@"SELECT id FROM version"];
+    if([fm next]) {
+        userVersion = [fm intForColumn:@"id"];
+    }
+ 
+    NSArray *files = [[NSBundle mainBundle] pathsForResourcesOfType:@"sql" inDirectory:@""];
+    
+
+    int count = [files count];
+    NSLog(@"%d", count);
+    NSLog(@"%d", userVersion);
+    
+    for (NSString *file in files) {
+        NSInteger version = [[[file lastPathComponent] stringByDeletingPathExtension] intValue];        
+        if(userVersion < version) {
+            NSString* fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
+            NSArray* allLinedStrings = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            for(NSString *sqlStmt in allLinedStrings) {
+                NSString *cleanedSql = [sqlStmt stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                // Handle empty newlines.
+                if(![cleanedSql isEqualToString:@""]) {
+                    NSLog(@"Running SQL: %@", cleanedSql);
+                    [db executeUpdate: cleanedSql];
+                }
+            }
+            userVersion++;
+            NSLog(@"Updating version to %d", userVersion);
+            [db executeUpdate: @"update version set id = ?", [NSNumber numberWithInt:userVersion]];
+        }
+    }
+    [db close];
+}
+
+
 +(BOOL) validateEmail: (NSString *) email
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -40,7 +85,7 @@
         return YES;
     }
     bool passwordCorrect = false;
-    FMResultSet *fm = [db executeQuery:@"SELECT password FROM users WHERE email LIKE ?", email];
+    FMResultSet *fm = [db executeQuery:@"SELECT password FROM users WHERE email = ?", email];
     while([fm next]) {
         NSString* result = [fm stringForColumn:@"password"];
         if([result isEqualToString: password]) {
@@ -63,7 +108,7 @@
     [db executeUpdate:@"UPDATE users SET email = ? WHERE email = ?", newEmail, email];
     FMResultSet *fm = [db executeQuery:@"SELECT email FROM users WHERE email = ?", newEmail];
     while([fm next]) {
-        NSString* result = [fm stringForColumn:@"email"];
+        //NSString* result = [fm stringForColumn:@"email"];
         //NSLog(result);
     }
     [db close];
@@ -79,7 +124,7 @@
     [db executeUpdate:@"UPDATE users SET password = ? WHERE email = ?", password, email];
     FMResultSet *fm = [db executeQuery:@"SELECT password FROM users WHERE email = ?", email];
     while([fm next]) {
-        NSString* result = [fm stringForColumn:@"password"];
+        //NSString* result = [fm stringForColumn:@"password"];
         //NSLog(result);
     }
     [db close];

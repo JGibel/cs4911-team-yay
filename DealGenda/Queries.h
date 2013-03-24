@@ -10,6 +10,7 @@
 
 @interface Queries : FMDatabase <UIApplicationDelegate>
 
++(void) migrateToAppFromSchema;
 +(BOOL) validateEmail: (NSString *) email;
 +(BOOL) validatePassword: (NSString *) email : (NSString *) password;
 +(void) updateEmail: (NSString *) email : (NSString *) newEmail;

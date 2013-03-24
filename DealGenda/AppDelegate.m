@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Queries.h"
 
 @implementation AppDelegate
 @synthesize db;
@@ -15,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self createAndCheckDatabase];
-    
+    [Queries migrateToAppFromSchema];
     //THIS TEMPORARILY SETS THE USERNAME UNTIL LOGIN FUNCTION IS DONE
 //    username = @"jdoe@email.com";
     
@@ -86,7 +87,7 @@
 	}
     
     db = [FMDatabase databaseWithPath:writableDBPath];
-
+    
     if(!db)
     {
         NSLog(@"Failed moving database... %@",[error localizedDescription]);
