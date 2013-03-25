@@ -22,8 +22,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _emailTextField.textColor = [UIColor grayColor];
-    _emailTextField.text = username;
+    //_emailTextField.textColor = [UIColor grayColor];
+    _emailTextField.placeholder = username;
     _pwTextField.text = @"";
     _verifyTextField.text = @"";
     _emailLabel.text = @"";
@@ -49,8 +49,8 @@
     self.verifyTextField.delegate = self;
     
     username = @"jdoe@email.com";
-    _emailTextField.textColor = [UIColor grayColor];
-    _emailTextField.text = username;
+    //_emailTextField.textColor = [UIColor grayColor];
+    _emailTextField.placeholder = username;
     [_saveButton setEnabled:NO];
 
 }
@@ -87,6 +87,10 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)aTextField
 {
+    if([_emailTextField.text isEqual: @""]) {
+        _emailLabel.text = @"";
+        
+    }
     [self validateInputWithString:aTextField];
     activeField = nil;
     return YES;
@@ -109,28 +113,29 @@
         }
         else {
             _emailLabel.textColor = [UIColor redColor];
+            _emailLabel.font = [_loginLabel.font fontWithSize:12];
             _emailLabel.text = @"Please enter a valid email.";
             emailGo = false;
         }
-    }
+    } 
     
     if(_pwTextField.isFirstResponder || _verifyTextField.isFirstResponder)
     {
         if(_pwTextField.text.length < 6)
         {
-            _pwLengthLabel.font = [_pwLengthLabel.font fontWithSize:10];
+            _pwLengthLabel.font = [_pwLengthLabel.font fontWithSize:12];
             _pwLengthLabel.textColor = [UIColor redColor];
             _pwLengthLabel.text =@"Must be at least 6 characters long.";
             _pwLabel.textColor = [UIColor redColor];
             _pwLabel.text = @"X";
             passwordGo = false;
         } else {
+            _pwLengthLabel.text=@"";
             if ([self validateInputWithString:_verifyTextField]) {
                 _pwLabel.textColor = [UIColor greenColor];
                 _pwLabel.text = @"✓";
                 passwordGo = true;
             }
-            _pwLengthLabel.text=@"";
         }
     }
     if(emailGo == true || passwordGo == true) {
@@ -146,26 +151,59 @@
 }
 
 - (IBAction)saveSettings:(id)sender {
+    bool validEmail = (_emailTextField.text.length > 3) && ![Queries validateEmail:_emailTextField.text];
+    bool validPassword = (_verifyTextField.text.length > 5) && [self validateInputWithString:_verifyTextField];
     
-    if([Queries validateEmail:_emailTextField.text]) {
-        _loginLabel.font = [_loginLabel.font fontWithSize:14];
-        _loginLabel.textColor = [UIColor redColor];
-        _loginLabel.text = @"Email already in use.";
-    } else if (_emailTextField.text.length < 3){
-    
-    } else {
+    if(validEmail && [_pwTextField.text isEqualToString:@""]) {
         [Queries updateEmail: username : _emailTextField.text];
         username = _emailTextField.text;
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
-    }
-    
-    if(_verifyTextField.text.length > 5) {
+        _emailTextField.text = @"";
+    } else if ([_emailTextField.text isEqualToString:@""] && validPassword){
         [Queries updatePassword:username : _pwTextField.text];
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
+        _pwTextField.text = @"";
+        _verifyTextField.text = @"";
+    } else if (validPassword && validEmail) {
+        [Queries updateEmail: username : _emailTextField.text];
+        [Queries updatePassword:username : _pwTextField.text];
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor blackColor];
+        _loginLabel.text = @"Save Successful";
+        _pwTextField.text = @"";
+        _verifyTextField.text = @"";
+        _emailTextField.text = @"";
+    } else if ((validPassword || [_pwTextField.text isEqualToString:@""]) && !validEmail){
+    _loginLabel.font = [_loginLabel.font fontWithSize:14];
+    _loginLabel.textColor = [UIColor redColor];
+    _loginLabel.text = @"Email exists or is not valid";
+    } else if (validEmail && !validPassword){
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor redColor];
+        _loginLabel.text = @"Password is not valid";
+    } else {
+        _loginLabel.font = [_loginLabel.font fontWithSize:14];
+        _loginLabel.textColor = [UIColor redColor];
+        _loginLabel.text = @"Email/Password combination is not valid";
+    }
+}
+- (IBAction)resignButton:(id)sender {
+    [_emailTextField resignFirstResponder];
+    [_pwTextField resignFirstResponder];
+    [_verifyTextField resignFirstResponder];
+    
+    if(_emailTextField.text.length == 0) {
+        _emailLabel.text = @"";
+        
+    }
+    
+    if(_pwTextField.text.length == 0 && _verifyTextField.text.length == 0) {
+        _pwLengthLabel.text = @"";
+        _pwLabel.text = @"";
     }
 }
 @end

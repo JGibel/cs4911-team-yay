@@ -20,11 +20,14 @@
 @property (weak) UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (retain) IBOutlet UIButton *saveButton;
+@property (retain) IBOutlet UIButton *resignButton;
+
+
 
 //temp
 @property (strong, retain) NSString *username;
 
 - (IBAction)saveSettings:(id)sender;
-
+- (IBAction)resignButton:(id)sender;
 
 @end
