@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS version (id int NOT NULL)
+INSERT INTO version VALUES(1)
