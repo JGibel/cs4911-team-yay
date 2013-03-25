@@ -13,6 +13,7 @@
 @end
 
 @implementation CouponListViewController
+@synthesize couponList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,9 +31,28 @@
 
 - (void)viewDidLoad
 {
+    couponList = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES animated:YES]; 
 	// Do any additional setup after loading the view.
+    
+    
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM coupons ORDER BY expdate"];
+    //For each result of the query, add to the array of retailers to be displayed
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"barcode"];
+        [couponList addObject: result];
+    }
+    //close database connection
+    [db close];
+    NSLog(@"%@", couponList);
 }
 
 - (void)didReceiveMemoryWarning
