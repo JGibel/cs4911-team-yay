@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationItem setHidesBackButton:YES animated:YES];
+    [self.navigationItem setHidesBackButton:YES animated:YES]; 
 	// Do any additional setup after loading the view.
 }
 
