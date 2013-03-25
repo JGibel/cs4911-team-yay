@@ -111,8 +111,18 @@
 }
 
 - (IBAction)signUpButton:(id)sender;{
+    _emailTextField.text = @"";
+    _passwordTextField.text = @"";
+    
+    _username = _emailTextField.text;
+    _passwordValue = _passwordTextField.text;
+    
+    _canSegue = @"YES";
+    
     _buttonID = @"signUpButton";
     _errorLabel.text = @"";
+    
+    [self performSegueWithIdentifier:@"signup" sender:self];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

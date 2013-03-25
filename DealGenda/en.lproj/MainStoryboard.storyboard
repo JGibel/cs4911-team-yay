@@ -36,7 +36,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signUpButton:" destination="2" eventType="touchUpInside" id="oOU-6M-oRt"/>
-                                    <segue destination="4UK-wq-X0q" kind="push" id="cbg-Gd-R3X"/>
+                                    <segue destination="4UK-wq-X0q" kind="push" identifier="signup" id="cbg-Gd-R3X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Sq-da-wCk">

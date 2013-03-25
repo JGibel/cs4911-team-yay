@@ -188,7 +188,6 @@
 		192D222016B7243D00F2D773 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				19DC76691700BC9B006AF405 /* migrations */,
 				19F90E1116E84543003373CC /* DealGenda.db */,
 				192D222116B7243D00F2D773 /* DealGenda-Info.plist */,
 				192D222216B7243D00F2D773 /* InfoPlist.strings */,
@@ -324,9 +323,6 @@
 				192D223016B7243D00F2D773 /* Default-568h@2x.png in Resources */,
 				192D223316B7243D00F2D773 /* MainStoryboard.storyboard in Resources */,
 				19F90E1216E84543003373CC /* DealGenda.db in Resources */,
-				19DC766D1700BC9B006AF405 /* 001.sql in Resources */,
-				19DC766E1700BC9B006AF405 /* 002.sql in Resources */,
-				19DC766F1700BC9B006AF405 /* 003.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
