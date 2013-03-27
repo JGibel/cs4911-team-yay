@@ -12,4 +12,8 @@
 
 @interface CouponListViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) NSMutableArray *couponList;
+@property BOOL *shouldSegue;
+
 @end

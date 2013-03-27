@@ -130,7 +130,6 @@
         
         //set cell information
         [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
-        [cell.detailTextLabel setText:(@"test description")];
         [cell setAccessoryView:retailerSwitch];
         
         //load switch states
@@ -170,7 +169,6 @@
         
         //set cell information
         [cell.textLabel setText:[itemsList objectAtIndex:indexPath.row]];
-        [cell.detailTextLabel setText:(@"test description")];
         [cell setAccessoryView:itemsSwitch];
         
         //load switch states
