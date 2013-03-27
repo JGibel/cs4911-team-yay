@@ -8,6 +8,7 @@
 
 #import "FavoritesViewController.h"
 #import "AppDelegate.h"
+#import "Queries.h"
 
 @interface FavoritesViewController ()
 
@@ -115,6 +116,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = nil;
+    NSString *email = [Queries getEmail];
     
     if (state == 0) {
         cell = [_table dequeueReusableCellWithIdentifier:@"cell"];
@@ -138,7 +140,7 @@
         if (![db open]) {
             return 0;
         }
-        FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userRetailerPreferences WHERE user LIKE ?", appDelegate.username];
+        FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userRetailerPreferences WHERE user LIKE ?", email];
         NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];;
         while ([queryResult next]) {
             NSString *result = [queryResult stringForColumn:@"retailer"];
@@ -153,6 +155,7 @@
                 [retailerSwitch setOn:FALSE];
             }
         }
+        [queryResult close];
         [db close];
         
     } else {
@@ -177,7 +180,7 @@
         if (![db open]) {
             return 0;
         }
-        FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userItemPreferences WHERE user LIKE ?", appDelegate.username];
+        FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userItemPreferences WHERE user LIKE ?", email];
         NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];;
         while ([queryResult next]) {
             NSString *result = [queryResult stringForColumn:@"itemCategory"];
@@ -192,6 +195,7 @@
                 [itemsSwitch setOn:FALSE];
             }
         }
+        [queryResult close];
         [db close];
         
     }
@@ -202,6 +206,7 @@
 
 //what happens whenever a switch is toggled
 - (void) switchToggled:(id)sender {
+    NSString *email = [Queries getEmail];
     UISwitch *mySwitch = (UISwitch *)sender;
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
@@ -210,37 +215,41 @@
     }
     if (state == 0) {
         if ([mySwitch isOn]) {
-            FMResultSet *queryResult = [db executeQuery:@"INSERT INTO userRetailerPreferences (user, retailer) VALUES (?,?)", appDelegate.username, [retailersList objectAtIndex:mySwitch.tag]];
+            FMResultSet *queryResult = [db executeQuery:@"INSERT INTO userRetailerPreferences (user, retailer) VALUES (?,?)", email, [retailersList objectAtIndex:mySwitch.tag]];
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"name"];
                 [retailersList addObject: result];
                 
             }
+            [queryResult close];
 
     //        NSLog(@"%@ is on",[retailersList objectAtIndex:mySwitch.tag]);
         } else {
-            FMResultSet *queryResult = [db executeQuery:@"DELETE FROM userRetailerPreferences WHERE user LIKE ? AND retailer LIKE ?", appDelegate.username, [retailersList objectAtIndex:mySwitch.tag]];
+            FMResultSet *queryResult = [db executeQuery:@"DELETE FROM userRetailerPreferences WHERE user LIKE ? AND retailer LIKE ?", email, [retailersList objectAtIndex:mySwitch.tag]];
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"name"];
                 [retailersList addObject: result];
                 
             }
+            [queryResult close];
     //        NSLog(@"%@ is off",[retailersList objectAtIndex:mySwitch.tag]);
         }
     } else {
         if ([mySwitch isOn]) {
-            FMResultSet *queryResult = [db executeQuery:@"INSERT INTO userItemPreferences (user, itemCategory) VALUES (?,?)", appDelegate.username, [itemsList objectAtIndex:mySwitch.tag]];
+            FMResultSet *queryResult = [db executeQuery:@"INSERT INTO userItemPreferences (user, itemCategory) VALUES (?,?)", email, [itemsList objectAtIndex:mySwitch.tag]];
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"user"];
                 [itemsList addObject: result];
                 
             }
+            [queryResult close];
         } else {
-            FMResultSet *queryResult = [db executeQuery:@"DELETE FROM userItemPreferences WHERE user LIKE ? AND itemCategory LIKE ?", appDelegate.username, [itemsList objectAtIndex:mySwitch.tag]];
+            FMResultSet *queryResult = [db executeQuery:@"DELETE FROM userItemPreferences WHERE user LIKE ? AND itemCategory LIKE ?", email, [itemsList objectAtIndex:mySwitch.tag]];
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"user"];
                 [itemsList addObject: result];
             }
+            [queryResult close];
         }
     }
     [db close];

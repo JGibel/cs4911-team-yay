@@ -11,7 +11,7 @@
 
 @implementation AppDelegate
 @synthesize db;
-@synthesize username;
+@synthesize user;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -15,4 +15,7 @@
 +(BOOL) validatePassword: (NSString *) email : (NSString *) password;
 +(void) updateEmail: (NSString *) email : (NSString *) newEmail;
 +(void) updatePassword: (NSString *) email : (NSString *) password;
++(NSNumber *) getId: (NSString *) email;
++(NSString *) getEmail;
+
 @end

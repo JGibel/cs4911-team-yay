@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "Queries.h"
 
 @interface LoginViewController ()
 
@@ -87,7 +88,7 @@
         NSLog(@"%@",result);
         if([_passwordValue isEqualToString:(result)]) {
             NSLog(@"TRUE");
-            appDelegate.username = _username;
+            appDelegate.user = [Queries getId:_username];
             _canSegue = @"YES";
             
         }
@@ -96,6 +97,7 @@
             _canSegue = @"NO";
 
         }
+        [queryResult close];
     }
     
     if([_canSegue isEqualToString:(@"NO")] && [_buttonID isEqualToString:(@"loginButton")]){

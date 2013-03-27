@@ -7,6 +7,7 @@
 //
 
 #import "CouponListViewController.h"
+#import "Queries.h"
 
 @interface CouponListViewController ()
 
@@ -32,6 +33,8 @@
 
 - (void)viewDidLoad
 {
+    NSString *email = [Queries getEmail];
+    NSLog(@"Email: %@", email);
     couponList = [[NSMutableArray alloc] init];
     NSMutableArray *tempRetailers = [[NSMutableArray alloc] init];
     NSMutableArray *tempItems = [[NSMutableArray alloc] init];
@@ -48,7 +51,7 @@
         return;
     }
     //Query database
-    FMResultSet *queryResult = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userRetailerPreferences.user FROM coupons JOIN userRetailerPreferences ON coupons.retailerName = userRetailerPreferences.retailer WHERE userRetailerPreferences.user = ? ORDER BY coupons.expdate", appDelegate.username];
+    FMResultSet *queryResult = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userRetailerPreferences.user FROM coupons JOIN userRetailerPreferences ON coupons.retailerName = userRetailerPreferences.retailer WHERE userRetailerPreferences.user = ? ORDER BY coupons.expdate", email];
     //For each result of the query, add to the array of retailers to be displayed
     while ([queryResult next]) {
         NSString *barcode = [queryResult stringForColumn:@"barcode"];
@@ -57,14 +60,16 @@
         NSString *offer = [queryResult stringForColumn:@"offer"];
         [tempRetailers addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
     }
-    queryResult = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", appDelegate.username];
-    while([queryResult next]) {
-        NSString *barcode = [queryResult stringForColumn:@"barcode"];
-        NSString *expdate = [queryResult stringForColumn:@"expdate"];
-        NSString *retailer = [queryResult stringForColumn:@"retailerName"];
-        NSString *offer = [queryResult stringForColumn:@"offer"];
+    [queryResult close];
+    FMResultSet *queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    while([queryResultItem next]) {
+        NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem stringForColumn:@"offer"];
         [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
     }
+    [queryResult close];
     for (int i = 0; i < [tempRetailers count]; i++) {
         for (int j = 0; j < [tempItems count]; j++) {
             NSLog(@"ret: %@", [tempRetailers objectAtIndex:i]);
@@ -78,7 +83,7 @@
         }
     }
     NSLog(@"%@", couponList);
-    NSLog(@"%@", appDelegate.username);
+    NSLog(@"%@", email);
     //close database connection
     [db close];
 }

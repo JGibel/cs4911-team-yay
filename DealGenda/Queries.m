@@ -26,6 +26,7 @@
     if([fm next]) {
         userVersion = [fm intForColumn:@"id"];
     }
+    [fm close];
  
     NSArray *files = [[NSBundle mainBundle] pathsForResourcesOfType:@"sql" inDirectory:@""];
     
@@ -73,6 +74,8 @@
             break;
         }
     }
+    [fm close];
+    [db close];
     
     return emailExists;
 }
@@ -93,6 +96,8 @@
             break;
         }
     }
+    [fm close];
+    [db close];
     return passwordCorrect;
     
 }
@@ -111,6 +116,7 @@
         //NSString* result = [fm stringForColumn:@"email"];
         //NSLog(result);
     }
+    [fm close];
     [db close];
 }
 
@@ -127,6 +133,7 @@
         //NSString* result = [fm stringForColumn:@"password"];
         //NSLog(result);
     }
+    [fm close];
     [db close];
 }
 
@@ -139,8 +146,43 @@
     }
     
     [db executeUpdate:@"insert into users values(? , ?, ? ,?, ?, ?)", email, password, firstName, lastName, gender, birthDate];
+    [db close];
+}
+
++(NSNumber *) getId: (NSString *) email
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select id from users where email = ?", email];
+    NSNumber *user;
+    if([fm next]) {
+        user = [NSNumber numberWithInt:[fm intForColumn:@"id"]];
+    }
+    [fm close];
     
     [db close];
+    return user;
+}
+
++(NSString *) getEmail
+{
+
+    NSString *email;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select email from users where id = ?", appDelegate.user];
+    if([fm next]) {
+        email = [fm stringForColumn:@"email"];
+    }
+    [fm close];
+    [db close];
+    return email;
 }
 
 
