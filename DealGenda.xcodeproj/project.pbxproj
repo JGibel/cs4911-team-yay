@@ -26,7 +26,11 @@
 		196F8A0316C96DEE0016B69F /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0216C96DEE0016B69F /* FavoritesViewController.m */; };
 		196F8A0616C970920016B69F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0516C970920016B69F /* SignUpViewController.m */; };
 		196F8A0916C9762E0016B69F /* CouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F8A0816C9762E0016B69F /* CouponListViewController.m */; };
-		19F90E1216E84543003373CC /* DealGenda.db in Resources */ = {isa = PBXBuildFile; fileRef = 19F90E1116E84543003373CC /* DealGenda.db */; };
+		19DC766D1700BC9B006AF405 /* 001.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19DC766A1700BC9B006AF405 /* 001.sql */; };
+		19DC766E1700BC9B006AF405 /* 002.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19DC766B1700BC9B006AF405 /* 002.sql */; };
+		19DC766F1700BC9B006AF405 /* 003.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19DC766C1700BC9B006AF405 /* 003.sql */; };
+		19DC767517012A22006AF405 /* 004.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19DC767417012A22006AF405 /* 004.sql */; };
+		19DC767717012D14006AF405 /* DealGenda.db in Resources */ = {isa = PBXBuildFile; fileRef = 19DC767617012D14006AF405 /* DealGenda.db */; };
 		2826CB1C16E313F100AA6BE5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1216E313F100AA6BE5 /* FMDatabase.m */; };
 		2826CB1D16E313F100AA6BE5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1416E313F100AA6BE5 /* FMDatabaseAdditions.m */; };
 		2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1616E313F100AA6BE5 /* FMDatabasePool.m */; };
@@ -77,7 +81,11 @@
 		196F8A0516C970920016B69F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		196F8A0716C9762E0016B69F /* CouponListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponListViewController.h; sourceTree = "<group>"; };
 		196F8A0816C9762E0016B69F /* CouponListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponListViewController.m; sourceTree = "<group>"; };
-		19F90E1116E84543003373CC /* DealGenda.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DealGenda.db; sourceTree = "<group>"; };
+		19DC766A1700BC9B006AF405 /* 001.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 001.sql; sourceTree = "<group>"; };
+		19DC766B1700BC9B006AF405 /* 002.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 002.sql; sourceTree = "<group>"; };
+		19DC766C1700BC9B006AF405 /* 003.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 003.sql; sourceTree = "<group>"; };
+		19DC767417012A22006AF405 /* 004.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 004.sql; sourceTree = "<group>"; };
+		19DC767617012D14006AF405 /* DealGenda.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = DealGenda.db; sourceTree = "<group>"; };
 		2826CB1116E313F100AA6BE5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2826CB1216E313F100AA6BE5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2826CB1316E313F100AA6BE5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -185,8 +193,8 @@
 		192D222016B7243D00F2D773 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				28338258170360FD003902D9 /* migrations */,
-				19F90E1116E84543003373CC /* DealGenda.db */,
+				19DC76691700BC9B006AF405 /* migrations */,
+				19DC767617012D14006AF405 /* DealGenda.db */,
 				192D222116B7243D00F2D773 /* DealGenda-Info.plist */,
 				192D222216B7243D00F2D773 /* InfoPlist.strings */,
 				192D222516B7243D00F2D773 /* main.m */,
@@ -215,6 +223,17 @@
 				192D224616B7243D00F2D773 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19DC76691700BC9B006AF405 /* migrations */ = {
+			isa = PBXGroup;
+			children = (
+				19DC766A1700BC9B006AF405 /* 001.sql */,
+				19DC766B1700BC9B006AF405 /* 002.sql */,
+				19DC766C1700BC9B006AF405 /* 003.sql */,
+				19DC767417012A22006AF405 /* 004.sql */,
+			);
+			path = migrations;
 			sourceTree = "<group>";
 		};
 		2826CB1016E313F100AA6BE5 /* fmdb */ = {
@@ -320,7 +339,11 @@
 				192D222E16B7243D00F2D773 /* Default@2x.png in Resources */,
 				192D223016B7243D00F2D773 /* Default-568h@2x.png in Resources */,
 				192D223316B7243D00F2D773 /* MainStoryboard.storyboard in Resources */,
-				19F90E1216E84543003373CC /* DealGenda.db in Resources */,
+				19DC766D1700BC9B006AF405 /* 001.sql in Resources */,
+				19DC766E1700BC9B006AF405 /* 002.sql in Resources */,
+				19DC766F1700BC9B006AF405 /* 003.sql in Resources */,
+				19DC767517012A22006AF405 /* 004.sql in Resources */,
+				19DC767717012D14006AF405 /* DealGenda.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
