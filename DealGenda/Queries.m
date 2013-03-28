@@ -14,7 +14,6 @@
 
 +(void) migrateToAppFromSchema
 {
-    
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
     if(![db open]) {
@@ -39,20 +38,27 @@
         NSInteger version = [[[file lastPathComponent] stringByDeletingPathExtension] intValue];        
         if(userVersion < version) {
             NSString* fileContents = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
+
             NSArray* allLinedStrings = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            
+            NSString *cleanedSql = @"";
             for(NSString *sqlStmt in allLinedStrings) {
-                NSString *cleanedSql = [sqlStmt stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                
-                // Handle empty newlines.
-                if(![cleanedSql isEqualToString:@""]) {
-                    NSLog(@"Running SQL: %@", cleanedSql);
-                    [db executeUpdate: cleanedSql];
+                if(![sqlStmt hasPrefix: @"-"] && ![sqlStmt isEqualToString:@""]) {
+                        NSString *sqlPart = [sqlStmt stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                        cleanedSql = [cleanedSql stringByAppendingString: sqlPart];
+                        if([sqlPart hasSuffix:@";"]) {
+                            NSLog(@"Running SQL: %@", cleanedSql);
+                            [db executeUpdate: cleanedSql];
+                            cleanedSql = @"";
+                        }
                 }
+                
             }
             userVersion++;
             NSLog(@"Updating version to %d", userVersion);
             [db executeUpdate: @"update version set id = ?", [NSNumber numberWithInt:userVersion]];
         }
+
     }
     [db close];
 }
