@@ -310,7 +310,7 @@
                             <constraint firstItem="Q5k-Rx-pVI" firstAttribute="leading" secondItem="kyR-du-18j" secondAttribute="leading" type="default" id="zBd-Ah-nhL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="ODe-eO-5pT"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="ODe-eO-5pT"/>
                     <navigationItem key="navigationItem" id="aVf-xR-m2T"/>
                     <connections>
                         <outlet property="emailLabel" destination="Q5k-Rx-pVI" id="muI-9D-YTA"/>
@@ -673,7 +673,7 @@
                             <constraint firstItem="F2g-3T-pqb" firstAttribute="centerX" secondItem="Bv3-PI-De4" secondAttribute="centerX" type="default" id="zxb-yB-lH8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="cgP-l8-aR5"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.png" id="cgP-l8-aR5"/>
                     <navigationItem key="navigationItem" title="Favorites" id="L91-CL-xCH"/>
                     <connections>
                         <outlet property="doneButton" destination="Cej-Ab-LHb" id="oYZ-ax-19G"/>
@@ -730,6 +730,8 @@
     </scenes>
     <resources>
         <image name="coupons.png" width="30" height="30"/>
+        <image name="heart.png" width="30" height="30"/>
+        <image name="settings.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="CouponListViewController" superclassName="UIViewController">
