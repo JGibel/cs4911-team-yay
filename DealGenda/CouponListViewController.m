@@ -32,7 +32,8 @@
 }
 
 - (void)viewDidLoad
-{
+{    [_table reloadData];
+
     NSString *email = [Queries getEmail];
     NSLog(@"Email: %@", email);
     couponList = [[NSMutableArray alloc] init];
@@ -61,29 +62,44 @@
         [tempRetailers addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
     }
     [queryResult close];
-    FMResultSet *queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    FMResultSet *queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory1 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
     while([queryResultItem next]) {
         NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
         NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
         NSString *offer = [queryResultItem stringForColumn:@"offer"];
-        [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
+            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        }
     }
-    [queryResult close];
+    queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory2 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    while([queryResultItem next]) {
+        NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem stringForColumn:@"offer"];
+        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
+            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        }
+    }
+    queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory3 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    while([queryResultItem next]) {
+        NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem stringForColumn:@"offer"];
+        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
+            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        }
+    }
+    [queryResultItem close];
     for (int i = 0; i < [tempRetailers count]; i++) {
         for (int j = 0; j < [tempItems count]; j++) {
-            NSLog(@"ret: %@", [tempRetailers objectAtIndex:i]);
-            NSLog(@"item: %@", [tempItems objectAtIndex:j]);
-            NSLog(@"eq: %d", [[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]]);
-            NSLog(@"---------");
             if ([[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]]) {
-                NSLog(@"equals");
                 [couponList addObject:[tempRetailers objectAtIndex:i]];
             }
         }
     }
-    NSLog(@"%@", couponList);
-    NSLog(@"%@", email);
     //close database connection
     [db close];
 }
@@ -108,12 +124,12 @@
         //set cell information
         UILabel *expLabel, *retailerLabel, *offerLabel;
         
-        expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 80.0, 15.0)];
+        expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 90.0, 15.0)];
         [cell.contentView addSubview:expLabel];
-        retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(90.0, 5.0, 195.0, 20.0)];
+        retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 5.0, 185.0, 20.0)];
         retailerLabel.font = [UIFont boldSystemFontOfSize:16];
         [cell.contentView addSubview:retailerLabel];
-        offerLabel = [[UILabel alloc] initWithFrame:CGRectMake(90.0, 25.0, 195.0, 15.0)];
+        offerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 25.0, 185.0, 15.0)];
         offerLabel.font = [UIFont systemFontOfSize:12.0];
         [cell.contentView addSubview:offerLabel];
         
