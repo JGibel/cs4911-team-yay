@@ -32,8 +32,7 @@
 }
 
 - (void)viewDidLoad
-{    [_table reloadData];
-
+{
     NSString *email = [Queries getEmail];
     NSLog(@"Email: %@", email);
     couponList = [[NSMutableArray alloc] init];
