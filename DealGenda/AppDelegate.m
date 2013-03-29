@@ -15,10 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self createAndCheckDatabase];
+    //[self createAndCheckDatabase];
+    [self createDatabase];
     [Queries migrateToAppFromSchema];
-    //THIS TEMPORARILY SETS THE USERNAME UNTIL LOGIN FUNCTION IS DONE
-//    username = @"jdoe@email.com";
     
     // Override point for customization after application launch.
     return YES;
@@ -95,6 +94,26 @@
     }
 }
 
+-(void)createDatabase
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database/"];
+    NSString *dbPath = [databaseDirectory stringByAppendingPathComponent:@"DealGenda.db"];
+    NSError *error;
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dbPath])
+	{
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:databaseDirectory
+									   withIntermediateDirectories:NO
+														attributes:nil
+															 error:&error])
+		{
+			NSLog(@"Create directory error: %@", error);
+		}
+	}
+    
+    db = [FMDatabase databaseWithPath:dbPath];
+}
 
 
 @end
