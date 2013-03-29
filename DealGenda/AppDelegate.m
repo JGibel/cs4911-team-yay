@@ -18,8 +18,6 @@
     //[self createAndCheckDatabase];
     [self createDatabase];
     [Queries migrateToAppFromSchema];
-    //THIS TEMPORARILY SETS THE USERNAME UNTIL LOGIN FUNCTION IS DONE
-//    username = @"jdoe@email.com";
     
     // Override point for customization after application launch.
     return YES;
