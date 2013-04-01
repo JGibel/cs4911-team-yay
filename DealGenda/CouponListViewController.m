@@ -29,20 +29,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.hidesBackButton=YES;
-}
-
-- (void)viewDidLoad
-{
+    
     NSString *email = [Queries getEmail];
-    NSLog(@"Email: %@", email);
     couponList = [[NSMutableArray alloc] init];
     NSMutableArray *tempRetailers = [[NSMutableArray alloc] init];
     NSMutableArray *tempItems = [[NSMutableArray alloc] init];
     shouldSegue = YES;
-    [super viewDidLoad];
-    [self.navigationItem setHidesBackButton:YES animated:YES]; 
-	// Do any additional setup after loading the view.
-    
     
     //open database connection
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -94,16 +86,31 @@
     [queryResultItem close];
     for (int i = 0; i < [tempRetailers count]; i++) {
         for (int j = 0; j < [tempItems count]; j++) {
-            if ([[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]]) {
+            if ([[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
                 [couponList addObject:[tempRetailers objectAtIndex:i]];
             }
         }
     }
+    NSLog(@"%@", couponList);
+    [_table reloadData];
     //close database connection
     [db close];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES animated:YES]; 
+	// Do any additional setup after loading the view.
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"%lu", (unsigned long)[couponList count]);
+    if ([couponList count] == 0) {
+        _table.hidden = YES;
+    } else {
+        _table.hidden = NO;
+    }
     return [couponList count];
 }
 
@@ -117,42 +124,25 @@
     if(!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"couponCell"];
     }
-    if ([couponList count] > 0) {
-        NSArray *temp = [couponList objectAtIndex:indexPath.row];
-        
-        //set cell information
-        UILabel *expLabel, *retailerLabel, *offerLabel;
-        
-        expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 90.0, 15.0)];
-        [cell.contentView addSubview:expLabel];
-        retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 5.0, 185.0, 20.0)];
-        retailerLabel.font = [UIFont boldSystemFontOfSize:16];
-        [cell.contentView addSubview:retailerLabel];
-        offerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 25.0, 185.0, 15.0)];
-        offerLabel.font = [UIFont systemFontOfSize:12.0];
-        [cell.contentView addSubview:offerLabel];
-        
-        expLabel.text = [temp objectAtIndex:1];
-        retailerLabel.text = [temp objectAtIndex:2];
-        offerLabel.text = [temp objectAtIndex:3];
-        cell.tag = [temp objectAtIndex:0];
-        shouldSegue = YES;
-    } else {
-        UILabel *noneLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 0.0, 350.0, 44.0)];
-        noneLabel.font = [UIFont systemFontOfSize:13.0];
-        noneLabel.text = @"No coupons currently match your preferences";
-        [cell.contentView addSubview:noneLabel];
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        shouldSegue = NO;
-    }
+    NSArray *temp = [couponList objectAtIndex:indexPath.row];
     
-
+    //set cell information
+    UILabel *expLabel, *retailerLabel, *offerLabel;
+    
+    expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 90.0, 15.0)];
+    [cell.contentView addSubview:expLabel];
+    retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 5.0, 185.0, 20.0)];
+    retailerLabel.font = [UIFont boldSystemFontOfSize:16];
+    [cell.contentView addSubview:retailerLabel];
+    offerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 25.0, 185.0, 15.0)];
+    offerLabel.font = [UIFont systemFontOfSize:12.0];
+    [cell.contentView addSubview:offerLabel];
+    
+    expLabel.text = [temp objectAtIndex:1];
+    retailerLabel.text = [temp objectAtIndex:2];
+    offerLabel.text = [temp objectAtIndex:3];
+    cell.tag = [temp objectAtIndex:0];
     return cell;
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    return shouldSegue;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

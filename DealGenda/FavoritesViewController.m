@@ -72,6 +72,7 @@
         NSString *result = [queryResult stringForColumn:@"category"];
         [itemsList addObject: result];        
     }
+    [queryResult close];
     //close database connection
     [db close];
     
@@ -219,7 +220,7 @@
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"name"];
                 [retailersList addObject: result];
-                
+                NSLog(@"%@", result);
             }
             [queryResult close];
 
@@ -229,7 +230,7 @@
             while ([queryResult next]) {
                 NSString *result = [queryResult stringForColumn:@"name"];
                 [retailersList addObject: result];
-                
+                NSLog(@"%@", result);
             }
             [queryResult close];
     //        NSLog(@"%@ is off",[retailersList objectAtIndex:mySwitch.tag]);
