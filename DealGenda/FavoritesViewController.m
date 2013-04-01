@@ -104,6 +104,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //detect table length dependent on which tab is active
     if (state == 0) {
         return [retailersList count];
     } else {
@@ -119,6 +120,7 @@
     UITableViewCell *cell = nil;
     NSString *email = [Queries getEmail];
     
+    //on retailer tab
     if (state == 0) {
         cell = [_table dequeueReusableCellWithIdentifier:@"cell"];
         
@@ -135,18 +137,20 @@
         [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
         [cell setAccessoryView:retailerSwitch];
         
-        //load switch states
+        //open database
         AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         FMDatabase* db = [appDelegate db];
         if (![db open]) {
             return 0;
         }
+        //query for retailer prefs
         FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userRetailerPreferences WHERE user LIKE ?", email];
         NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];;
         while ([queryResult next]) {
             NSString *result = [queryResult stringForColumn:@"retailer"];
             [resultPrefs addObject:result];
         }
+        //set switch state based on preferences
         for (int i = 0; i < [resultPrefs count]; i++) {
             if ([cell.textLabel.text isEqualToString: [resultPrefs objectAtIndex:i]]) {
                 [retailerSwitch setOn:TRUE];
@@ -157,9 +161,10 @@
             }
         }
         [queryResult close];
+        //close database
         [db close];
         
-    } else {
+    } else {//on items tab
         cell = [_table dequeueReusableCellWithIdentifier:@"cell"];
         
         if(!cell){
@@ -175,18 +180,20 @@
         [cell.textLabel setText:[itemsList objectAtIndex:indexPath.row]];
         [cell setAccessoryView:itemsSwitch];
         
-        //load switch states
+        //open database
         AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         FMDatabase* db = [appDelegate db];
         if (![db open]) {
             return 0;
         }
+        //query for item prefs
         FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userItemPreferences WHERE user LIKE ?", email];
         NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];;
         while ([queryResult next]) {
             NSString *result = [queryResult stringForColumn:@"itemCategory"];
             [resultPrefs addObject:result];
         }
+        //set switch state based on preferences
         for (int i = 0; i < [resultPrefs count]; i++) {
             if ([cell.textLabel.text isEqualToString: [resultPrefs objectAtIndex:i]]) {
                 [itemsSwitch setOn:TRUE];
@@ -197,6 +204,7 @@
             }
         }
         [queryResult close];
+        //close database
         [db close];
         
     }

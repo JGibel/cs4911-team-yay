@@ -15,7 +15,6 @@
 
 @implementation CouponListViewController
 @synthesize couponList;
-@synthesize shouldSegue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,11 +29,11 @@
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.hidesBackButton=YES;
     
+    //set up database variables for query 
     NSString *email = [Queries getEmail];
     couponList = [[NSMutableArray alloc] init];
     NSMutableArray *tempRetailers = [[NSMutableArray alloc] init];
     NSMutableArray *tempItems = [[NSMutableArray alloc] init];
-    shouldSegue = YES;
     
     //open database connection
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -42,7 +41,7 @@
     if (![db open]) {
         return;
     }
-    //Query database
+    //Query for retailers that match the logged-in user's preferences
     FMResultSet *queryResult = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userRetailerPreferences.user FROM coupons JOIN userRetailerPreferences ON coupons.retailerName = userRetailerPreferences.retailer WHERE userRetailerPreferences.user = ? ORDER BY coupons.expdate", email];
     //For each result of the query, add to the array of retailers to be displayed
     while ([queryResult next]) {
@@ -53,7 +52,9 @@
         [tempRetailers addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
     }
     [queryResult close];
+    //Query for items that match the logged-in user's preferences
     FMResultSet *queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory1 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    //Add results that match preference category 1
     while([queryResultItem next]) {
         NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
@@ -63,7 +64,9 @@
             [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
         }
     }
+    //requery for category 2
     queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory2 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    //Add results that match preference category 2
     while([queryResultItem next]) {
         NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
@@ -73,7 +76,9 @@
             [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
         }
     }
+    //requery for category 3
     queryResultItem = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.user FROM coupons JOIN userItemPreferences ON coupons.itemCategory3 = userItemPreferences.itemCategory WHERE userItemPreferences.user = ? ORDER BY coupons.expdate", email];
+    //Add results that match preference category 3
     while([queryResultItem next]) {
         NSString *barcode = [queryResultItem stringForColumn:@"barcode"];
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
@@ -84,6 +89,7 @@
         }
     }
     [queryResultItem close];
+    //loop through retailers and items and save any that match both user preferences
     for (int i = 0; i < [tempRetailers count]; i++) {
         for (int j = 0; j < [tempItems count]; j++) {
             if ([[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
@@ -91,8 +97,9 @@
             }
         }
     }
-    NSLog(@"%@", couponList);
+    //reload the information in the table when the user returns to the view
     [_table reloadData];
+    
     //close database connection
     [db close];
 }
@@ -105,7 +112,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%lu", (unsigned long)[couponList count]);
+//    NSLog(@"%lu", (unsigned long)[couponList count]);
     if ([couponList count] == 0) {
         _table.hidden = YES;
     } else {
@@ -129,6 +136,7 @@
     //set cell information
     UILabel *expLabel, *retailerLabel, *offerLabel;
     
+    //generate subview locations for cell text
     expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 90.0, 15.0)];
     [cell.contentView addSubview:expLabel];
     retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 5.0, 185.0, 20.0)];
@@ -138,6 +146,7 @@
     offerLabel.font = [UIFont systemFontOfSize:12.0];
     [cell.contentView addSubview:offerLabel];
     
+    //set cell text
     expLabel.text = [temp objectAtIndex:1];
     retailerLabel.text = [temp objectAtIndex:2];
     offerLabel.text = [temp objectAtIndex:3];
@@ -147,6 +156,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //set row to be deselected after selection so when you return to the view it is not in a selected state
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
