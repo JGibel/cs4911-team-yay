@@ -18,9 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property NSInteger *state;
 
-//freakin get rid of these...  they're temporary
-//@property (strong, nonatomic) NSString *username;
-
 -(IBAction)segmentedChartButtonChanged:(id)sender;
 
 

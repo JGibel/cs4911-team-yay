@@ -18,7 +18,6 @@
 @synthesize retailersList;
 @synthesize itemsList;
 @synthesize state;
-//@synthesize username;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

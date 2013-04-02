@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1929A6681709F89C00745F75 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929A6671709F89C00745F75 /* Coupon.m */; };
+		1929A66A170A435700745F75 /* 002.sql in Resources */ = {isa = PBXBuildFile; fileRef = 1929A669170A435700745F75 /* 002.sql */; };
 		192D221A16B7243D00F2D773 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221916B7243D00F2D773 /* UIKit.framework */; };
 		192D221C16B7243D00F2D773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221B16B7243D00F2D773 /* Foundation.framework */; };
 		192D221E16B7243D00F2D773 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221D16B7243D00F2D773 /* CoreGraphics.framework */; };
@@ -52,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1929A6661709F89C00745F75 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
+		1929A6671709F89C00745F75 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
+		1929A669170A435700745F75 /* 002.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 002.sql; sourceTree = "<group>"; };
 		192D221516B7243D00F2D773 /* DealGenda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealGenda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		192D221916B7243D00F2D773 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		192D221B16B7243D00F2D773 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,7 +89,6 @@
 		19DDFCBC17060ACD002DB404 /* coupons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons.png; sourceTree = "<group>"; };
 		19DDFCBE17060C21002DB404 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		19DDFCBF17060C21002DB404 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		19DC766A1700BC9B006AF405 /* 001.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 001.sql; sourceTree = "<group>"; };
 		2826CB1116E313F100AA6BE5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2826CB1216E313F100AA6BE5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2826CB1316E313F100AA6BE5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 				196F8A0516C970920016B69F /* SignUpViewController.m */,
 				196F8A0716C9762E0016B69F /* CouponListViewController.h */,
 				196F8A0816C9762E0016B69F /* CouponListViewController.m */,
+				1929A6661709F89C00745F75 /* Coupon.h */,
+				1929A6671709F89C00745F75 /* Coupon.m */,
 				2826CB2416EA740100AA6BE5 /* Queries.h */,
 				2826CB2516EA740100AA6BE5 /* Queries.m */,
 			);
@@ -225,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				19DDFCB9170608F9002DB404 /* 001.sql */,
+				1929A669170A435700745F75 /* 002.sql */,
 			);
 			path = migrations;
 			sourceTree = "<group>";
@@ -336,6 +343,7 @@
 				19DDFCBD17060ACD002DB404 /* coupons.png in Resources */,
 				19DDFCC017060C21002DB404 /* heart.png in Resources */,
 				19DDFCC117060C21002DB404 /* settings.png in Resources */,
+				1929A66A170A435700745F75 /* 002.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +392,7 @@
 				2826CB2116E313F100AA6BE5 /* FMResultSet.m in Sources */,
 				2826CB2616EA740100AA6BE5 /* Queries.m in Sources */,
 				678941C416EE4A98007999F5 /* LoginViewController.m in Sources */,
+				1929A6681709F89C00745F75 /* Coupon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

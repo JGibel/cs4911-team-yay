@@ -8,6 +8,7 @@
 
 #import "CouponListViewController.h"
 #import "Queries.h"
+#import "Coupon.h"
 
 @interface CouponListViewController ()
 
@@ -49,7 +50,19 @@
         NSString *expdate = [queryResult stringForColumn:@"expdate"];
         NSString *retailer = [queryResult stringForColumn:@"retailerName"];
         NSString *offer = [queryResult stringForColumn:@"offer"];
-        [tempRetailers addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        
+        NSLog(@"date: %@", expdate);
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        NSLog(@"%@", dateFromString);
+
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+
+        [tempRetailers addObject:tempCoupon];
     }
     [queryResult close];
     //Query for items that match the logged-in user's preferences
@@ -60,8 +73,16 @@
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
         NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
         NSString *offer = [queryResultItem stringForColumn:@"offer"];
-        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
-            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
         }
     }
     //requery for category 2
@@ -72,8 +93,16 @@
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
         NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
         NSString *offer = [queryResultItem stringForColumn:@"offer"];
-        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
-            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
         }
     }
     //requery for category 3
@@ -84,19 +113,40 @@
         NSString *expdate = [queryResultItem stringForColumn:@"expdate"];
         NSString *retailer = [queryResultItem stringForColumn:@"retailerName"];
         NSString *offer = [queryResultItem stringForColumn:@"offer"];
-        if (![tempItems containsObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]]) {
-            [tempItems addObject:[NSArray arrayWithObjects:barcode, expdate, retailer, offer, nil]];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
         }
     }
     [queryResultItem close];
     //loop through retailers and items and save any that match both user preferences
     for (int i = 0; i < [tempRetailers count]; i++) {
         for (int j = 0; j < [tempItems count]; j++) {
-            if ([[tempRetailers objectAtIndex:i] isEqual:[tempItems objectAtIndex:j]] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
+            
+            NSString *retBar = [[tempRetailers objectAtIndex:i] getBarcode];
+            NSString *itemBar = [[tempItems objectAtIndex:j] getBarcode];
+            
+//            NSLog(@"rets: %@", retBar);
+//            NSLog(@"item: %@", itemBar);
+//            NSLog(@"eq: %c", [retBar isEqualToString:itemBar]);
+            
+            if ([retBar isEqualToString:itemBar] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
                 [couponList addObject:[tempRetailers objectAtIndex:i]];
+//                NSLog(@"%@", [[tempRetailers objectAtIndex:i] getExpirationDate]);
             }
         }
     }
+//    for (int i = 0; i < [couponList count]; i++) {
+//        NSLog(@"%@", [[couponList objectAtIndex:i] getBarcode]);
+//    }
+    
     //reload the information in the table when the user returns to the view
     [_table reloadData];
     
@@ -131,7 +181,7 @@
     if(!cell){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"couponCell"];
     }
-    NSArray *temp = [couponList objectAtIndex:indexPath.row];
+//    NSArray *temp = [couponList objectAtIndex:indexPath.row];
     
     //set cell information
     UILabel *expLabel, *retailerLabel, *offerLabel;
@@ -147,10 +197,16 @@
     [cell.contentView addSubview:offerLabel];
     
     //set cell text
-    expLabel.text = [temp objectAtIndex:1];
-    retailerLabel.text = [temp objectAtIndex:2];
-    offerLabel.text = [temp objectAtIndex:3];
-    cell.tag = [temp objectAtIndex:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *strDate = [dateFormatter stringFromDate:[[couponList objectAtIndex:indexPath.row] getExpirationDate]];
+
+    expLabel.text = strDate;
+//    expLabel.text = [[couponList objectAtIndex:indexPath.row] getExpirationDate];
+    retailerLabel.text = [[couponList objectAtIndex:indexPath.row] getRetailer];
+    offerLabel.text = [[couponList objectAtIndex:indexPath.row] getOffer];
+    cell.tag = [[couponList objectAtIndex:indexPath.row] getBarcode];
+        
     return cell;
 }
 
