@@ -35,6 +35,9 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    
+    self.title = @"Settings";
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(validateInputCallback:)
                                                  name:@"UITextFieldTextDidChangeNotification"

@@ -50,15 +50,11 @@
         NSString *expdate = [queryResult stringForColumn:@"expdate"];
         NSString *retailer = [queryResult stringForColumn:@"retailerName"];
         NSString *offer = [queryResult stringForColumn:@"offer"];
-        
-        NSLog(@"date: %@", expdate);
-        
+                
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
         NSDate *dateFromString = [[NSDate alloc] init];
         dateFromString = [dateFormatter dateFromString:expdate];
-        NSLog(@"%@", dateFromString);
-
         
         Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
 
@@ -133,19 +129,11 @@
             NSString *retBar = [[tempRetailers objectAtIndex:i] getBarcode];
             NSString *itemBar = [[tempItems objectAtIndex:j] getBarcode];
             
-//            NSLog(@"rets: %@", retBar);
-//            NSLog(@"item: %@", itemBar);
-//            NSLog(@"eq: %c", [retBar isEqualToString:itemBar]);
-            
             if ([retBar isEqualToString:itemBar] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
                 [couponList addObject:[tempRetailers objectAtIndex:i]];
-//                NSLog(@"%@", [[tempRetailers objectAtIndex:i] getExpirationDate]);
             }
         }
     }
-//    for (int i = 0; i < [couponList count]; i++) {
-//        NSLog(@"%@", [[couponList objectAtIndex:i] getBarcode]);
-//    }
     
     //reload the information in the table when the user returns to the view
     [_table reloadData];
@@ -159,6 +147,9 @@
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES animated:YES]; 
 	// Do any additional setup after loading the view.
+    
+    self.title = @"Coupons";
+    self.navigationItem.title = @"Coupons";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -202,7 +193,6 @@
     NSString *strDate = [dateFormatter stringFromDate:[[couponList objectAtIndex:indexPath.row] getExpirationDate]];
 
     expLabel.text = strDate;
-//    expLabel.text = [[couponList objectAtIndex:indexPath.row] getExpirationDate];
     retailerLabel.text = [[couponList objectAtIndex:indexPath.row] getRetailer];
     offerLabel.text = [[couponList objectAtIndex:indexPath.row] getOffer];
     cell.tag = [[couponList objectAtIndex:indexPath.row] getBarcode];

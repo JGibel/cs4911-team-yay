@@ -28,6 +28,8 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
+    _emailTextField.text = @"";
+    _passwordTextField.text = @"";
 }
 
 - (void)viewDidLoad

@@ -41,6 +41,8 @@
     itemsList = [[NSMutableArray alloc]init];
     [super viewDidLoad];
     
+    self.title = @"Favorites";
+    
     
     //test to see where the user comes from and move the done button off screen if they are logged in
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]) {

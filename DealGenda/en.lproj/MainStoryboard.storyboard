@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="356" y="-973"/>
         </scene>
-        <!--Coupon List View Controller - CouponListView-->
+        <!--Coupon List View Controller - CouponListViewController-->
         <scene sceneID="UG9-x0-5NQ">
             <objects>
-                <viewController title="CouponListView" id="Fka-SY-1XG" customClass="CouponListViewController" sceneMemberID="viewController">
+                <viewController title="CouponListViewController" id="Fka-SY-1XG" customClass="CouponListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uwN-4z-51D">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,9 +177,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Coupons" image="coupons.png" id="MWc-uP-i4F"/>
-                    <navigationItem key="navigationItem" title="Coupons" id="vZ2-Km-8kX">
-                        <barButtonItem key="rightBarButtonItem" title="Logoff" id="GC2-6I-bTv"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="vZ2-Km-8kX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="tED-XY-Cwp" id="iAl-qa-4Nz"/>
@@ -189,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="20" y="471"/>
         </scene>
-        <!--Settings View Controller - SettingsView-->
+        <!--Settings View Controller - SettingsViewController-->
         <scene sceneID="iZl-XY-GPO">
             <objects>
-                <viewController title="SettingsView" id="9Lu-mf-hFf" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController title="SettingsViewController" id="9Lu-mf-hFf" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eCM-rz-TUg">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -608,12 +606,12 @@
             </objects>
             <point key="canvasLocation" x="809" y="-973"/>
         </scene>
-        <!--Favorites View Controller - FavoritesView-->
+        <!--Favorites View Controller - FavoritesViewController-->
         <scene sceneID="WqT-gA-K2K">
             <objects>
-                <viewController title="FavoritesView" id="3nV-jt-9JW" customClass="FavoritesViewController" sceneMemberID="viewController">
+                <viewController title="FavoritesViewController" id="3nV-jt-9JW" customClass="FavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2vn-uM-eAW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-PI-De4" userLabel="subView">
@@ -685,7 +683,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart.png" id="cgP-l8-aR5"/>
-                    <navigationItem key="navigationItem" title="Favorites" id="L91-CL-xCH"/>
+                    <navigationItem key="navigationItem" id="L91-CL-xCH"/>
                     <connections>
                         <outlet property="doneButton" destination="Cej-Ab-LHb" id="oYZ-ax-19G"/>
                         <outlet property="favoritesView" destination="2vn-uM-eAW" id="SY9-IM-gki"/>
@@ -717,18 +715,25 @@
             </objects>
             <point key="canvasLocation" x="-170" y="-973"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Controller-->
         <scene sceneID="iRe-NP-t7w">
             <objects>
-                <tabBarController id="zmE-bs-PS4" sceneMemberID="viewController">
+                <tabBarController id="zmE-bs-PS4" customClass="TabController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="dVC-dl-zjc"/>
+                    <navigationItem key="navigationItem" id="dVC-dl-zjc">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="YEd-Db-SI3">
+                            <connections>
+                                <action selector="logout:" destination="zmE-bs-PS4" id="DFb-TC-ndn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ep9-bA-Lbd">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="logoutButton" destination="YEd-Db-SI3" id="XwB-rb-4Az"/>
                         <segue destination="Fka-SY-1XG" kind="relationship" relationship="viewControllers" id="t9d-n3-Jtc"/>
                         <segue destination="3nV-jt-9JW" kind="relationship" relationship="viewControllers" id="KMm-SZ-x4i"/>
                         <segue destination="9Lu-mf-hFf" kind="relationship" relationship="viewControllers" id="Rct-3B-K5p"/>
@@ -744,74 +749,13 @@
         <image name="heart.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="CouponListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="FavoritesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedChartButtonChanged:"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissKeyboard:"/>
-                <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="signUpButton:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resignButton:"/>
-                <relationship kind="action" name="saveSettings:"/>
-                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="resignButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SignUpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="scene1Label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vRv-tr-uJs"/>
-        <segue reference="U83-Sz-YLj"/>
+        <segue reference="awD-fs-SxR"/>
+        <segue reference="KMm-SZ-x4i"/>
     </inferredMetricsTieBreakers>
 </document>
