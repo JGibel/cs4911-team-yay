@@ -155,7 +155,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="zVV-Ca-j3R" kind="push" id="ZG7-Hi-0jV"/>
+                                            <segue destination="zVV-Ca-j3R" kind="push" identifier="showDetailSegue" id="ZG7-Hi-0jV"/>
+                                            <segue destination="zVV-Ca-j3R" kind="push" identifier="showDetailSegue" trigger="accessoryAction" id="fmE-Or-hfr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -386,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="1598" y="471"/>
         </scene>
-        <!--View Controller - CouponDetailsView-->
+        <!--Details View Controller - CouponDetailsView-->
         <scene sceneID="tLq-VH-Rut">
             <objects>
-                <viewController title="CouponDetailsView" id="zVV-Ca-j3R" sceneMemberID="viewController">
+                <viewController title="CouponDetailsView" id="zVV-Ca-j3R" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xXd-0Z-MaP">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -407,14 +408,24 @@
                                     <segue destination="Syb-3o-cUJ" kind="push" id="2kM-aE-T00"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-eL-HJu">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xka-Iw-1VX" secondAttribute="trailing" constant="45" id="RPT-6Q-gEr"/>
+                            <constraint firstItem="Jy1-eL-HJu" firstAttribute="centerX" secondItem="xXd-0Z-MaP" secondAttribute="centerX" type="default" id="UEK-pp-glV"/>
                             <constraint firstAttribute="bottom" secondItem="Xka-Iw-1VX" secondAttribute="bottom" constant="84" id="eLH-sP-THe"/>
+                            <constraint firstItem="Jy1-eL-HJu" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qBo-za-f5r"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="lfA-xG-hTG"/>
+                    <connections>
+                        <outlet property="retailerLabel" destination="Jy1-eL-HJu" id="Pe8-0A-Bvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9y-uK-560" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -755,6 +766,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="fmE-Or-hfr"/>
         <segue reference="awD-fs-SxR"/>
         <segue reference="KMm-SZ-x4i"/>
     </inferredMetricsTieBreakers>

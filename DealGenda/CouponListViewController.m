@@ -9,6 +9,7 @@
 #import "CouponListViewController.h"
 #import "Queries.h"
 #import "Coupon.h"
+#import "DetailsViewController.h"
 
 @interface CouponListViewController ()
 
@@ -204,6 +205,17 @@
 {
     //set row to be deselected after selection so when you return to the view it is not in a selected state
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showDetailSegue"]){
+        //detect selected table cell
+        UITableViewCell *cell = sender;
+        //get instance of view controller we are pushing to
+        DetailsViewController *controller = segue.destinationViewController;
+        //set the barcode property for that instance
+        controller.barcode = [NSString stringWithFormat:@"%ld", (long)cell.tag];
+    }
 }
 
 - (void)didReceiveMemoryWarning

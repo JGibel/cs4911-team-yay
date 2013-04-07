@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904370D1712238800BD06C5 /* DetailsViewController.m */; };
 		1929A6681709F89C00745F75 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929A6671709F89C00745F75 /* Coupon.m */; };
 		1929A66A170A435700745F75 /* 002.sql in Resources */ = {isa = PBXBuildFile; fileRef = 1929A669170A435700745F75 /* 002.sql */; };
 		192D221A16B7243D00F2D773 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221916B7243D00F2D773 /* UIKit.framework */; };
@@ -55,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1904370C1712238800BD06C5 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		1904370D1712238800BD06C5 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		1929A6661709F89C00745F75 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		1929A6671709F89C00745F75 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
 		1929A669170A435700745F75 /* 002.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 002.sql; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 				678941C216EE4A98007999F5 /* LoginViewController.h */,
 				678941C316EE4A98007999F5 /* LoginViewController.m */,
 				192D223116B7243D00F2D773 /* MainStoryboard.storyboard */,
+				1904370C1712238800BD06C5 /* DetailsViewController.h */,
+				1904370D1712238800BD06C5 /* DetailsViewController.m */,
 				19CDF06C170B9EF4007456FF /* TabController.h */,
 				19CDF06D170B9EF4007456FF /* TabController.m */,
 				287CA82F16C96DD80091010F /* SettingsViewController.h */,
@@ -399,6 +404,7 @@
 				678941C416EE4A98007999F5 /* LoginViewController.m in Sources */,
 				1929A6681709F89C00745F75 /* Coupon.m in Sources */,
 				19CDF06E170B9EF4007456FF /* TabController.m in Sources */,
+				1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
