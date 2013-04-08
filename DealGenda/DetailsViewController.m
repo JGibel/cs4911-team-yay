@@ -7,6 +7,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "Queries.h"
 
 @interface DetailsViewController ()
 
@@ -35,8 +36,9 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"loaded: %d", barcode);
-    _retailerLabel.text = [NSString stringWithFormat:@"%i", barcode];
+    _retailerLabel.text = [Queries getCouponRetailer:barcode];
+    _offerLabel.text = [Queries getCouponOffer:barcode];
+    _expDateLabel.text = [Queries getCouponExpirationDate:barcode];
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,7 +10,9 @@
 
 @interface DetailsViewController : UIViewController
 
-@property int barcode;
+@property (strong, nonatomic) NSString *barcode;
 @property (strong, nonatomic) IBOutlet UILabel *retailerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *offerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *expDateLabel;
 
 @end

@@ -191,5 +191,56 @@
     return email;
 }
 
++(NSString *) getCouponRetailer:(NSString *)barcode
+{
+    NSString *retailer;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select * from coupons where barcode = ?", barcode];
+    if([fm next]) {
+        retailer = [fm stringForColumn:@"retailerName"];
+    }
+    [fm close];
+    [db close];
+    return retailer;
+}
+
++(NSString *) getCouponOffer:(NSString *)barcode
+{
+    NSString *offer;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select * from coupons where barcode = ?", barcode];
+    if([fm next]) {
+        offer = [fm stringForColumn:@"offer"];
+    }
+    [fm close];
+    [db close];
+    return offer;
+}
+
++(NSString *) getCouponExpirationDate:(NSString *)barcode
+{
+    NSString *expDate;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select * from coupons where barcode = ?", barcode];
+    if([fm next]) {
+        expDate = [fm stringForColumn:@"expdate"];
+    }
+    [fm close];
+    [db close];
+    return expDate;
+}
+
 
 @end

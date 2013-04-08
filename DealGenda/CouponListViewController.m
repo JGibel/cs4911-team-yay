@@ -129,6 +129,8 @@
             
             NSString *retBar = [[tempRetailers objectAtIndex:i] getBarcode];
             NSString *itemBar = [[tempItems objectAtIndex:j] getBarcode];
+//            NSLog(@"%@", retBar);
+//            NSLog(@"%@", itemBar);
             
             if ([retBar isEqualToString:itemBar] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
                 [couponList addObject:[tempRetailers objectAtIndex:i]];
@@ -196,8 +198,11 @@
     expLabel.text = strDate;
     retailerLabel.text = [[couponList objectAtIndex:indexPath.row] getRetailer];
     offerLabel.text = [[couponList objectAtIndex:indexPath.row] getOffer];
-    cell.tag = [[couponList objectAtIndex:indexPath.row] getBarcode];
-        
+    NSString *tag = [[couponList objectAtIndex:indexPath.row] getBarcode];
+    cell.tag = [tag integerValue];
+    NSLog(@"saved: %@", tag);
+    NSLog(@"tag: %ld", (long)cell.tag);
+    
     return cell;
 }
 
@@ -208,13 +213,13 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    /* If the segue is pushing to the CouponDetailsView*/
     if([segue.identifier isEqualToString:@"showDetailSegue"]){
-        //detect selected table cell
-        UITableViewCell *cell = sender;
         //get instance of view controller we are pushing to
         DetailsViewController *controller = segue.destinationViewController;
         //set the barcode property for that instance
-        controller.barcode = [NSString stringWithFormat:@"%ld", (long)cell.tag];
+        controller.barcode = [NSString stringWithFormat:@"%i", ((UIControl*)sender).tag];
     }
 }
 

@@ -17,5 +17,8 @@
 +(void) updatePassword: (NSString *) email : (NSString *) password;
 +(NSNumber *) getId: (NSString *) email;
 +(NSString *) getEmail;
++(NSString *) getCouponRetailer:(NSString *)barcode;
++(NSString *) getCouponOffer:(NSString *)barcode;
++(NSString *) getCouponExpirationDate:(NSString *)barcode;
 
 @end

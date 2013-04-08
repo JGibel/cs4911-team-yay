@@ -397,7 +397,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xka-Iw-1VX">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Add to Passbook">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -408,22 +408,76 @@
                                     <segue destination="Syb-3o-cUJ" kind="push" id="2kM-aE-T00"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-eL-HJu">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retailer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-eL-HJu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="poE-pK-i7u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Offer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-Nj-NNW">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="cmA-Zg-jkH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires on:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-ie-6Hz">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="76" id="gXN-sg-6my"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="mm/dd/yyyy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="It9-mL-1Rp">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrb-yT-V7N">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Extend this Coupon">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sh-MS-luC"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Xka-Iw-1VX" secondAttribute="trailing" constant="45" id="RPT-6Q-gEr"/>
-                            <constraint firstItem="Jy1-eL-HJu" firstAttribute="centerX" secondItem="xXd-0Z-MaP" secondAttribute="centerX" type="default" id="UEK-pp-glV"/>
-                            <constraint firstAttribute="bottom" secondItem="Xka-Iw-1VX" secondAttribute="bottom" constant="84" id="eLH-sP-THe"/>
+                            <constraint firstItem="Yrb-yT-V7N" firstAttribute="top" secondItem="HjX-ie-6Hz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2NG-5Y-Tkr"/>
+                            <constraint firstAttribute="trailing" secondItem="YTg-Nj-NNW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3UC-mf-nnT"/>
+                            <constraint firstAttribute="trailing" secondItem="7Sh-MS-luC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4qV-hK-EEO"/>
+                            <constraint firstItem="YTg-Nj-NNW" firstAttribute="top" secondItem="Jy1-eL-HJu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6wc-1e-6M0"/>
+                            <constraint firstAttribute="trailing" secondItem="Xka-Iw-1VX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7Ik-Df-Iqn"/>
+                            <constraint firstAttribute="trailing" secondItem="It9-mL-1Rp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9Sp-hQ-rJr"/>
+                            <constraint firstItem="Yrb-yT-V7N" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LWF-HC-PNt"/>
+                            <constraint firstItem="HjX-ie-6Hz" firstAttribute="top" secondItem="YTg-Nj-NNW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Prl-qV-4Qn"/>
+                            <constraint firstItem="It9-mL-1Rp" firstAttribute="baseline" secondItem="HjX-ie-6Hz" secondAttribute="baseline" type="default" id="QHF-Wq-mCX"/>
+                            <constraint firstItem="HjX-ie-6Hz" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="SXO-dm-STX"/>
+                            <constraint firstItem="Xka-Iw-1VX" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="VHR-HT-sL1"/>
+                            <constraint firstItem="YTg-Nj-NNW" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bd5-8y-s6P"/>
+                            <constraint firstAttribute="bottom" secondItem="Xka-Iw-1VX" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="bob-jd-UVR"/>
+                            <constraint firstItem="7Sh-MS-luC" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cgm-Fx-alc"/>
+                            <constraint firstItem="Jy1-eL-HJu" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ck1-vv-Kex"/>
+                            <constraint firstAttribute="trailing" secondItem="Jy1-eL-HJu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fdh-Ta-Bya"/>
+                            <constraint firstItem="7Sh-MS-luC" firstAttribute="top" secondItem="Yrb-yT-V7N" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mzR-kT-pfR"/>
                             <constraint firstItem="Jy1-eL-HJu" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qBo-za-f5r"/>
+                            <constraint firstAttribute="trailing" secondItem="Yrb-yT-V7N" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rzh-Ri-j5t"/>
+                            <constraint firstItem="Xka-Iw-1VX" firstAttribute="top" secondItem="7Sh-MS-luC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t5E-D1-OY7"/>
+                            <constraint firstItem="It9-mL-1Rp" firstAttribute="leading" secondItem="HjX-ie-6Hz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vzJ-vs-UCc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="lfA-xG-hTG"/>
                     <connections>
+                        <outlet property="expDateLabel" destination="It9-mL-1Rp" id="gFV-jU-WB3"/>
+                        <outlet property="offerLabel" destination="YTg-Nj-NNW" id="rOZ-6q-RCU"/>
                         <outlet property="retailerLabel" destination="Jy1-eL-HJu" id="Pe8-0A-Bvt"/>
                     </connections>
                 </viewController>
@@ -459,7 +513,7 @@
                             <constraint firstAttribute="trailing" secondItem="gA5-dC-HTs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8Nr-bA-h4Z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="a4i-CT-gIK"/>
+                    <navigationItem key="navigationItem" title="Pass View" id="a4i-CT-gIK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVP-ku-Skp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -760,6 +814,82 @@
         <image name="heart.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CouponListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedChartButtonChanged:"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="signUpButton:"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resignButton:"/>
+                <relationship kind="action" name="saveSettings:"/>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resignButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SignUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="scene1Label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="TabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
