@@ -35,10 +35,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //set the labels based on the barcode value passed from the CouponListView
     _retailerLabel.text = [Queries getCouponRetailer:barcode];
     _offerLabel.text = [Queries getCouponOffer:barcode];
     _expDateLabel.text = [Queries getCouponExpirationDate:barcode];
+    _detailsTextView.text = [Queries getCouponDetails:barcode];
 }
 
 - (void)didReceiveMemoryWarning

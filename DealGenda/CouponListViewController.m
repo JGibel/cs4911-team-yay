@@ -198,10 +198,9 @@
     expLabel.text = strDate;
     retailerLabel.text = [[couponList objectAtIndex:indexPath.row] getRetailer];
     offerLabel.text = [[couponList objectAtIndex:indexPath.row] getOffer];
-    NSString *tag = [[couponList objectAtIndex:indexPath.row] getBarcode];
-    cell.tag = [tag integerValue];
-    NSLog(@"saved: %@", tag);
-    NSLog(@"tag: %ld", (long)cell.tag);
+    //sets the cell's tag property to the row number in the table
+    //this is used later when determining which coupon to load in the DetailsView
+    cell.tag = indexPath.row;
     
     return cell;
 }
@@ -215,11 +214,15 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     /* If the segue is pushing to the CouponDetailsView*/
-    if([segue.identifier isEqualToString:@"showDetailSegue"]){
+    if([segue.identifier isEqualToString:@"showDetailSegue"] || [segue.identifier isEqualToString:@"showDetailSegueAcc"]){
+        //detect which cell was pressed
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.table indexPathForCell:cell];
         //get instance of view controller we are pushing to
         DetailsViewController *controller = segue.destinationViewController;
-        //set the barcode property for that instance
-        controller.barcode = [NSString stringWithFormat:@"%i", ((UIControl*)sender).tag];
+        //set the barcode value for the view controller we are navigating to
+        controller.barcode = [[couponList objectAtIndex:indexPath.row] getBarcode];
+//        NSLog(@"%@", controller.barcode);
     }
 }
 

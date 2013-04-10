@@ -155,7 +155,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="zVV-Ca-j3R" kind="push" identifier="showDetailSegue" id="ZG7-Hi-0jV"/>
+                                            <segue destination="zVV-Ca-j3R" kind="push" identifier="showDetailSegueAcc" id="ZG7-Hi-0jV"/>
                                             <segue destination="zVV-Ca-j3R" kind="push" identifier="showDetailSegue" trigger="accessoryAction" id="fmE-Or-hfr"/>
                                         </connections>
                                     </tableViewCell>
@@ -343,7 +343,7 @@
             <objects>
                 <viewController title="PassExtensionView" id="8sU-tu-T97" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L6k-3n-fH7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-e7-FSl">
@@ -377,7 +377,7 @@
             <objects>
                 <viewController title="PaymentView" id="SDJ-Qc-UOX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DG4-r9-gqc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -405,7 +405,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Syb-3o-cUJ" kind="push" id="2kM-aE-T00"/>
+                                    <segue destination="Syb-3o-cUJ" kind="modal" id="2kM-aE-T00"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retailer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-eL-HJu">
@@ -418,7 +418,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Offer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-Nj-NNW">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="cmA-Zg-jkH"/>
+                                    <constraint firstAttribute="height" constant="20" id="ny9-fn-tun"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -447,35 +447,43 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sh-MS-luC"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-rf-7P6">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="146" id="jW4-Vp-5Fi"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yrb-yT-V7N" firstAttribute="top" secondItem="HjX-ie-6Hz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="2NG-5Y-Tkr"/>
                             <constraint firstAttribute="trailing" secondItem="YTg-Nj-NNW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3UC-mf-nnT"/>
-                            <constraint firstAttribute="trailing" secondItem="7Sh-MS-luC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4qV-hK-EEO"/>
+                            <constraint firstItem="ZDV-rf-7P6" firstAttribute="top" secondItem="Yrb-yT-V7N" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3ei-nt-d8c"/>
+                            <constraint firstAttribute="trailing" secondItem="ZDV-rf-7P6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="5qc-lq-Cpt"/>
                             <constraint firstItem="YTg-Nj-NNW" firstAttribute="top" secondItem="Jy1-eL-HJu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6wc-1e-6M0"/>
                             <constraint firstAttribute="trailing" secondItem="Xka-Iw-1VX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7Ik-Df-Iqn"/>
                             <constraint firstAttribute="trailing" secondItem="It9-mL-1Rp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9Sp-hQ-rJr"/>
                             <constraint firstItem="Yrb-yT-V7N" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LWF-HC-PNt"/>
-                            <constraint firstItem="HjX-ie-6Hz" firstAttribute="top" secondItem="YTg-Nj-NNW" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Prl-qV-4Qn"/>
                             <constraint firstItem="It9-mL-1Rp" firstAttribute="baseline" secondItem="HjX-ie-6Hz" secondAttribute="baseline" type="default" id="QHF-Wq-mCX"/>
                             <constraint firstItem="HjX-ie-6Hz" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="SXO-dm-STX"/>
                             <constraint firstItem="Xka-Iw-1VX" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="VHR-HT-sL1"/>
                             <constraint firstItem="YTg-Nj-NNW" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bd5-8y-s6P"/>
                             <constraint firstAttribute="bottom" secondItem="Xka-Iw-1VX" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="bob-jd-UVR"/>
-                            <constraint firstItem="7Sh-MS-luC" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cgm-Fx-alc"/>
                             <constraint firstItem="Jy1-eL-HJu" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ck1-vv-Kex"/>
                             <constraint firstAttribute="trailing" secondItem="Jy1-eL-HJu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fdh-Ta-Bya"/>
-                            <constraint firstItem="7Sh-MS-luC" firstAttribute="top" secondItem="Yrb-yT-V7N" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mzR-kT-pfR"/>
+                            <constraint firstItem="Xka-Iw-1VX" firstAttribute="top" secondItem="ZDV-rf-7P6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hGf-2V-gmy"/>
                             <constraint firstItem="Jy1-eL-HJu" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qBo-za-f5r"/>
                             <constraint firstAttribute="trailing" secondItem="Yrb-yT-V7N" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rzh-Ri-j5t"/>
-                            <constraint firstItem="Xka-Iw-1VX" firstAttribute="top" secondItem="7Sh-MS-luC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="t5E-D1-OY7"/>
+                            <constraint firstItem="ZDV-rf-7P6" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="tMd-xR-wnB"/>
                             <constraint firstItem="It9-mL-1Rp" firstAttribute="leading" secondItem="HjX-ie-6Hz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vzJ-vs-UCc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="lfA-xG-hTG"/>
                     <connections>
+                        <outlet property="detailsTextView" destination="ZDV-rf-7P6" id="5QC-rj-wLp"/>
                         <outlet property="expDateLabel" destination="It9-mL-1Rp" id="gFV-jU-WB3"/>
                         <outlet property="offerLabel" destination="YTg-Nj-NNW" id="rOZ-6q-RCU"/>
                         <outlet property="retailerLabel" destination="Jy1-eL-HJu" id="Pe8-0A-Bvt"/>
@@ -490,7 +498,7 @@
             <objects>
                 <viewController title="PassView" id="Syb-3o-cUJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wzG-Sx-YZa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-dC-HTs">
@@ -506,16 +514,32 @@
                                     <segue destination="8sU-tu-T97" kind="push" id="8jg-J6-bKB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWZ-OS-V1y">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="uPQ-Yf-CTX" kind="unwind" unwindAction="returned:" id="Dw0-hb-jE6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uWZ-OS-V1y" firstAttribute="leading" secondItem="wzG-Sx-YZa" secondAttribute="leading" constant="11" id="0ry-6Z-wef"/>
                             <constraint firstAttribute="bottom" secondItem="gA5-dC-HTs" secondAttribute="bottom" constant="78" id="1n0-rl-upz"/>
                             <constraint firstAttribute="trailing" secondItem="gA5-dC-HTs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8Nr-bA-h4Z"/>
+                            <constraint firstItem="uWZ-OS-V1y" firstAttribute="top" secondItem="wzG-Sx-YZa" secondAttribute="top" constant="142" id="pwL-76-iNS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pass View" id="a4i-CT-gIK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVP-ku-Skp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uPQ-Yf-CTX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="798" y="471"/>
         </scene>
@@ -825,6 +849,7 @@
         <class className="DetailsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="detailsTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
@@ -896,8 +921,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fmE-Or-hfr"/>
         <segue reference="awD-fs-SxR"/>
         <segue reference="KMm-SZ-x4i"/>
+        <segue reference="ZG7-Hi-0jV"/>
     </inferredMetricsTieBreakers>
 </document>

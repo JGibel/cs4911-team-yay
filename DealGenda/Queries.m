@@ -242,5 +242,22 @@
     return expDate;
 }
 
++(NSString *) getCouponDetails:(NSString *)barcode
+{
+    NSString *details;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return NULL;
+    }
+    FMResultSet *fm = [db executeQuery:@"select * from coupons where barcode = ?", barcode];
+    if([fm next]) {
+        details = [fm stringForColumn:@"details"];
+    }
+    [fm close];
+    [db close];
+    return details;
+}
+
 
 @end
