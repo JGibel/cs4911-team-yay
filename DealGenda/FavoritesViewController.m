@@ -48,11 +48,9 @@
     //test to see where the user comes from and move the done button off screen if they are logged in
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]) {
         _doneButton.bounds = CGRectMake(_doneButton.bounds.origin.x, 0, _doneButton.bounds.size.width, _doneButton.bounds.size.height);
-        NSLog(@"here?");
     }
     else {
         _doneButton.bounds = CGRectMake(_doneButton.bounds.origin.x, 69, _doneButton.bounds.size.width, _doneButton.bounds.size.height);
-        NSLog(@"no here");
 
     }
     
