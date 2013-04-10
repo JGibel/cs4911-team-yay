@@ -34,4 +34,7 @@
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *verifyPassword;
 @property (strong, nonatomic) NSString *gender;
-@property (strong, nonatomic) NSString *birthDate;
+@property (strong, nonatomic) NSString *canSegue;
+
+
+@end

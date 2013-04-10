@@ -14,6 +14,8 @@
 
 @implementation SignUpViewController
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +35,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    _scrollView.contentSize = CGSizeMake(320, 640);
+    
+    [scrollView setScrollEnabled:YES];
+    scrollView.contentSize = CGSizeMake(320, 320);
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +45,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(IBAction)returned:(UIStoryboardSegue *)segue {
 }
 
@@ -75,7 +80,6 @@
     _password = _passwordTextField.text;
     _verifyPassword = _verifyPasswordTextField.text;
     _gender = _genderTextField.text;
-    _birthDate = _birthDateTextField.text;
     
     NSLog(@"The entered first name is: %@", _firstName);
     NSLog(@"The entered last name is: %@", _lastName);
@@ -85,7 +89,29 @@
     NSLog(@"The entered verify password is: %@", _verifyPassword);
     NSLog(@"The entered gender is: %@", _gender);
     
+    
+    //Determine whether the input information is valid
+    if([_firstName isEqual: @""]){
+        _canSegue = @"NO";
+    }
+    
+    else{
+        _canSegue = @"YES";
+    }
 }
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    
+    if([_canSegue isEqualToString:(@"YES")]){
+        return YES;
+    }
+    
+    if([_canSegue isEqualToString:(@"NO")]){
+        return NO;
+    }
+    
+}
+
 
 //Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
 -(IBAction) slideFrameUp;
@@ -100,8 +126,8 @@
 
 -(void) slideFrame:(BOOL) up
 {
-    const int movementDistance = 213; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+    const int movementDistance = 213; 
+    const float movementDuration = 0.3f; 
     
     int movement = (up ? -movementDistance : movementDistance);
     
