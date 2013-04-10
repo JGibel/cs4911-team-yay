@@ -85,7 +85,7 @@
 
     //Query pulls all passwords from the users table where the email is equal to the emailValue, set above
     FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email = ?", _username];
-    while ([queryResult next]) {
+    if ([queryResult next]) {
         NSString *result = [queryResult stringForColumn:@"password"];
         NSLog(@"%@",result);
         if([_passwordValue isEqualToString:(result)]) {
