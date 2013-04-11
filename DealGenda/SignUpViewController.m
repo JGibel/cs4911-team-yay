@@ -125,6 +125,7 @@
     // If the can segue variable has been set to yes, allow a segue
     if([_canSegue isEqualToString:(@"YES")]){
         _errorLabel.text = @"";
+        //[Queries addUser:_firstName:_lastName:_birthDate:_email:_password:_gender];
         return YES;
     }
     
@@ -252,6 +253,7 @@
     
 }
 
+//Set up the custom gender picker
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     
     return 1;
@@ -268,6 +270,8 @@
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {    
     _genderTextField.text = [_pickerViewArray objectAtIndex:row];
 }
+
+
 
 //Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
 -(IBAction) slideFrameUp;
