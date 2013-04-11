@@ -46,9 +46,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)returned:(UIStoryboardSegue *)segue {
-}
-
 - (IBAction)dismissKeyboard:(id)sender {
     [_firstNameTextField resignFirstResponder];
     [_lastNameTextField resignFirstResponder];
@@ -89,27 +86,58 @@
     NSLog(@"The entered verify password is: %@", _verifyPassword);
     NSLog(@"The entered gender is: %@", _gender);
     
+    [self validateSignUp];
     
-    //Determine whether the input information is valid
-    if([_firstName isEqual: @""]){
-        _canSegue = @"NO";
-    }
-    
-    else{
-        _canSegue = @"YES";
-    }
+    [_firstNameTextField resignFirstResponder];
+    [_lastNameTextField resignFirstResponder];
+    [_birthDateTextField resignFirstResponder];
+    [_emailTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
+    [_verifyPasswordTextField resignFirstResponder];
+    [_genderTextField resignFirstResponder];
+
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     
+    // If the can segue variable has been set to yes, allow a segue
     if([_canSegue isEqualToString:(@"YES")]){
+        _errorLabel.text = @"";
         return YES;
     }
     
+    // If the can segue variable has been set to no in order to prevent a segue
     if([_canSegue isEqualToString:(@"NO")]){
-        return NO;
+        
+        //Set label for missing required fields
+        if([_errorCode isEqualToString:(@"Required")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Missing Required Fields";
+            return NO;
+        }
+
+        //Set label for password being too short
+        if([_errorCode isEqualToString:(@"PasswordLength")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Password must be at least 6 characters";
+            return NO;
+        }
+        
+        //Set label for password not matching verify password
+        if([_errorCode isEqualToString:(@"VerifyPassword")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Password must match Verify Password";
+            return NO;
+        }
+        
+        else{
+            return NO;
+        }
     }
     
+    else{
+        return NO;
+    }
 }
 
 
@@ -136,6 +164,35 @@
     [UIView setAnimationDuration: movementDuration];
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
+}
+
+-(void) validateSignUp {
+    NSLog(@"validate conditions");
+    
+    //Determine whether there is information in the required fields
+    if([_firstName isEqual: @""] || [_lastName isEqual: @""] || [_email isEqual: @""] || [_password isEqual:@""] || [_verifyPassword isEqual: @""]){
+        _canSegue = @"NO";
+        _errorCode = @"Required";
+        return;
+    }
+    
+    //Ensure the password is at least 6 characters long
+    if((_password.length < 6)){
+        _canSegue = @"NO";
+        _errorCode = @"PasswordLength";
+        return;
+    }
+    
+    if(![_password isEqualToString: _verifyPassword]){
+       _canSegue = @"NO";
+        _errorCode = @"VerifyPassword";
+        return;
+    }
+    
+    else{
+        _canSegue = @"YES";
+    }
+    
 }
 
 @end

@@ -14,6 +14,7 @@
     
 }
 
+//Storyboard Elements
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *birthDateTextField;
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verifyPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *genderTextField;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+
 
 -(IBAction) dismissKeyboard:(id)sender;
 -(IBAction) slideFrameUp;
@@ -35,6 +38,7 @@
 @property (strong, nonatomic) NSString *verifyPassword;
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSString *canSegue;
+@property (strong, nonatomic) NSString *errorCode;
 
 
 @end
