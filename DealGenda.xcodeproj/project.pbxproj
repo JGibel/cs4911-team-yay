@@ -43,6 +43,7 @@
 		2826CB2616EA740100AA6BE5 /* Queries.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB2516EA740100AA6BE5 /* Queries.m */; };
 		2864F2E216E311A600680516 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2864F2E116E311A600680516 /* libsqlite3.dylib */; };
 		287CA83116C96DD80091010F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287CA83016C96DD80091010F /* SettingsViewController.m */; };
+		28BE8D36170CA6330056400F /* 003.sql in Resources */ = {isa = PBXBuildFile; fileRef = 28BE8D35170CA6330056400F /* 003.sql */; };
 		678941C416EE4A98007999F5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678941C316EE4A98007999F5 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		2864F2E116E311A600680516 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		287CA82F16C96DD80091010F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		287CA83016C96DD80091010F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		28BE8D35170CA6330056400F /* 003.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 003.sql; sourceTree = "<group>"; };
 		678941C216EE4A98007999F5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		678941C316EE4A98007999F5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */

@@ -8,6 +8,7 @@
 
 #import "Queries.h"
 #import "AppDelegate.h"
+#import "Coupon.h"
 
 @implementation Queries
 
@@ -25,7 +26,6 @@
     if([fm next]) {
         userVersion = [fm intForColumn:@"id"];
     }
-    [fm close];
  
     NSArray *files = [[NSBundle mainBundle] pathsForResourcesOfType:@"sql" inDirectory:@""];
     
@@ -60,6 +60,7 @@
         }
 
     }
+    [fm close];
     [db close];
 }
 
@@ -167,8 +168,8 @@
     if([fm next]) {
         user = [NSNumber numberWithInt:[fm intForColumn:@"id"]];
     }
-    [fm close];
     
+    [fm close];
     [db close];
     return user;
 }
@@ -257,6 +258,177 @@
     [fm close];
     [db close];
     return details;
++(NSMutableArray *) getRetailers
+{
+    NSMutableArray *retailersList = [[NSMutableArray alloc] init];
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT name FROM retailers ORDER BY name"];
+    //For each result of the query, add to the array of retailers to be displayed
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"name"];
+        [retailersList addObject: result];
+    }
+    
+    return retailersList;
+}
+
++(NSMutableArray *) getItems
+{
+    NSMutableArray *itemsList = [[NSMutableArray alloc] init];
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT category FROM items ORDER BY category"];
+    //For each result of the query, add to the array of items to be displayed
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"category"];
+        [itemsList addObject: result];
+    }
+    
+    return itemsList;
+}
+
++(NSMutableArray *) getRetailerPrefs
+{
+    NSMutableArray *retailerPrefs = [[NSMutableArray alloc] init];
+    
+    //open database
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //query for retailer prefs by name
+    FMResultSet *queryResult = [db executeQuery:@"select name from retailers left join userretailerpreferences on retailers.id = userretailerpreferences.retailerid where userretailerpreferences.id = ?", appDelegate.user];
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"name"];
+        [retailerPrefs addObject:result];
+    }
+    [queryResult close];
+    //close database
+    [db close];
+    
+    return retailerPrefs;
+    
+}
+
++(NSMutableArray *) getItemPrefs
+{
+    NSMutableArray *itemPrefs = [[NSMutableArray alloc] init];
+    //open database
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //query for item prefs
+    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM userItemPreferences WHERE id = ?", appDelegate.user];
+    while ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"itemCategory"];
+        [itemPrefs addObject:result];
+    }
+    [queryResult close];
+    //close database
+    [db close];
+    
+    return itemPrefs;
+}
+
++(void) addRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    [db executeUpdate:@"INSERT INTO userRetailerPreferences (id, retailerID) VALUES (?,?)", appDelegate.user, retailer];
+        
+    [db close];
+}
+
++(void) removeRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    
+    [db executeUpdate:@"DELETE FROM userRetailerPreferences WHERE retailerID = ? AND id = ?", retailer, appDelegate.user];
+    
+    [db close];
+}
+
++(void) addItemPref : (NSString *) category : (NSMutableArray *) itemsList
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    
+    [db executeUpdate:@"INSERT INTO userItemPreferences (id, category) VALUES (?,?)", appDelegate.user, category];
+    
+    [db close];
+}
+
++(void) removeItemPref : (NSString *) category : (NSMutableArray *) itemsList
+{
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    
+    [db executeUpdate:@"DELETE FROM userItemPreferences WHERE category = ? AND id = ?", category, appDelegate.user];
+    
+    [db close];
+}
+
++(NSNumber *) getRetailerID : (NSString *) retailerName
+{
+    NSLog(@"Passing retailer name %@", retailerName);
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return 0;
+    }
+    NSNumber* retailerID;
+    FMResultSet *result = [db executeQuery:@"SELECT id FROM retailers WHERE name = ?", retailerName];
+    if([result next]) {
+        retailerID = [NSNumber numberWithInt:[result intForColumn:@"id"]];
+    }
+    [result close];
+    [db close];
+    NSLog(@"Getting retailer id %@", retailerID);
+    return retailerID;
+}
+
++(NSString *) getRetailerName : (NSNumber *) retailerID
+{
+    NSString* name;
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return 0;
+    }
+    FMResultSet *result = [db executeQuery:@"SELECT name FROM retailers WHERE id = ?", retailerID];
+    if([result next]) {
+        name = [result stringForColumn:@"name"];
+    }
+    [result close];
+    [db close];
+    return name;
 }
 
 

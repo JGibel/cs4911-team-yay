@@ -125,8 +125,6 @@
     
     _buttonID = @"signUpButton";
     _errorLabel.text = @"";
-    
-    //[self performSegueWithIdentifier:@"signup" sender:self];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

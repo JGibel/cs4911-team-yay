@@ -18,12 +18,10 @@
 
 @synthesize activeField;
 @synthesize scrollView;
-@synthesize username;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //_emailTextField.textColor = [UIColor grayColor];
-    _emailTextField.placeholder = username;
+    _emailTextField.placeholder = [Queries getEmail];
     _pwTextField.text = @"";
     _verifyTextField.text = @"";
     _emailLabel.text = @"";
@@ -51,9 +49,7 @@
     self.pwTextField.delegate = self;
     self.verifyTextField.delegate = self;
     
-    username = @"jdoe@email.com";
-    //_emailTextField.textColor = [UIColor grayColor];
-    _emailTextField.placeholder = username;
+    _emailTextField.placeholder = [Queries getEmail];
     [_saveButton setEnabled:NO];
 
 }
@@ -158,28 +154,29 @@
     bool validPassword = (_verifyTextField.text.length > 5) && [self validateInputWithString:_verifyTextField];
     
     if(validEmail && [_pwTextField.text isEqualToString:@""]) {
-        [Queries updateEmail: username : _emailTextField.text];
-        username = _emailTextField.text;
+        [Queries updateEmail: [Queries getEmail] : _emailTextField.text];
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
         _emailTextField.text = @"";
+        _emailTextField.placeholder = [Queries getEmail];
     } else if ([_emailTextField.text isEqualToString:@""] && validPassword){
-        [Queries updatePassword:username : _pwTextField.text];
+        [Queries updatePassword:[Queries getEmail] : _pwTextField.text];
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
         _pwTextField.text = @"";
         _verifyTextField.text = @"";
     } else if (validPassword && validEmail) {
-        [Queries updateEmail: username : _emailTextField.text];
-        [Queries updatePassword:username : _pwTextField.text];
+        [Queries updateEmail: [Queries getEmail] : _emailTextField.text];
+        [Queries updatePassword:[Queries getEmail] : _pwTextField.text];
         _loginLabel.font = [_loginLabel.font fontWithSize:14];
         _loginLabel.textColor = [UIColor blackColor];
         _loginLabel.text = @"Save Successful";
         _pwTextField.text = @"";
         _verifyTextField.text = @"";
         _emailTextField.text = @"";
+        _emailTextField.placeholder = [Queries getEmail];
     } else if ((validPassword || [_pwTextField.text isEqualToString:@""]) && !validEmail){
     _loginLabel.font = [_loginLabel.font fontWithSize:14];
     _loginLabel.textColor = [UIColor redColor];
