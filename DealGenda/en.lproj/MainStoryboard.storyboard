@@ -613,6 +613,7 @@
                                         <connections>
                                             <action selector="slideFrameDown" destination="4UK-wq-X0q" eventType="editingDidEnd" id="Evo-7c-gDo"/>
                                             <action selector="slideFrameUp" destination="4UK-wq-X0q" eventType="editingDidBegin" id="XkO-ko-7Jb"/>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="Pf8-6s-WUX"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8u-lj-31w">
@@ -621,6 +622,7 @@
                                         <connections>
                                             <action selector="slideFrameDown" destination="4UK-wq-X0q" eventType="editingDidEnd" id="f94-ag-JYi"/>
                                             <action selector="slideFrameUp" destination="4UK-wq-X0q" eventType="editingDidBegin" id="NrS-Nh-HWa"/>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="clY-NP-3i6"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U78-uv-0SR">
@@ -629,19 +631,29 @@
                                         <connections>
                                             <action selector="slideFrameDown" destination="4UK-wq-X0q" eventType="editingDidEnd" id="0Ub-Ex-p8H"/>
                                             <action selector="slideFrameUp" destination="4UK-wq-X0q" eventType="editingDidBegin" id="get-cO-m4S"/>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="VcL-u7-IvX"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIX-e4-uFe">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="VyB-Lp-Ovi"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7Q-ir-lL6">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="7Tz-OC-evi"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-Pz-UVb">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="Dh1-o2-mAx"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUS-IH-PEn">
                                         <constraints>
@@ -649,6 +661,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4UK-wq-X0q" id="Fya-YF-UFW"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Required fields are marked with an *" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYQ-Ne-WP3">
                                         <constraints>
@@ -922,14 +937,97 @@
         <image name="heart.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CouponListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailsTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedChartButtonChanged:"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="signUpButton:"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resignButton:"/>
+                <relationship kind="action" name="saveSettings:"/>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resignButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SignUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="continueButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="slideFrameDown"/>
+                <relationship kind="action" name="slideFrameUp"/>
+                <relationship kind="outlet" name="birthDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="genderTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="verifyPasswordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="TabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="awD-fs-SxR"/>
         <segue reference="U83-Sz-YLj"/>
-        <segue reference="vRv-tr-uJs"/>
         <segue reference="fmE-Or-hfr"/>
     </inferredMetricsTieBreakers>
 </document>

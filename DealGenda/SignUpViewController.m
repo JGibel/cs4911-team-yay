@@ -38,6 +38,13 @@
     
     [scrollView setScrollEnabled:YES];
     scrollView.contentSize = CGSizeMake(320, 320);
+    
+    /*
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    
+    [datePicker setDate:[NSDate date]];
+    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+    [_birthDateTextField setInputView:datePicker];*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,6 +137,13 @@
             return NO;
         }
         
+        //Set label for invalid email address
+        if([_errorCode isEqualToString:(@"ValidEmail")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Please enter a valid email address";
+            return NO;
+        }
+        
         else{
             return NO;
         }
@@ -139,6 +153,53 @@
         return NO;
     }
 }
+
+-(void) validateSignUp {
+    NSLog(@"validate conditions");
+    
+    //Determine whether there is information in the required fields
+    if([_firstName isEqual: @""] || [_lastName isEqual: @""] || [_email isEqual: @""] || [_password isEqual:@""] || [_verifyPassword isEqual: @""]){
+        _canSegue = @"NO";
+        _errorCode = @"Required";
+        return;
+    }
+    
+    //Email address is not valid
+    if (_emailTextField.text.length < 5) {
+        _canSegue = @"NO";
+        _errorCode = @"ValidEmail";
+        return;
+    }
+    
+    //Ensure the password is at least 6 characters long
+    if((_password.length < 6)){
+        _canSegue = @"NO";
+        _errorCode = @"PasswordLength";
+        return;
+    }
+    
+    //Password does not match verify passwords
+    if(![_password isEqualToString: _verifyPassword]){
+        _canSegue = @"NO";
+        _errorCode = @"VerifyPassword";
+        return;
+    }
+    
+    else{
+        _canSegue = @"YES";
+    }
+    
+}
+
+/*
+-(void)updateTextField:(id)sender
+{
+    if([_birthDateTextField isFirstResponder]){
+        UIDatePicker *picker = (UIDatePicker*)_birthDateTextField.inputView;
+        _birthDateTextField.text = [NSString stringWithFormat:@"%@",picker.date];
+    }
+
+}*/
 
 
 //Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
@@ -166,33 +227,11 @@
     [UIView commitAnimations];
 }
 
--(void) validateSignUp {
-    NSLog(@"validate conditions");
-    
-    //Determine whether there is information in the required fields
-    if([_firstName isEqual: @""] || [_lastName isEqual: @""] || [_email isEqual: @""] || [_password isEqual:@""] || [_verifyPassword isEqual: @""]){
-        _canSegue = @"NO";
-        _errorCode = @"Required";
-        return;
-    }
-    
-    //Ensure the password is at least 6 characters long
-    if((_password.length < 6)){
-        _canSegue = @"NO";
-        _errorCode = @"PasswordLength";
-        return;
-    }
-    
-    if(![_password isEqualToString: _verifyPassword]){
-       _canSegue = @"NO";
-        _errorCode = @"VerifyPassword";
-        return;
-    }
-    
-    else{
-        _canSegue = @"YES";
-    }
-    
+-(BOOL)textFieldShouldReturn:(UITextView *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
+
+
 
 @end
