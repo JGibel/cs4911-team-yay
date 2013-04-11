@@ -7,6 +7,8 @@
 //
 
 #import "SignUpViewController.h"
+#import "Queries.h"
+
 
 @interface SignUpViewController ()
 
@@ -123,6 +125,20 @@
             return NO;
         }
 
+        //Set label for invalid email address
+        if([_errorCode isEqualToString:(@"ValidEmail")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Please enter a valid email address";
+            return NO;
+        }
+        
+        //Set label for invalid email address
+        if([_errorCode isEqualToString:(@"EmailExists")]){
+            _errorLabel.textColor = [UIColor redColor];
+            _errorLabel.text = @"Email Address already has an account";
+            return NO;
+        }
+        
         //Set label for password being too short
         if([_errorCode isEqualToString:(@"PasswordLength")]){
             _errorLabel.textColor = [UIColor redColor];
@@ -134,13 +150,6 @@
         if([_errorCode isEqualToString:(@"VerifyPassword")]){
             _errorLabel.textColor = [UIColor redColor];
             _errorLabel.text = @"Password must match Verify Password";
-            return NO;
-        }
-        
-        //Set label for invalid email address
-        if([_errorCode isEqualToString:(@"ValidEmail")]){
-            _errorLabel.textColor = [UIColor redColor];
-            _errorLabel.text = @"Please enter a valid email address";
             return NO;
         }
         
@@ -165,9 +174,16 @@
     }
     
     //Email address is not valid
-    if (_emailTextField.text.length < 5) {
+    if ([self validateInputWithString:_emailTextField] == NO) {
         _canSegue = @"NO";
         _errorCode = @"ValidEmail";
+        return;
+    }
+    
+    //Email address already has an account
+    if ([Queries validateEmail:_email] == YES) {
+        _canSegue = @"NO";
+        _errorCode = @"EmailExists";
         return;
     }
     
@@ -189,6 +205,22 @@
         _canSegue = @"YES";
     }
     
+}
+
+- (BOOL)validateInputWithString:(UITextField *)aTextField {
+    NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSError *error = NULL;
+    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regularExpression
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    if (error) {
+        NSLog(@"error %@", error);
+    }
+    NSUInteger numberOfMatches = [regEx numberOfMatchesInString:aTextField.text
+                                                        options:0
+                                                        range:NSMakeRange(0, [aTextField.text length])];
+    NSLog(@"Number of Matches: %d", numberOfMatches);
+    return numberOfMatches > 0;
 }
 
 /*
