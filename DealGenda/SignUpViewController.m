@@ -36,17 +36,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
+
+    //Set up scroll functionaity to prevent keyboard from hiding fields
     [scrollView setScrollEnabled:YES];
     scrollView.contentSize = CGSizeMake(320, 320);
     
-    /*
+    //Set up birth date date picker
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    
+    datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:[NSDate date]];
     [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
-    [_birthDateTextField setInputView:datePicker];*/
+    [_birthDateTextField setInputView:datePicker];
+    
+    //Set up Gender Picker
+    self.pickerViewArray = [NSArray arrayWithObjects:
+                            @"Undisclosed", @"Male", @"Female",
+                            nil];
+    UIPickerView *genderPicker = [[UIPickerView alloc] init];
+    
+    genderPicker.delegate = self;
+    genderPicker.dataSource = self;
+    
+    [_genderTextField setInputView:genderPicker];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,7 +134,7 @@
         //Set label for missing required fields
         if([_errorCode isEqualToString:(@"Required")]){
             _errorLabel.textColor = [UIColor redColor];
-            _errorLabel.text = @"Missing Required Fields";
+            _errorLabel.text = @"Missing Information in Required Fields";
             return NO;
         }
 
@@ -207,6 +220,7 @@
     
 }
 
+//Validates email address format
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
     NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSError *error = NULL;
@@ -223,16 +237,37 @@
     return numberOfMatches > 0;
 }
 
-/*
+//Pulls up the Pickers instead of keyboard when appropriate
 -(void)updateTextField:(id)sender
 {
     if([_birthDateTextField isFirstResponder]){
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"dd-MM-yyyy"];
+        
         UIDatePicker *picker = (UIDatePicker*)_birthDateTextField.inputView;
-        _birthDateTextField.text = [NSString stringWithFormat:@"%@",picker.date];
+        NSString *theDate = [dateFormat stringFromDate:picker.date];
+        _birthDateTextField.text = theDate;
+
     }
+    
+}
 
-}*/
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    
+    return 1;
+}
 
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    return [_pickerViewArray count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [_pickerViewArray objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {    
+    _genderTextField.text = [_pickerViewArray objectAtIndex:row];
+}
 
 //Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
 -(IBAction) slideFrameUp;
@@ -259,11 +294,10 @@
     [UIView commitAnimations];
 }
 
+//close keyboard when return key is pressed
 -(BOOL)textFieldShouldReturn:(UITextView *)textField{
     [textField resignFirstResponder];
     return YES;
 }
-
-
 
 @end

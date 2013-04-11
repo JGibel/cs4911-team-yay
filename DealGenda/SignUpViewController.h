@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FavoritesViewController.h"
 
-@interface SignUpViewController : UIViewController{
+@interface SignUpViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>{
     IBOutlet UIScrollView *scrollView;
     
 }
@@ -39,6 +39,8 @@
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSString *canSegue;
 @property (strong, nonatomic) NSString *errorCode;
+@property (nonatomic, retain) NSArray *pickerViewArray;
+
 
 
 @end
