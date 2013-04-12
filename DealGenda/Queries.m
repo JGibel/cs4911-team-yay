@@ -258,6 +258,8 @@
     [fm close];
     [db close];
     return details;
+}
+
 +(NSMutableArray *) getRetailers
 {
     NSMutableArray *retailersList = [[NSMutableArray alloc] init];
@@ -377,7 +379,7 @@
         return;
     }
     
-    [db executeUpdate:@"INSERT INTO userItemPreferences (id, category) VALUES (?,?)", appDelegate.user, category];
+    [db executeUpdate:@"INSERT INTO userItemPreferences (id, itemcategory) VALUES (?,?)", appDelegate.user, category];
     
     [db close];
 }
@@ -390,14 +392,13 @@
         return;
     }
     
-    [db executeUpdate:@"DELETE FROM userItemPreferences WHERE category = ? AND id = ?", category, appDelegate.user];
+    [db executeUpdate:@"DELETE FROM userItemPreferences WHERE itemcategory = ? AND id = ?", category, appDelegate.user];
     
     [db close];
 }
 
 +(NSNumber *) getRetailerID : (NSString *) retailerName
 {
-    NSLog(@"Passing retailer name %@", retailerName);
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
     if(![db open]) {
@@ -410,7 +411,6 @@
     }
     [result close];
     [db close];
-    NSLog(@"Getting retailer id %@", retailerID);
     return retailerID;
 }
 
@@ -429,6 +429,117 @@
     [result close];
     [db close];
     return name;
+}
+
++(NSMutableArray *) getCoupons
+{
+    NSMutableArray* tempRetailers = [[NSMutableArray alloc] init];
+    NSMutableArray* tempItems = [[NSMutableArray alloc] init];
+    NSMutableArray* couponList = [[NSMutableArray alloc] init];
+
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //Query for retailers that match the logged-in user's preferences
+    FMResultSet *queryResult = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userRetailerPreferences.id FROM coupons JOIN userRetailerPreferences ON coupons.retailerid = userRetailerPreferences.retailerid WHERE userRetailerPreferences.id = ? ORDER BY coupons.expdate", appDelegate.user];
+    //For each result of the query, add to the array of retailers to be displayed
+    while ([queryResult next]) {
+        NSString *barcode = [queryResult stringForColumn:@"barcode"];
+        NSString *expdate = [queryResult stringForColumn:@"expdate"];
+        NSString *retailer = [queryResult stringForColumn:@"retailerName"];
+        NSString *offer = [queryResult stringForColumn:@"offer"];
+    
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        [tempRetailers addObject:tempCoupon];
+
+    }
+    
+    //Query for items that match the logged-in user's preferences
+    FMResultSet *queryResultItem1 = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.id FROM coupons JOIN userItemPreferences ON coupons.itemCategory1 = userItemPreferences.itemCategory WHERE userItemPreferences.id = ? ORDER BY coupons.expdate", appDelegate.user];
+    //Add results that match preference category 1
+    while([queryResultItem1 next]) {
+        NSString *barcode = [queryResultItem1 stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem1 stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem1 stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem1 stringForColumn:@"offer"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
+        }
+    }
+    //requery for category 2
+    FMResultSet *queryResultItem2 = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.id FROM coupons JOIN userItemPreferences ON coupons.itemCategory2 = userItemPreferences.itemCategory WHERE userItemPreferences.id = ? ORDER BY coupons.expdate", appDelegate.user];
+    //Add results that match preference category 2
+    while([queryResultItem2 next]) {
+        NSString *barcode = [queryResultItem2 stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem2 stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem2 stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem2 stringForColumn:@"offer"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
+        }
+    }
+    //requery for category 3
+    FMResultSet *queryResultItem3 = [db executeQuery:@"SELECT coupons.barcode, coupons.expdate, coupons.retailerName, coupons.offer, userItemPreferences.id FROM coupons JOIN userItemPreferences ON coupons.itemCategory3 = userItemPreferences.itemCategory WHERE userItemPreferences.id = ? ORDER BY coupons.expdate", appDelegate.user];
+    //Add results that match preference category 3
+    while([queryResultItem3 next]) {
+        NSString *barcode = [queryResultItem3 stringForColumn:@"barcode"];
+        NSString *expdate = [queryResultItem3 stringForColumn:@"expdate"];
+        NSString *retailer = [queryResultItem3 stringForColumn:@"retailerName"];
+        NSString *offer = [queryResultItem3 stringForColumn:@"offer"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        dateFromString = [dateFormatter dateFromString:expdate];
+        
+        Coupon *tempCoupon = [[Coupon alloc] initWithBarcode:barcode Expiration:dateFromString Retailer:retailer Offer:offer];
+        
+        if (![tempItems containsObject:tempCoupon]) {
+            [tempItems addObject:tempCoupon];
+        }
+    }
+    [queryResultItem1 close];
+    [queryResultItem2 close];
+    [queryResultItem3 close];
+
+    [db close];
+    //loop through retailers and items and save any that match both user preferences
+    for (int i = 0; i < [tempRetailers count]; i++) {
+        for (int j = 0; j < [tempItems count]; j++) {
+            
+            NSString *retBar = [[tempRetailers objectAtIndex:i] getBarcode];
+            NSString *itemBar = [[tempItems objectAtIndex:j] getBarcode];
+            if ([retBar isEqualToString:itemBar] && ![couponList containsObject:[tempRetailers objectAtIndex:i]]) {
+                [couponList addObject:[tempRetailers objectAtIndex:i]];
+            }
+        }
+    }
+
+    return couponList;
 }
 
 

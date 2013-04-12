@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) NSMutableArray *retailersList;
 @property (strong, nonatomic) NSMutableArray *itemsList;
+@property (strong, nonatomic) NSMutableArray *retailerListFull;
+@property (strong, nonatomic) NSMutableArray *itemListFull;
 @property (strong, nonatomic) IBOutlet UIButton *doneButton;
 @property NSInteger *state;
 

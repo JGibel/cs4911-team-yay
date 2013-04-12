@@ -17,6 +17,8 @@
 @implementation FavoritesViewController
 @synthesize retailersList;
 @synthesize itemsList;
+@synthesize retailerListFull;
+@synthesize itemListFull;
 @synthesize state;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,14 +39,12 @@
 - (void)viewDidLoad
 {
     state = 0;//retailer
-    retailersList = [[NSMutableArray alloc] init];
-    itemsList = [[NSMutableArray alloc]init];
+    retailersList = [Queries getRetailerPrefs];
+    itemsList = [Queries getItemPrefs];
     [super viewDidLoad];
     
     self.title = @"Favorites";
-    
-    
-    
+
     //test to see where the user comes from and move the done button off screen if they are logged in
     if ([self.parentViewController isKindOfClass:[UINavigationController class]]) {
         _doneButton.bounds = CGRectMake(_doneButton.bounds.origin.x, 0, _doneButton.bounds.size.width, _doneButton.bounds.size.height);
@@ -53,9 +53,6 @@
         _doneButton.bounds = CGRectMake(_doneButton.bounds.origin.x, 69, _doneButton.bounds.size.width, _doneButton.bounds.size.height);
 
     }
-    
-    retailersList = [Queries getRetailers];
-    itemsList = [Queries getItems];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,11 +81,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    retailerListFull = [Queries getRetailers];
+    itemListFull = [Queries getItems];
     //detect table length dependent on which tab is active
     if (state == 0) {
-        return [retailersList count];
+        return [retailerListFull count];
     } else {
-        return [itemsList count];
+        return [itemListFull count];
     }
 }
 
@@ -112,17 +111,12 @@
         [retailerSwitch setTag:indexPath.row];
         
         //set cell information
-        [cell.textLabel setText:[retailersList objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[retailerListFull objectAtIndex:indexPath.row]];
         [cell setAccessoryView:retailerSwitch];
         
-        NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];
-        
-        //query for retailer prefs
-        resultPrefs = [Queries getRetailerPrefs];
-        
         //set switch state based on preferences
-        for (int i = 0; i < [resultPrefs count]; i++) {
-            if ([cell.textLabel.text isEqualToString: [resultPrefs objectAtIndex:i]]) {
+        for (int i = 0; i < [retailersList count]; i++) {
+            if ([cell.textLabel.text isEqualToString: [retailersList objectAtIndex:i]]) {
                 [retailerSwitch setOn:TRUE];
                 break;
             }
@@ -144,16 +138,12 @@
         [itemsSwitch setTag:indexPath.row];
         
         //set cell information
-        [cell.textLabel setText:[itemsList objectAtIndex:indexPath.row]];
+        [cell.textLabel setText:[itemListFull objectAtIndex:indexPath.row]];
         [cell setAccessoryView:itemsSwitch];
         
-        //query for item prefs
-        NSMutableArray *resultPrefs = [[NSMutableArray alloc] init];
-        resultPrefs = [Queries getItemPrefs];
-        
         //set switch state based on preferences
-        for (int i = 0; i < [resultPrefs count]; i++) {
-            if ([cell.textLabel.text isEqualToString: [resultPrefs objectAtIndex:i]]) {
+        for (int i = 0; i < [itemsList count]; i++) {
+            if ([cell.textLabel.text isEqualToString: [itemsList objectAtIndex:i]]) {
                 [itemsSwitch setOn:TRUE];
                 break;
             }
@@ -162,39 +152,49 @@
             }
         }        
     }
-    
     return cell;
-    
 }
 
 //what happens whenever a switch is toggled
 - (void) switchToggled:(id)sender {
-    //NSString *email = [Queries getEmail];
     UISwitch *mySwitch = (UISwitch *)sender;
 
     if (state == 0) {
         if ([mySwitch isOn]) {
-            NSString* retailer = [retailersList objectAtIndex:mySwitch.tag];
+            NSString* retailer = [retailerListFull objectAtIndex:mySwitch.tag];
             NSNumber* retailerID = [Queries getRetailerID: retailer];
             [Queries addRetailerPref: retailerID : retailersList];
             [retailersList addObject: retailer];
 
         } else {
-            NSString* retailer = [retailersList objectAtIndex:mySwitch.tag];
+            NSString* retailer = [retailerListFull objectAtIndex:mySwitch.tag];
             NSNumber* retailerID = [Queries getRetailerID: retailer];
             [Queries removeRetailerPref:retailerID :retailersList];
-            [retailersList removeObject: retailer];
+            NSMutableArray* tempList = [[NSMutableArray alloc] init];
+            for (NSString *retailers in retailersList) {
+                if(![retailers isEqualToString: retailer]) {
+                    [tempList addObject: retailers];
+                }
+            }
+            [retailersList removeAllObjects];
+            retailersList = tempList;
         }
     } else {
         if ([mySwitch isOn]) {
-            NSString* category = [itemsList objectAtIndex:mySwitch.tag];
+            NSString* category = [itemListFull objectAtIndex:mySwitch.tag];
             [Queries addItemPref: category : itemsList];
             [itemsList addObject: category];
         } else {
-            NSString* category = [itemsList objectAtIndex:mySwitch.tag];
+            NSString* category = [itemListFull objectAtIndex:mySwitch.tag];
             [Queries removeItemPref: category : itemsList];
-            [itemsList removeObject: category];
-
+            NSMutableArray* tempList = [[NSMutableArray alloc] init];
+            for (NSString *categories in itemsList) {
+                if(![categories isEqualToString:category]) {
+                    [tempList addObject: categories];
+                }
+            }
+            [itemsList removeAllObjects];
+            itemsList = tempList;
         }
     }
 }
