@@ -82,24 +82,14 @@
     if (![db open]) {
         return;
     }
-
-    //Query pulls all passwords from the users table where the email is equal to the emailValue, set above
-    FMResultSet *queryResult = [db executeQuery:@"SELECT * FROM users WHERE email = ?", _username];
-    if ([queryResult next]) {
-        NSString *result = [queryResult stringForColumn:@"password"];
-        NSLog(@"%@",result);
-        if([_passwordValue isEqualToString:(result)]) {
-            NSLog(@"TRUE");
-            appDelegate.user = [Queries getId:_username];
-            _canSegue = @"YES";
-            
-        }
-        else{
-            NSLog(@"FALSE");
-            _canSegue = @"NO";
-
-        }
-        [queryResult close];
+    
+    if([Queries validateEmail:_username] && [Queries validatePassword:_username : _passwordValue]) {
+        NSLog(@"TRUE");
+        appDelegate.user = [Queries getId:_username];
+        _canSegue = @"YES";
+    } else {
+        NSLog(@"FALSE");
+        _canSegue = @"NO";
     }
     
     if([_canSegue isEqualToString:(@"NO")] && [_buttonID isEqualToString:(@"loginButton")]){
