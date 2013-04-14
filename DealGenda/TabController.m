@@ -8,6 +8,9 @@
 
 #import "TabController.h"
 #import "AppDelegate.h"
+#import "CouponListViewController.h"
+#import "FavoritesViewController.h"
+#import "SettingsViewController.h"
 
 @interface TabController ()
 
@@ -39,13 +42,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logout:(id)sender {
-    NSLog(@"Logout?");
-    
+- (IBAction)logout:(id)sender {    
     //reset user login status
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.user = nil;
-    
+    //pop view to the login view
     [self.navigationController popToRootViewControllerAnimated:YES];
     
     
@@ -54,6 +55,18 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     //set the navbar title to the corresponding tab title
     self.navigationItem.title = item.title;
+    if ([item.title isEqualToString:@"Coupons"]) {
+        //Coupon List is active
+        NSLog(@"Coupons");
+    } else if ([item.title isEqualToString:@"Favorites"]) {
+        //Favorites is active
+        NSLog(@"Favorites");
+    
+    } else if ([item.title isEqualToString:@"Settings"]) {
+        //Settings is active
+        NSLog(@"Settings");
+    }
+
 }
 
 @end
