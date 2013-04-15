@@ -21,5 +21,15 @@
 +(NSString *) getCouponOffer:(NSString *)barcode;
 +(NSString *) getCouponExpirationDate:(NSString *)barcode;
 +(NSString *) getCouponDetails:(NSString *)barcode;
++(NSMutableArray *) getCoupons;
++(NSMutableArray *) getRetailers;
++(NSMutableArray *) getItems;
++(NSMutableArray *) getRetailerPrefs;
++(NSMutableArray *) getItemPrefs;
++(void) addRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList;
++(void) addItemPref : (NSString *) category : (NSMutableArray *) itemsList;
++(NSNumber *) getRetailerID : (NSString *) retailerName;
++(void) removeRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList;
++(void) removeItemPref : (NSString *) category : (NSMutableArray *) itemsList;
 
 @end

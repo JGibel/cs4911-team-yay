@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FavoritesViewController.h"
 
-@interface SignUpViewController : UIViewController{
+@interface SignUpViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>{
     IBOutlet UIScrollView *scrollView;
     
 }
 
+//Storyboard Elements
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *birthDateTextField;
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verifyPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *genderTextField;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+
 
 -(IBAction) dismissKeyboard:(id)sender;
 -(IBAction) slideFrameUp;
@@ -35,6 +38,9 @@
 @property (strong, nonatomic) NSString *verifyPassword;
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSString *canSegue;
+@property (strong, nonatomic) NSString *errorCode;
+@property (nonatomic, retain) NSArray *pickerViewArray;
+
 
 
 @end
