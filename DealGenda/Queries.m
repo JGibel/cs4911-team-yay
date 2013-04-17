@@ -144,7 +144,7 @@
     [db close];
 }
 
-+(void) addUser: (NSString *) firstName : (NSString *) lastName : (NSDate *) birthDate : (NSString *) email : (NSString *) password :(NSString *) gender
++(void) addUserWithFName:(NSString *)firstName LName:(NSString *)lastName Birthday:(NSString *)birthday Email:(NSString *)email Password:(NSString *)password Gender:(NSString *)gender
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
@@ -152,7 +152,9 @@
         return;
     }
     
-    [db executeUpdate:@"insert into users values(? , ?, ? ,?, ?, ?)", email, password, firstName, lastName, gender, birthDate];
+    [db executeUpdate:@"insert into users values(null, ? , ?, ? ,?, ?, ?)", email, password, firstName, lastName, gender, birthday];
+//    appDelegate.user = [Queries getId:[Queries getEmail]];
+//    NSLog(@"%@", appDelegate.user);
     [db close];
 }
 
@@ -540,6 +542,17 @@
     }
 
     return couponList;
+}
+
++(void) setLoggedInUser:(NSNumber *)userId {
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if(![db open]) {
+        return;
+    }
+    appDelegate.user = userId;
+    NSLog(@"%@", appDelegate.user);
+    [db close];
 }
 
 

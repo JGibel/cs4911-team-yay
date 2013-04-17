@@ -117,6 +117,13 @@
     [_passwordTextField resignFirstResponder];
     [_verifyPasswordTextField resignFirstResponder];
     [_genderTextField resignFirstResponder];
+    
+    if([_canSegue isEqualToString:(@"YES")]){
+        NSLog(@"here");
+        [Queries addUserWithFName:_firstName LName:_lastName Birthday:_birthDate Email:_email Password:_password Gender:_gender];
+        NSNumber *userId = [Queries getId:_email];
+        [Queries setLoggedInUser:userId];
+    }
 
 }
 
@@ -125,7 +132,7 @@
     // If the can segue variable has been set to yes, allow a segue
     if([_canSegue isEqualToString:(@"YES")]){
         _errorLabel.text = @"";
-        //[Queries addUser:_firstName:_lastName:_birthDate:_email:_password:_gender];
+     //   [Queries addUser: _firstName : _lastName : _birthDate : _email : _password : _gender];
         return YES;
     }
     
@@ -243,7 +250,7 @@
 {
     if([_birthDateTextField isFirstResponder]){
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"dd-MM-yyyy"];
+        [dateFormat setDateFormat:@"MM/dd/yyyy"];
         
         UIDatePicker *picker = (UIDatePicker*)_birthDateTextField.inputView;
         NSString *theDate = [dateFormat stringFromDate:picker.date];

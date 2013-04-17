@@ -28,8 +28,10 @@
 +(NSMutableArray *) getItemPrefs;
 +(void) addRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList;
 +(void) addItemPref : (NSString *) category : (NSMutableArray *) itemsList;
++(void) addUserWithFName:(NSString *)firstName LName:(NSString *)lastName Birthday:(NSString *)birthday Email:(NSString *)email Password:(NSString *)password Gender:(NSString *)gender;
 +(NSNumber *) getRetailerID : (NSString *) retailerName;
 +(void) removeRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList;
 +(void) removeItemPref : (NSString *) category : (NSMutableArray *) itemsList;
++(void) setLoggedInUser:(NSNumber *)userId;
 
 @end
