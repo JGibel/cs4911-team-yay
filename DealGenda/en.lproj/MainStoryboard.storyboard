@@ -345,7 +345,7 @@
             <objects>
                 <viewController title="PassExtensionView" id="8sU-tu-T97" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L6k-3n-fH7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-e7-FSl">
@@ -372,14 +372,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1R-sV-I7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1202" y="471"/>
+            <point key="canvasLocation" x="828" y="471"/>
         </scene>
         <!--View Controller - PaymentView-->
         <scene sceneID="ezn-cE-dGv">
             <objects>
                 <viewController title="PaymentView" id="SDJ-Qc-UOX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DG4-r9-gqc">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -445,6 +445,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="8sU-tu-T97" kind="push" id="4HM-nV-Q1h"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-rf-7P6">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -488,21 +491,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9y-uK-560" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="425" y="471"/>
-        </scene>
-        <!--View Controller - PassView-->
-        <scene sceneID="vfp-tl-Esn">
-            <objects>
-                <viewController title="PassView" id="Syb-3o-cUJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wzG-Sx-YZa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Pass View" id="a4i-CT-gIK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vVP-ku-Skp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="798" y="471"/>
         </scene>
         <!--Sign Up View Controller - SignUpView-->
         <scene sceneID="hZB-ZD-etU">
@@ -906,6 +894,94 @@
         <image name="heart.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CouponListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addPass:"/>
+                <relationship kind="outlet" name="detailsTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedChartButtonChanged:"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="signUpButton:"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resignButton:"/>
+                <relationship kind="action" name="saveSettings:"/>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resignButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SignUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="continueButton:" candidateClass="UIButton"/>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="slideFrameDown"/>
+                <relationship kind="action" name="slideFrameUp"/>
+                <relationship kind="outlet" name="birthDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="genderTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="verifyPasswordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="TabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
