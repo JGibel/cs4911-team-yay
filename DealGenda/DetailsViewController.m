@@ -8,8 +8,9 @@
 
 #import "DetailsViewController.h"
 #import "Queries.h"
+#import <PassKit/PassKit.h>
 
-@interface DetailsViewController ()
+@interface DetailsViewController () <PKAddPassesViewControllerDelegate>
 
 @end
 
@@ -48,4 +49,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)openPassWithName:(NSString*)name
+{
+    //2
+    NSString* passFile = [[[NSBundle mainBundle] resourcePath]
+                          stringByAppendingPathComponent: name];
+    
+    //3
+    NSData *passData = [NSData dataWithContentsOfFile:passFile];
+    
+    //4
+    NSError* error = nil;
+    PKPass *newPass = [[PKPass alloc] initWithData:passData
+                                             error:&error];
+    //5
+    if (error!=nil) {
+        [[[UIAlertView alloc] initWithTitle:@"Passes error"
+                                    message:[error
+                                             localizedDescription]
+                                   delegate:nil
+                          cancelButtonTitle:@"Ooops"
+                          otherButtonTitles: nil] show];
+        return;
+    }
+    
+    //6
+    PKAddPassesViewController *addController =
+    [[PKAddPassesViewController alloc] initWithPass:newPass];
+    
+    addController.delegate = self;
+    [self presentViewController:addController
+                       animated:YES
+                     completion:nil];
+}
+
+#pragma mark - Pass controller delegate
+
+-(void)addPassesViewControllerDidFinish: (PKAddPassesViewController*) controller
+{
+    //pass added
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"here");
+}
+
+- (IBAction)addPass:(id)sender {
+//    [self openPassWithName:@"GenericPass.pkpass"];
+    [self openPassWithName:@"Test.pkpass"];
+}
 @end

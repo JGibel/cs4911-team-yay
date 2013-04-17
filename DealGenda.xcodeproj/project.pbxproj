@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904370D1712238800BD06C5 /* DetailsViewController.m */; };
+		191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191143A0171F26DE00489B1F /* PassKit.framework */; };
+		191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AB171F3D5500489B1F /* GenericPass.pkpass */; };
+		191143B0171F47AD00489B1F /* Test.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AF171F47AD00489B1F /* Test.pkpass */; };
 		1927742A171336770031F135 /* 003.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19277429171336770031F135 /* 003.sql */; };
 		1929A6681709F89C00745F75 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929A6671709F89C00745F75 /* Coupon.m */; };
 		1929A66A170A435700745F75 /* 002.sql in Resources */ = {isa = PBXBuildFile; fileRef = 1929A669170A435700745F75 /* 002.sql */; };
@@ -60,6 +63,9 @@
 /* Begin PBXFileReference section */
 		1904370C1712238800BD06C5 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		1904370D1712238800BD06C5 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		191143A0171F26DE00489B1F /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		191143AB171F3D5500489B1F /* GenericPass.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericPass.pkpass; sourceTree = "<group>"; };
+		191143AF171F47AD00489B1F /* Test.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.pkpass; sourceTree = "<group>"; };
 		19277429171336770031F135 /* 003.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 003.sql; sourceTree = "<group>"; };
 		1929A6661709F89C00745F75 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		1929A6671709F89C00745F75 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */,
 				2864F2E216E311A600680516 /* libsqlite3.dylib in Frameworks */,
 				192D221A16B7243D00F2D773 /* UIKit.framework in Frameworks */,
 				192D221C16B7243D00F2D773 /* Foundation.framework in Frameworks */,
@@ -146,6 +153,9 @@
 		192D220A16B7243D00F2D773 = {
 			isa = PBXGroup;
 			children = (
+				191143AF171F47AD00489B1F /* Test.pkpass */,
+				191143AB171F3D5500489B1F /* GenericPass.pkpass */,
+				191143A0171F26DE00489B1F /* PassKit.framework */,
 				2864F2E116E311A600680516 /* libsqlite3.dylib */,
 				192D221F16B7243D00F2D773 /* DealGenda */,
 				192D224316B7243D00F2D773 /* DealGendaTests */,
@@ -362,6 +372,8 @@
 				1929A66A170A435700745F75 /* 002.sql in Resources */,
 				1927742A171336770031F135 /* 003.sql in Resources */,
 				28C33B931717B14900D91259 /* 004.sql in Resources */,
+				191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */,
+				191143B0171F47AD00489B1F /* Test.pkpass in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

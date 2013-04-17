@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *offerLabel;
 @property (strong, nonatomic) IBOutlet UITextView *detailsTextView;
 @property (strong, nonatomic) IBOutlet UILabel *expDateLabel;
+- (IBAction)addPass:(id)sender;
 
 @end
