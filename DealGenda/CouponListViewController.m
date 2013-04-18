@@ -73,12 +73,15 @@
     
     //generate subview locations for cell text
     expLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 15.0, 90.0, 15.0)];
+    expLabel.backgroundColor = cell.backgroundColor;
     [cell.contentView addSubview:expLabel];
     retailerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 5.0, 185.0, 20.0)];
     retailerLabel.font = [UIFont boldSystemFontOfSize:16];
+    retailerLabel.backgroundColor = cell.backgroundColor;
     [cell.contentView addSubview:retailerLabel];
     offerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 25.0, 185.0, 15.0)];
     offerLabel.font = [UIFont systemFontOfSize:12.0];
+    offerLabel.backgroundColor = cell.backgroundColor;
     [cell.contentView addSubview:offerLabel];
     
     //set cell text
