@@ -38,6 +38,7 @@
 		19DDFCBD17060ACD002DB404 /* coupons.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBC17060ACD002DB404 /* coupons.png */; };
 		19DDFCC017060C21002DB404 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBE17060C21002DB404 /* heart.png */; };
 		19DDFCC117060C21002DB404 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBF17060C21002DB404 /* settings.png */; };
+		19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 19E139771721B7DE0071DB9C /* PassSource.pkpass */; };
 		2826CB1C16E313F100AA6BE5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1216E313F100AA6BE5 /* FMDatabase.m */; };
 		2826CB1D16E313F100AA6BE5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1416E313F100AA6BE5 /* FMDatabaseAdditions.m */; };
 		2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1616E313F100AA6BE5 /* FMDatabasePool.m */; };
@@ -104,6 +105,7 @@
 		19DDFCBC17060ACD002DB404 /* coupons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons.png; sourceTree = "<group>"; };
 		19DDFCBE17060C21002DB404 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		19DDFCBF17060C21002DB404 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		19E139771721B7DE0071DB9C /* PassSource.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = PassSource.pkpass; sourceTree = "<group>"; };
 		2826CB1116E313F100AA6BE5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2826CB1216E313F100AA6BE5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2826CB1316E313F100AA6BE5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				191143AF171F47AD00489B1F /* Test.pkpass */,
 				191143AB171F3D5500489B1F /* GenericPass.pkpass */,
+				19E139771721B7DE0071DB9C /* PassSource.pkpass */,
 				191143A0171F26DE00489B1F /* PassKit.framework */,
 				2864F2E116E311A600680516 /* libsqlite3.dylib */,
 				192D221F16B7243D00F2D773 /* DealGenda */,
@@ -374,6 +377,7 @@
 				28C33B931717B14900D91259 /* 004.sql in Resources */,
 				191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */,
 				191143B0171F47AD00489B1F /* Test.pkpass in Resources */,
+				19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

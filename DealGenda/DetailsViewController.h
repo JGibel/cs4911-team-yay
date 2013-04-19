@@ -16,5 +16,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *detailsTextView;
 @property (strong, nonatomic) IBOutlet UILabel *expDateLabel;
 - (IBAction)addPass:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *addButton;
+@property (strong, nonatomic) IBOutlet UIButton *openButton;
+- (IBAction)openPassbook:(id)sender;
 
 @end

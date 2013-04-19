@@ -429,6 +429,19 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpO-iy-Pjv">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Open in Passbook">
+                                    <color key="titleColor" red="0.1058823529" green="0.1843137255" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openPassbook:" destination="zVV-Ca-j3R" eventType="touchUpInside" id="vHR-SR-Rc2"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xka-Iw-1VX">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Add to Passbook">
@@ -439,7 +452,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addPass:" destination="zVV-Ca-j3R" eventType="touchUpInside" id="rCP-4f-Z9x"/>
+                                    <action selector="addPass:" destination="zVV-Ca-j3R" eventType="touchUpInside" id="asF-gU-ah6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retailer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-eL-HJu">
@@ -481,7 +494,7 @@
                                     <segue destination="8sU-tu-T97" kind="push" id="4HM-nV-Q1h"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-rf-7P6">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-rf-7P6">
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.98039215686274506" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="171" id="Lm1-Hn-ddZ"/>
@@ -498,14 +511,17 @@
                             <constraint firstItem="HjX-ie-6Hz" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="98" id="8E4-d1-P6f"/>
                             <constraint firstItem="HjX-ie-6Hz" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9eT-y1-F1P"/>
                             <constraint firstItem="Xka-Iw-1VX" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BiV-2h-tLk"/>
+                            <constraint firstItem="zpO-iy-Pjv" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BjU-cI-kNf"/>
                             <constraint firstItem="Jy1-eL-HJu" firstAttribute="trailing" secondItem="xXd-0Z-MaP" secondAttribute="trailing" type="default" id="D1T-7q-7Zg"/>
                             <constraint firstItem="It9-mL-1Rp" firstAttribute="baseline" secondItem="HjX-ie-6Hz" secondAttribute="baseline" type="default" id="Dfi-0R-ypX"/>
+                            <constraint firstAttribute="trailing" secondItem="zpO-iy-Pjv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Edl-YG-zzG"/>
                             <constraint firstItem="Jy1-eL-HJu" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="15" id="FSb-nm-KRd"/>
                             <constraint firstItem="It9-mL-1Rp" firstAttribute="leading" secondItem="HjX-ie-6Hz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="H3S-Vq-JMX"/>
                             <constraint firstItem="YTg-Nj-NNW" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Lci-ek-x6a"/>
                             <constraint firstAttribute="trailing" secondItem="YTg-Nj-NNW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="O40-q7-ze3"/>
                             <constraint firstAttribute="trailing" secondItem="Xka-Iw-1VX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OP9-5w-2bd"/>
                             <constraint firstItem="Yrb-yT-V7N" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Z7o-JC-aRA"/>
+                            <constraint firstAttribute="bottom" secondItem="zpO-iy-Pjv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="af8-3V-Zfk"/>
                             <constraint firstAttribute="trailing" secondItem="ZDV-rf-7P6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fIY-Gf-ge0"/>
                             <constraint firstItem="Yrb-yT-V7N" firstAttribute="top" secondItem="xXd-0Z-MaP" secondAttribute="top" constant="127" id="kTZ-ac-4zy"/>
                             <constraint firstItem="ZDV-rf-7P6" firstAttribute="leading" secondItem="xXd-0Z-MaP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lhC-bz-YAp"/>
@@ -518,9 +534,11 @@
                     <navigationItem key="navigationItem" title="Details" id="lfA-xG-hTG"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="Xka-Iw-1VX" id="2v3-0S-tKe"/>
                         <outlet property="detailsTextView" destination="ZDV-rf-7P6" id="5QC-rj-wLp"/>
                         <outlet property="expDateLabel" destination="It9-mL-1Rp" id="gFV-jU-WB3"/>
                         <outlet property="offerLabel" destination="YTg-Nj-NNW" id="rOZ-6q-RCU"/>
+                        <outlet property="openButton" destination="zpO-iy-Pjv" id="uPZ-ps-AyV"/>
                         <outlet property="retailerLabel" destination="Jy1-eL-HJu" id="Pe8-0A-Bvt"/>
                     </connections>
                 </viewController>
@@ -1001,9 +1019,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addPass:"/>
+                <relationship kind="action" name="openPassbook:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="detailsTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="openButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

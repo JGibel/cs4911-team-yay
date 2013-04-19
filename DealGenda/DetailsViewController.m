@@ -31,6 +31,21 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
+    
+    NSString* passFile = [[[NSBundle mainBundle] resourcePath]
+                          stringByAppendingPathComponent:@"PassSource.pkpass"];
+    
+    NSData *passData = [NSData dataWithContentsOfFile:passFile];
+    
+    NSError* error = nil;
+    PKPass *newPass = [[PKPass alloc] initWithData:passData
+                                             error:&error];
+    if ([PKPassLibrary isPassLibraryAvailable]) {
+        PKPassLibrary *lib = [[PKPassLibrary alloc] init];
+        if ([lib containsPass:newPass]) {
+            _addButton.hidden = YES;
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -89,11 +104,50 @@
 {
     //pass added
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"here");
+    
+    if ([self hasPassWithName:@"PassSource.pkpass"]) {
+        _addButton.hidden = YES;
+    }
 }
 
 - (IBAction)addPass:(id)sender {
 //    [self openPassWithName:@"GenericPass.pkpass"];
-    [self openPassWithName:@"Test.pkpass"];
+    [self openPassWithName:@"PassSource.pkpass"];
+}
+
+- (IBAction)openPassbook:(id)sender {
+    NSString* passFile = [[[NSBundle mainBundle] resourcePath]
+                          stringByAppendingPathComponent:@"PassSource.pkpass"];
+    
+    NSData *passData = [NSData dataWithContentsOfFile:passFile];
+    
+    NSError* error = nil;
+    PKPass *newPass = [[PKPass alloc] initWithData:passData
+                                             error:&error];
+    if ([PKPassLibrary isPassLibraryAvailable]) {
+        PKPassLibrary *lib = [[PKPassLibrary alloc] init];
+        if ([lib containsPass:newPass]) {
+            [[UIApplication sharedApplication] openURL:[[lib passWithPassTypeIdentifier:[newPass passTypeIdentifier] serialNumber:[newPass serialNumber]] passURL]];
+
+        }
+    }
+}
+
+- (BOOL)hasPassWithName:(NSString *)name {
+    NSString* passFile = [[[NSBundle mainBundle] resourcePath]
+                          stringByAppendingPathComponent:@"PassSource.pkpass"];
+    
+    NSData *passData = [NSData dataWithContentsOfFile:passFile];
+    
+    NSError* error = nil;
+    PKPass *newPass = [[PKPass alloc] initWithData:passData
+                                             error:&error];
+    if ([PKPassLibrary isPassLibraryAvailable]) {
+        PKPassLibrary *lib = [[PKPassLibrary alloc] init];
+        if ([lib containsPass:newPass]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 @end
