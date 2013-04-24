@@ -11,6 +11,7 @@
 		191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191143A0171F26DE00489B1F /* PassKit.framework */; };
 		191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AB171F3D5500489B1F /* GenericPass.pkpass */; };
 		191143B0171F47AD00489B1F /* Test.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AF171F47AD00489B1F /* Test.pkpass */; };
+		1916DD1317286B750025E7B2 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1916DD1217286B750025E7B2 /* PaymentViewController.m */; };
 		1927742A171336770031F135 /* 003.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19277429171336770031F135 /* 003.sql */; };
 		1929A6681709F89C00745F75 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929A6671709F89C00745F75 /* Coupon.m */; };
 		1929A66A170A435700745F75 /* 002.sql in Resources */ = {isa = PBXBuildFile; fileRef = 1929A669170A435700745F75 /* 002.sql */; };
@@ -68,6 +69,8 @@
 		191143A0171F26DE00489B1F /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		191143AB171F3D5500489B1F /* GenericPass.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericPass.pkpass; sourceTree = "<group>"; };
 		191143AF171F47AD00489B1F /* Test.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.pkpass; sourceTree = "<group>"; };
+		1916DD1117286B750025E7B2 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		1916DD1217286B750025E7B2 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		19277429171336770031F135 /* 003.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 003.sql; sourceTree = "<group>"; };
 		1929A6661709F89C00745F75 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		1929A6671709F89C00745F75 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				678941C216EE4A98007999F5 /* LoginViewController.h */,
 				678941C316EE4A98007999F5 /* LoginViewController.m */,
 				192D223116B7243D00F2D773 /* MainStoryboard.storyboard */,
+				1916DD1117286B750025E7B2 /* PaymentViewController.h */,
+				1916DD1217286B750025E7B2 /* PaymentViewController.m */,
 				1904370C1712238800BD06C5 /* DetailsViewController.h */,
 				1904370D1712238800BD06C5 /* DetailsViewController.m */,
 				19CDF06C170B9EF4007456FF /* TabController.h */,
@@ -435,6 +440,7 @@
 				19CDF06E170B9EF4007456FF /* TabController.m in Sources */,
 				1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */,
 				19F2ED111725A5FB00565119 /* ExtensionViewController.m in Sources */,
+				1916DD1317286B750025E7B2 /* PaymentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

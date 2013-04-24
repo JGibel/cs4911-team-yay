@@ -17,4 +17,6 @@
 @property NSTimeInterval fiveDays;
 @property NSTimeInterval sevenDays;
 
+- (NSString *)calculateNewExpirationDate;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "ExtensionViewController.h"
 #import "Queries.h"
+#import "PaymentViewController.h"
 
 @interface ExtensionViewController ()
 
@@ -28,6 +29,12 @@
     if (self) {
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    backButton = nil;
 }
 
 - (void)viewDidLoad
@@ -155,8 +162,24 @@
         } else if (self.selectedRow == 2) {
             extensionLength = sevenDays;
         }
+    } else if ([indexPath section] == 2) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"payWithAppleIdSegue" sender:self.view];
+        } else if (indexPath.row == 1) {
+            [self performSegueWithIdentifier:@"payWithPayPalSegue" sender:self.view]; 
+        }
     }
     [tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath section] == 2) {
+        if (indexPath.row == 0) {
+            [self performSegueWithIdentifier:@"payWithAppleIdSegueAcc" sender:self.view];
+        } else if (indexPath.row == 1) {
+            [self performSegueWithIdentifier:@"payWithPayPalSegueAcc" sender:self.view];
+        }
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -164,19 +187,47 @@
     if (section == 0) {
         header = @"Extension Length:";
     } else if (section == 1) {
-        NSString *expdate = [Queries getCouponExpirationDate:self.barcode];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-        NSDate *dateFromString = [[NSDate alloc] init];
-        dateFromString = [dateFormatter dateFromString:expdate];
-        dateFromString = [dateFromString dateByAddingTimeInterval:extensionLength];
-        NSString *stringFromDate = [[NSString alloc] init];
-        stringFromDate = [dateFormatter stringFromDate:dateFromString];
-        header = [[NSString alloc] initWithFormat:@"New Expiration Date: %@", stringFromDate];
+        
+        header = [[NSString alloc] initWithFormat:@"New Expiration Date: %@", [self calculateNewExpirationDate]];
     } else if (section == 2) {
         header = @"Payment Method:";
     }
     return header;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    /* If the segue is pushing to the CouponDetailsView*/
+    if([segue.identifier isEqualToString:@"payWithAppleIdSegue"] || [segue.identifier isEqualToString:@"payWithAppleIdSegueAcc"]){
+        //get instance of view controller we are pushing to
+        PaymentViewController *controller = segue.destinationViewController;
+        //set the barcode value for the view controller we are navigating to
+        controller.barcode = self.barcode;
+        controller.expDate = [Queries getCouponExpirationDate:self.barcode];
+        controller.extendedExpDate = [self calculateNewExpirationDate];
+        controller.paymentMethod = @"Apple ID";
+    } else if([segue.identifier isEqualToString:@"payWithPayPalSegue"] || [segue.identifier isEqualToString:@"payWithPayPalSegueAcc"]){
+        //get instance of view controller we are pushing to
+        PaymentViewController *controller = segue.destinationViewController;
+        //set the barcode value for the view controller we are navigating to
+        controller.barcode = self.barcode;
+        controller.expDate = [Queries getCouponExpirationDate:self.barcode];
+        controller.extendedExpDate = [self calculateNewExpirationDate];
+        controller.paymentMethod = @"PayPal";
+    }
+}
+
+- (NSString *)calculateNewExpirationDate {
+    NSString *expdate = [Queries getCouponExpirationDate:self.barcode];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    NSDate *dateFromString = [[NSDate alloc] init];
+    dateFromString = [dateFormatter dateFromString:expdate];
+    dateFromString = [dateFromString dateByAddingTimeInterval:extensionLength];
+    NSString *stringFromDate = [[NSString alloc] init];
+    stringFromDate = [dateFormatter stringFromDate:dateFromString];
+    
+    return stringFromDate;
 }
 
 @end

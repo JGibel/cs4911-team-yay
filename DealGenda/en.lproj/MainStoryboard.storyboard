@@ -372,16 +372,105 @@
             </objects>
             <point key="canvasLocation" x="1598" y="-293"/>
         </scene>
-        <!--View Controller - PaymentView-->
+        <!--Payment View Controller - PaymentView-->
         <scene sceneID="ezn-cE-dGv">
             <objects>
-                <viewController title="PaymentView" id="SDJ-Qc-UOX" sceneMemberID="viewController">
+                <viewController title="PaymentView" id="SDJ-Qc-UOX" customClass="PaymentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DG4-r9-gqc">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Barcode:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-T5-K09">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Old Expiration Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po5-lD-6gL">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="New Expiration Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aN6-s2-ZIZ">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Payment Method:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0H-tJ-W6i">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-W4-NBr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MK-AD-1Gl">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6Q-jG-DA1">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkp-Qc-Txq">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Dt-84-nrk">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">In reality this would probably be some sort of terms and conditions.  The view does not implement any sort of payment api. It is meant only to demonstrate the passing of the necessary information about what is being extended and to edit that coupon in the dummy database.     Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHz-dI-NDv">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Assume payment and extend">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aEm-W4-NBr" firstAttribute="leading" secondItem="rH5-T5-K09" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2am-Ff-p7Q"/>
+                            <constraint firstItem="rH5-T5-K09" firstAttribute="top" secondItem="DG4-r9-gqc" secondAttribute="top" constant="20" symbolic="YES" type="default" id="3oT-LC-Cjz"/>
+                            <constraint firstItem="tkp-Qc-Txq" firstAttribute="leading" secondItem="L0H-tJ-W6i" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7Nw-Hi-EGs"/>
+                            <constraint firstItem="tkp-Qc-Txq" firstAttribute="baseline" secondItem="L0H-tJ-W6i" secondAttribute="baseline" type="default" id="92o-rY-JJP"/>
+                            <constraint firstItem="8MK-AD-1Gl" firstAttribute="baseline" secondItem="Po5-lD-6gL" secondAttribute="baseline" type="default" id="Bxu-x9-gAo"/>
+                            <constraint firstItem="rH5-T5-K09" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IZG-Ry-Vm0"/>
+                            <constraint firstItem="9Dt-84-nrk" firstAttribute="top" secondItem="L0H-tJ-W6i" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Iwh-ya-Ugr"/>
+                            <constraint firstItem="L0H-tJ-W6i" firstAttribute="top" secondItem="aN6-s2-ZIZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="LxE-Jf-os8"/>
+                            <constraint firstItem="Po5-lD-6gL" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="P18-IB-rDi"/>
+                            <constraint firstItem="Po5-lD-6gL" firstAttribute="top" secondItem="rH5-T5-K09" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QJa-ca-CcS"/>
+                            <constraint firstItem="J6Q-jG-DA1" firstAttribute="leading" secondItem="aN6-s2-ZIZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UpU-6V-x8f"/>
+                            <constraint firstItem="L0H-tJ-W6i" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Win-oQ-9gt"/>
+                            <constraint firstItem="aN6-s2-ZIZ" firstAttribute="top" secondItem="Po5-lD-6gL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XNK-gW-SOv"/>
+                            <constraint firstItem="aN6-s2-ZIZ" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YlL-Yg-scj"/>
+                            <constraint firstItem="9Dt-84-nrk" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bSr-KJ-XV5"/>
+                            <constraint firstItem="tHz-dI-NDv" firstAttribute="top" secondItem="9Dt-84-nrk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eJu-jH-p9D"/>
+                            <constraint firstAttribute="trailing" secondItem="tHz-dI-NDv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hjW-7w-aTB"/>
+                            <constraint firstItem="tHz-dI-NDv" firstAttribute="leading" secondItem="DG4-r9-gqc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="kfW-Zb-nqa"/>
+                            <constraint firstItem="8MK-AD-1Gl" firstAttribute="leading" secondItem="Po5-lD-6gL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pzl-Fj-b1X"/>
+                            <constraint firstItem="aEm-W4-NBr" firstAttribute="top" secondItem="DG4-r9-gqc" secondAttribute="top" constant="20" symbolic="YES" type="default" id="uvq-rF-aQW"/>
+                            <constraint firstAttribute="bottom" secondItem="tHz-dI-NDv" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="wSf-MQ-DIO"/>
+                            <constraint firstItem="J6Q-jG-DA1" firstAttribute="baseline" secondItem="aN6-s2-ZIZ" secondAttribute="baseline" type="default" id="wud-95-7SC"/>
+                            <constraint firstAttribute="trailing" secondItem="9Dt-84-nrk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xFe-TV-Pwa"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4h6-Gm-oWr"/>
+                    <navigationItem key="navigationItem" title="Confirm Information" id="4h6-Gm-oWr"/>
+                    <connections>
+                        <outlet property="barcodeLabel" destination="aEm-W4-NBr" id="Kwd-JM-uAp"/>
+                        <outlet property="expLabel" destination="8MK-AD-1Gl" id="9oW-Mj-YX2"/>
+                        <outlet property="extendedExpLabel" destination="J6Q-jG-DA1" id="sDz-nX-n68"/>
+                        <outlet property="paymentLabel" destination="tkp-Qc-Txq" id="OEW-1F-hOp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCs-KY-5Ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -558,7 +647,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Payment Method:" id="aLL-w4-1yB">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell" id="byw-Pv-yNo">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell" id="byw-Pv-yNo">
                                         <rect key="frame" x="0.0" y="272" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -566,8 +655,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="SDJ-Qc-UOX" kind="push" identifier="payWithAppleIdSegue" id="JSy-2o-F3C"/>
+                                            <segue destination="SDJ-Qc-UOX" kind="push" identifier="payWithAppleIdSegueAcc" trigger="accessoryAction" id="fbi-DO-lVo"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell" id="902-Oi-EfS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="paymentMethodCell" id="902-Oi-EfS">
                                         <rect key="frame" x="0.0" y="317" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -575,6 +668,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="SDJ-Qc-UOX" kind="push" identifier="payWithPayPalSegue" id="SsY-Ie-IWy"/>
+                                            <segue destination="SDJ-Qc-UOX" kind="push" identifier="payWithPayPalSegueAcc" trigger="accessoryAction" id="o84-dw-pam"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1052,108 +1149,15 @@
         <image name="heart.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="CouponListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returned:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addPass:"/>
-                <relationship kind="action" name="openPassbook:"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="detailsTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="expDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="offerLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="openButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="retailerLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ExtensionViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExtensionViewController.h"/>
-        </class>
-        <class className="FavoritesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedChartButtonChanged:"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="segmentControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="subView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissKeyboard:"/>
-                <relationship kind="action" name="loginButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="signUpButton:"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resignButton:"/>
-                <relationship kind="action" name="saveSettings:"/>
-                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pwTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="resignButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="verifyTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SignUpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SignUpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="continueButton:" candidateClass="UIButton"/>
-                <relationship kind="action" name="dismissKeyboard:"/>
-                <relationship kind="action" name="slideFrameDown"/>
-                <relationship kind="action" name="slideFrameUp"/>
-                <relationship kind="outlet" name="birthDateTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="genderTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="verifyPasswordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="TabController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="fmE-Or-hfr"/>
         <segue reference="vRv-tr-uJs"/>
         <segue reference="U83-Sz-YLj"/>
-        <segue reference="fmE-Or-hfr"/>
+        <segue reference="o84-dw-pam"/>
     </inferredMetricsTieBreakers>
 </document>
