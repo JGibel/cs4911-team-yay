@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904370D1712238800BD06C5 /* DetailsViewController.m */; };
+		190EBEA5172878E3001412D7 /* ExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190EBEA4172878E3001412D7 /* ExtensionViewController.m */; };
 		191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191143A0171F26DE00489B1F /* PassKit.framework */; };
 		191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AB171F3D5500489B1F /* GenericPass.pkpass */; };
 		191143B0171F47AD00489B1F /* Test.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AF171F47AD00489B1F /* Test.pkpass */; };
@@ -40,7 +41,6 @@
 		19DDFCC017060C21002DB404 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBE17060C21002DB404 /* heart.png */; };
 		19DDFCC117060C21002DB404 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBF17060C21002DB404 /* settings.png */; };
 		19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 19E139771721B7DE0071DB9C /* PassSource.pkpass */; };
-		19F2ED111725A5FB00565119 /* ExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2ED101725A5FB00565119 /* ExtensionViewController.m */; };
 		2826CB1C16E313F100AA6BE5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1216E313F100AA6BE5 /* FMDatabase.m */; };
 		2826CB1D16E313F100AA6BE5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1416E313F100AA6BE5 /* FMDatabaseAdditions.m */; };
 		2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1616E313F100AA6BE5 /* FMDatabasePool.m */; };
@@ -66,6 +66,8 @@
 /* Begin PBXFileReference section */
 		1904370C1712238800BD06C5 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		1904370D1712238800BD06C5 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		190EBEA3172878E3001412D7 /* ExtensionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionViewController.h; sourceTree = "<group>"; };
+		190EBEA4172878E3001412D7 /* ExtensionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionViewController.m; sourceTree = "<group>"; };
 		191143A0171F26DE00489B1F /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		191143AB171F3D5500489B1F /* GenericPass.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericPass.pkpass; sourceTree = "<group>"; };
 		191143AF171F47AD00489B1F /* Test.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.pkpass; sourceTree = "<group>"; };
@@ -110,8 +112,6 @@
 		19DDFCBE17060C21002DB404 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		19DDFCBF17060C21002DB404 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		19E139771721B7DE0071DB9C /* PassSource.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = PassSource.pkpass; sourceTree = "<group>"; };
-		19F2ED0F1725A5FB00565119 /* ExtensionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtensionViewController.h; path = ../ExtensionViewController.h; sourceTree = "<group>"; };
-		19F2ED101725A5FB00565119 /* ExtensionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExtensionViewController.m; path = ../ExtensionViewController.m; sourceTree = "<group>"; };
 		2826CB1116E313F100AA6BE5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2826CB1216E313F100AA6BE5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2826CB1316E313F100AA6BE5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 				2826CB1016E313F100AA6BE5 /* fmdb */,
 				192D222816B7243D00F2D773 /* AppDelegate.h */,
 				192D222916B7243D00F2D773 /* AppDelegate.m */,
-				19F2ED0F1725A5FB00565119 /* ExtensionViewController.h */,
-				19F2ED101725A5FB00565119 /* ExtensionViewController.m */,
+				190EBEA3172878E3001412D7 /* ExtensionViewController.h */,
+				190EBEA4172878E3001412D7 /* ExtensionViewController.m */,
 				678941C216EE4A98007999F5 /* LoginViewController.h */,
 				678941C316EE4A98007999F5 /* LoginViewController.m */,
 				192D223116B7243D00F2D773 /* MainStoryboard.storyboard */,
@@ -439,8 +439,8 @@
 				1929A6681709F89C00745F75 /* Coupon.m in Sources */,
 				19CDF06E170B9EF4007456FF /* TabController.m in Sources */,
 				1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */,
-				19F2ED111725A5FB00565119 /* ExtensionViewController.m in Sources */,
 				1916DD1317286B750025E7B2 /* PaymentViewController.m in Sources */,
+				190EBEA5172878E3001412D7 /* ExtensionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
