@@ -20,4 +20,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *extendedExpLabel;
 @property (strong, nonatomic) IBOutlet UILabel *paymentLabel;
 
+- (IBAction)extendCoupon:(id)sender;
 @end

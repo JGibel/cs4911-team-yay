@@ -49,4 +49,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)extendCoupon:(id)sender {
+    NSString *extendMessage = [[NSString alloc] initWithFormat:@""];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
+}
 @end

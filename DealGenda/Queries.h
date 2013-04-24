@@ -21,6 +21,7 @@
 +(NSString *) getCouponOffer:(NSString *)barcode;
 +(NSString *) getCouponExpirationDate:(NSString *)barcode;
 +(NSString *) getCouponDetails:(NSString *)barcode;
++(BOOL) couponHasBeenExtended:(NSString *)barcode;
 +(NSMutableArray *) getCoupons;
 +(NSMutableArray *) getRetailers;
 +(NSMutableArray *) getItems;

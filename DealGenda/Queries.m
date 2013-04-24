@@ -262,6 +262,27 @@
     return details;
 }
 
++(BOOL) couponHasBeenExtended:(NSString *)barcode {
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT hasBeenExtended FROM coupons WHERE barcode = ?", barcode];
+    if ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"hasBeenExtended"];
+        if ([result isEqualToString:@"TRUE"]) {
+            return YES;
+        } else if ([result isEqualToString:@"FALSE"]) {
+            return NO;
+        }
+    }
+
+    return NO;
+}
+
 +(NSMutableArray *) getRetailers
 {
     NSMutableArray *retailersList = [[NSMutableArray alloc] init];

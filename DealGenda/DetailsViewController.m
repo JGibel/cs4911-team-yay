@@ -152,14 +152,30 @@
     return NO;
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if([identifier isEqualToString:@"extensionSegue"]){
+        if (![Queries couponHasBeenExtended:self.barcode]) {
+            return YES;
+        } else {
+            NSString *extendMessage = [[NSString alloc] initWithFormat:@"The coupon with barcode %@ has already been extended", self.barcode];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     /* If the segue is pushing to the CouponDetailsView*/
     if([segue.identifier isEqualToString:@"extensionSegue"]){
-        //get instance of view controller we are pushing to
-        ExtensionViewController *controller = segue.destinationViewController;
-        //set the barcode value for the view controller we are navigating to
-        controller.barcode = self.barcode;
+        if (![Queries couponHasBeenExtended:self.barcode]) {
+            //get instance of view controller we are pushing to
+            ExtensionViewController *controller = segue.destinationViewController;
+            //set the barcode value for the view controller we are navigating to
+            controller.barcode = self.barcode;
+        } 
     }
 }
 
