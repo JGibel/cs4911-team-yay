@@ -31,6 +31,27 @@
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.hidesBackButton=YES;
     couponList = [Queries getCoupons];
+    
+/**
+ *The following codeblock will filter the coupon list to only include
+ *coupons that do not have an expiration date before today's date
+ *
+ *Uncomment this block to turn on the filtering
+*/
+
+/*
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [couponList count]; i++) {
+        if ([[[couponList objectAtIndex:i] getExpirationDate] compare:[NSDate date]] == NSOrderedAscending) {
+            [temp addObject:[couponList objectAtIndex:i]];
+        }
+    }
+    for (int i = 0; i < [temp count]; i++) {
+        if ([couponList containsObject:[temp objectAtIndex:i]]) {
+            [couponList removeObjectIdenticalTo:[temp objectAtIndex:i]];
+        }
+    }
+*/
 
     //reload the information in the table when the user returns to the view
     [_table reloadData];
