@@ -457,7 +457,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qlv-PE-gTc" kind="push" id="7Ue-wd-ftz"/>
+                                    <segue destination="Qlv-PE-gTc" kind="push" identifier="extensionSegue" id="7Ue-wd-ftz"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-rf-7P6">
@@ -519,7 +519,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="PIs-Jf-MBd">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.98039215686274506" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Extension Length:" id="NEc-g5-Fej">
                                 <cells>
@@ -584,7 +584,7 @@
                             <outlet property="delegate" destination="Qlv-PE-gTc" id="7j3-5c-GqG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="wxP-o7-feD"/>
+                    <navigationItem key="navigationItem" title="Extend this Coupon" id="wxP-o7-feD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdL-mb-H73" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

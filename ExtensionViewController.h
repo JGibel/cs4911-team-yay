@@ -11,5 +11,10 @@
 @interface ExtensionViewController : UITableViewController
 
 @property NSInteger selectedRow;
+@property NSTimeInterval extensionLength;
+@property (strong, nonatomic) NSString *barcode;
+@property NSTimeInterval threeDays;
+@property NSTimeInterval fiveDays;
+@property NSTimeInterval sevenDays;
 
 @end

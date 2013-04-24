@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "Queries.h"
 #import <PassKit/PassKit.h>
+#import "ExtensionViewController.h"
 
 @interface DetailsViewController () <PKAddPassesViewControllerDelegate>
 
@@ -150,4 +151,16 @@
     }
     return NO;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    /* If the segue is pushing to the CouponDetailsView*/
+    if([segue.identifier isEqualToString:@"extensionSegue"]){
+        //get instance of view controller we are pushing to
+        ExtensionViewController *controller = segue.destinationViewController;
+        //set the barcode value for the view controller we are navigating to
+        controller.barcode = self.barcode;
+    }
+}
+
 @end
