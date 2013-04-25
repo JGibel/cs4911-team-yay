@@ -7,6 +7,8 @@
 //
 
 #import "PaymentViewController.h"
+#import "CouponListViewController.h"
+#import "Queries.h"
 
 @interface PaymentViewController ()
 
@@ -53,5 +55,10 @@
     NSString *extendMessage = [[NSString alloc] initWithFormat:@""];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [alert show];
+    
+    [Queries updateCoupon:barcode expDate:extendedExpDate];
+    
+    int count = [self.navigationController.viewControllers count];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:count-3] animated:YES];
 }
 @end

@@ -34,5 +34,6 @@
 +(void) removeRetailerPref : (NSNumber *) retailer : (NSMutableArray *) retailersList;
 +(void) removeItemPref : (NSString *) category : (NSMutableArray *) itemsList;
 +(void) setLoggedInUser:(NSNumber *)userId;
++(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp;
 
 @end

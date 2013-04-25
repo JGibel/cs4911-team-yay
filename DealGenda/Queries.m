@@ -576,5 +576,15 @@
     [db close];
 }
 
++(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp {
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    [db executeUpdate:@"UPDATE coupons SET hasBeenExtended = 'TRUE', expdate = ? WHERE barcode = ?", exp, barcode];
+    [db close];
+}
+
 
 @end
