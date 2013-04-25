@@ -293,7 +293,7 @@
 
 -(void) slideFrame:(BOOL) up
 {
-    const int movementDistance = 213; 
+    const int movementDistance = 205;
     const float movementDuration = 0.3f; 
     
     int movement = (up ? -movementDistance : movementDistance);

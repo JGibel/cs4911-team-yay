@@ -50,6 +50,8 @@
 		2864F2E216E311A600680516 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2864F2E116E311A600680516 /* libsqlite3.dylib */; };
 		287CA83116C96DD80091010F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287CA83016C96DD80091010F /* SettingsViewController.m */; };
 		28C33B931717B14900D91259 /* 004.sql in Resources */ = {isa = PBXBuildFile; fileRef = 28C33B921717B14900D91259 /* 004.sql */; };
+		6780B4D71729235C00964D34 /* LogoNoWords.png in Resources */ = {isa = PBXBuildFile; fileRef = 6780B4D61729235C00964D34 /* LogoNoWords.png */; };
+		6780B4D9172923C300964D34 /* LogoNoWordsRetnia.png in Resources */ = {isa = PBXBuildFile; fileRef = 6780B4D8172923C300964D34 /* LogoNoWordsRetnia.png */; };
 		678941C416EE4A98007999F5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678941C316EE4A98007999F5 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,8 @@
 		287CA82F16C96DD80091010F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		287CA83016C96DD80091010F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		28C33B921717B14900D91259 /* 004.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 004.sql; sourceTree = "<group>"; };
+		6780B4D61729235C00964D34 /* LogoNoWords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoNoWords.png; sourceTree = "<group>"; };
+		6780B4D8172923C300964D34 /* LogoNoWordsRetnia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoNoWordsRetnia.png; sourceTree = "<group>"; };
 		678941C216EE4A98007999F5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		678941C316EE4A98007999F5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +165,8 @@
 		192D220A16B7243D00F2D773 = {
 			isa = PBXGroup;
 			children = (
+				6780B4D8172923C300964D34 /* LogoNoWordsRetnia.png */,
+				6780B4D61729235C00964D34 /* LogoNoWords.png */,
 				191143AF171F47AD00489B1F /* Test.pkpass */,
 				191143AB171F3D5500489B1F /* GenericPass.pkpass */,
 				19E139771721B7DE0071DB9C /* PassSource.pkpass */,
@@ -388,6 +394,8 @@
 				191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */,
 				191143B0171F47AD00489B1F /* Test.pkpass in Resources */,
 				19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */,
+				6780B4D71729235C00964D34 /* LogoNoWords.png in Resources */,
+				6780B4D9172923C300964D34 /* LogoNoWordsRetnia.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
