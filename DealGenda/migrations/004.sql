@@ -115,7 +115,7 @@ UPDATE coupons set retailerid = 1 where retailername = "Target";
 UPDATE coupons set retailerid = 2 where retailername = "Best Buy";
 UPDATE coupons set retailerid = 3 where retailername = "Home Depot";
 UPDATE coupons set retailerid = 4 where retailername = "Staples";
-UPDATE coupons set retailerid = 5 where retailername = "Dominoes";
+UPDATE coupons set retailerid = 5 where retailername = "Dominos";
 UPDATE coupons set retailerid = 6 where retailername = "Express";
 UPDATE coupons set retailerid = 7 where retailername = "Forever 21";
 UPDATE coupons set retailerid = 8 where retailername = "Gamestop";
