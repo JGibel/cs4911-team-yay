@@ -23,7 +23,7 @@
 
 /**
  *Default iOS method
- *Sets any kind of custom data when a new instance of the ExtensionViewController is created
+ *Sets any kind of custom data when a new instance of the PaymentViewController is created
  **/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
