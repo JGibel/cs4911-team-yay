@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Douglas Abrams on 4/7/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import "DetailsViewController.h"
@@ -19,6 +19,10 @@
 
 @synthesize barcode;
 
+/**
+ *Default iOS method
+ *Sets any kind of custom data when a new instance of the ExtensionViewController is created
+ **/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,19 +32,27 @@
     return self;
 }
 
+/**
+ *Default iOS method
+ *This method is called before the PaymentView is loaded onto the screen
+ *It currently sets the back button on the navigation bar to display "Back" instead of
+ *the title of the previous view.  It then tests to see if the pass has already been 
+ *downloaded to Passbook and adjusts the visible controls accordingly.  It then sets
+ *the label texts based on the current coupon.
+ **/
 -(void)viewWillAppear:(BOOL)animated{
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
     
+    //create pass file - hardcoded based on name
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
                           stringByAppendingPathComponent:@"PassSource.pkpass"];
-    
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
-    
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
                                              error:&error];
+    //test to see if the pass is in Passbook already
     if ([PKPassLibrary isPassLibraryAvailable]) {
         PKPassLibrary *lib = [[PKPassLibrary alloc] init];
         if ([lib containsPass:newPass]) {
@@ -48,38 +60,50 @@
         }
     }
     
+    //set label texts
     _retailerLabel.text = [Queries getCouponRetailer:barcode];
     _offerLabel.text = [Queries getCouponOffer:barcode];
     _expDateLabel.text = [Queries getCouponExpirationDate:barcode];
     _detailsTextView.text = [Queries getCouponDetails:barcode];
 }
 
+/**
+ *Default iOS method
+ *This method is called when the PaymentView is initially loaded onto the screen
+ **/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //set the labels based on the barcode value passed from the CouponListView
 }
 
+/**
+ *Default iOS method
+ **/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams - based on tutorial by Marin Todorov
+ *
+ *This method creates an instance of a pass based on the input file name
+ *and displays that pass in a PKAddPassesViewController
+ *
+ **param:name - the filename of the pass file
+ **/
 -(void)openPassWithName:(NSString*)name
 {
-    //2
+    //create pass file - hardcoded based on name
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
                           stringByAppendingPathComponent: name];
-    
-    //3
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
-    
-    //4
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
                                              error:&error];
-    //5
+    //tests to see if there was an error retrieving the pass
     if (error!=nil) {
         [[[UIAlertView alloc] initWithTitle:@"Passes error"
                                     message:[error
@@ -90,7 +114,7 @@
         return;
     }
     
-    //6
+    //view pass
     PKAddPassesViewController *addController =
     [[PKAddPassesViewController alloc] initWithPass:newPass];
     
@@ -100,8 +124,12 @@
                      completion:nil];
 }
 
-#pragma mark - Pass controller delegate
-
+/**
+ *This method is called when either the Add or Cancel buttons of the 
+ *PKPassesViewController is pressed
+ *
+ **param:controller - the view controller displaying the pass
+ **/
 -(void)addPassesViewControllerDidFinish: (PKAddPassesViewController*) controller
 {
     //pass added
@@ -112,8 +140,11 @@
     }
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams
+ **/
 - (IBAction)addPass:(id)sender {
-//    [self openPassWithName:@"GenericPass.pkpass"];
     [self openPassWithName:@"PassSource.pkpass"];
 }
 
