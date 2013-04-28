@@ -237,8 +237,8 @@
         if (![Queries couponHasBeenExtended:self.barcode]) {
             return YES;
         } else {
-            NSString *extendMessage = [[NSString alloc] initWithFormat:@"The coupon with barcode %@ has already been extended", self.barcode];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            NSString *extendMessage = [[NSString alloc] initWithFormat:@"The coupon with barcode %@ has already been extended.  Coupons can only be extended once.", self.barcode];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Already Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alert show];
             return NO;
         }
