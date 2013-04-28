@@ -15,7 +15,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[self createAndCheckDatabase];
     [self createDatabase];
     [Queries migrateToAppFromSchema];
     
@@ -55,46 +54,8 @@
     [db close];
 }
 
--(void) createAndCheckDatabase
-{
-    NSError *error;
-    NSString *databasePath = [[NSBundle mainBundle] pathForResource:@"DealGenda" ofType:@"db"];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-    NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database/"];
-    NSString *writableDBPath = [databaseDirectory stringByAppendingPathComponent:@"DealGenda.db"];
-    NSDictionary *attr = [[NSFileManager defaultManager] attributesOfItemAtPath:writableDBPath error:&error];
-       
-    if([[NSFileManager defaultManager] fileExistsAtPath:writableDBPath] && [attr fileSize] == 0)
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:writableDBPath error:&error];
-        NSLog(@"File erased");
-    }
-    
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:writableDBPath])
-	{
-        [[NSFileManager defaultManager] copyItemAtPath:databasePath toPath:writableDBPath error:&error];
-        NSLog(@"recreated");
-
-        if (![[NSFileManager defaultManager] createDirectoryAtPath:databaseDirectory
-									   withIntermediateDirectories:NO
-														attributes:nil
-															 error:&error])
-		{
-			NSLog(@"Create directory error: %@", error);
-		}
-	}
-    
-    db = [FMDatabase databaseWithPath:writableDBPath];
-    
-    if(!db)
-    {
-        NSLog(@"Failed moving database... %@",[error localizedDescription]);
-        return;
-    }
-}
-
 -(void)createDatabase
+//if database does not exist, create a new directory Database in the Library directory and create a database DealGenda.db
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *databaseDirectory = [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Database/"];

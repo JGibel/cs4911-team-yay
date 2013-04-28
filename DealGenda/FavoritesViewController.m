@@ -169,7 +169,7 @@
         } else {
             NSString* retailer = [retailerListFull objectAtIndex:mySwitch.tag];
             NSNumber* retailerID = [Queries getRetailerID: retailer];
-            [Queries removeRetailerPref:retailerID :retailersList];
+            [Queries removeRetailerPref:retailerID];
             NSMutableArray* tempList = [[NSMutableArray alloc] init];
             for (NSString *retailers in retailersList) {
                 if(![retailers isEqualToString: retailer]) {
@@ -186,7 +186,7 @@
             [itemsList addObject: category];
         } else {
             NSString* category = [itemListFull objectAtIndex:mySwitch.tag];
-            [Queries removeItemPref: category : itemsList];
+            [Queries removeItemPref: category];
             NSMutableArray* tempList = [[NSMutableArray alloc] init];
             for (NSString *categories in itemsList) {
                 if(![categories isEqualToString:category]) {
