@@ -433,7 +433,7 @@
 }
 
 //removes an item preference to the current user from the item category param to the database
-+(void) removeItemPref : (NSString *) category : (NSMutableArray *) itemsList
++(void) removeItemPref : (NSString *) category
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
