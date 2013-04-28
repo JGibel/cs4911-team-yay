@@ -2,7 +2,7 @@
 //  SignUpViewController.m
 //  DealGenda
 //
-//  Created by Douglas Abrams on 2/11/13.
+//  Created by Douglas Abrams, Kaitlynn Myrick & Jenelle Walker on 2/11/13.
 //  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
@@ -17,7 +17,10 @@
 @implementation SignUpViewController
 
 
-
+/**
+ *Default iOS method
+ *Sets any kind of custom data when a new instance of the SignUpViewController is created
+ **/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,12 +30,26 @@
     return self;
 }
 
+
+/**
+ *Default iOS method
+ *This method is called before the SignUp is loaded onto the screen
+ *It currently sets the back button on the navigation bar to display "Back" instead of
+ *the title of the previous view.
+ **/
 -(void)viewWillAppear:(BOOL)animated{
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
 }
 
+
+/**
+ *Default iOS method
+ *This method is called when the SignUp is initially loaded onto the screen.  This sets the initial scroll view
+ * which will be used to shift the view to prevent the keyboard from covering text fields.  
+ *Initializes picker views which will be used for the gender and birth date text fields
+ **/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,7 +65,8 @@
     [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
     [_birthDateTextField setInputView:datePicker];
     
-    //Set up Gender Picker
+    
+    //Set up Gender Picker with an array. Contains the values "Undisclosed, Male, & Female"
     self.pickerViewArray = [NSArray arrayWithObjects:
                             @"Undisclosed", @"Male", @"Female",
                             nil];
@@ -62,12 +80,20 @@
 
 }
 
+/**
+ *Default iOS method
+ **/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ Custom method
+ Retract Keyboard Functionality for tapping in the background
+ Tie this action to a button the size of the entire view, pushed to the back so that everything else sits on top
+ **/
 - (IBAction)dismissKeyboard:(id)sender {
     [_firstNameTextField resignFirstResponder];
     [_lastNameTextField resignFirstResponder];
@@ -78,6 +104,10 @@
     [_genderTextField resignFirstResponder];
     
 }
+
+/**
+ Defailt iOS method.  Listens for the Keyboard notifications in order to prepare the view to scroll when text fields are blocked by the keyboard
+ **/
 
 - (void)registerForKeyboardNotifications
 {
@@ -91,7 +121,15 @@
     
 }
 
+
+/**
+ Custom method called when the "Continue Button" is pressed
+ Sets the variables from all of the text fields presented to the user.  Runs the validation method in order to validate the user input.  Adds the the information to the database.
+ **/
+
 - (IBAction)continueButton:(UIButton *)sender{
+    
+    //Sets the variables from the information input in the text fields
     _firstName = _firstNameTextField.text;
     _lastName = _lastNameTextField.text;
     _birthDate = _birthDateTextField.text;
@@ -100,6 +138,8 @@
     _verifyPassword = _verifyPasswordTextField.text;
     _gender = _genderTextField.text;
     
+    // Print statements to test the values entered in the input fields are properly assigned to the correct variables
+    /*
     NSLog(@"The entered first name is: %@", _firstName);
     NSLog(@"The entered last name is: %@", _lastName);
     NSLog(@"The entered birthdate is: %@", _birthDate);
@@ -107,9 +147,10 @@
     NSLog(@"The entered password is: %@", _password);
     NSLog(@"The entered verify password is: %@", _verifyPassword);
     NSLog(@"The entered gender is: %@", _gender);
-    
+    */
     [self validateSignUp];
     
+    //Resigns first responder to lower the keyboard or date picker
     [_firstNameTextField resignFirstResponder];
     [_lastNameTextField resignFirstResponder];
     [_birthDateTextField resignFirstResponder];
@@ -118,14 +159,28 @@
     [_verifyPasswordTextField resignFirstResponder];
     [_genderTextField resignFirstResponder];
     
+    //If the can segue variable is set to yes, uses the insert statements contined Queries file to add the user to the database
     if([_canSegue isEqualToString:(@"YES")]){
-        NSLog(@"here");
+        
+        //Print statement to check if the adding to the database works
+        //NSLog(@"added to database");
+        
         [Queries addUserWithFName:_firstName LName:_lastName Birthday:_birthDate Email:_email Password:_password Gender:_gender];
         NSNumber *userId = [Queries getId:_email];
         [Queries setLoggedInUser:userId];
     }
 
 }
+
+/**
+ This method is called when a segue is triggered
+ It determines whether to allow the segue based on the canSegue variable.  The canSegue variable is defined with the buttons based on the state of the information set by the user.  Uses the error code variable to set the appropriate error label
+ 
+ param:identifier - the string identifier of the segue being triggered
+ param: sender - the id sending the call for a segue
+ 
+ return:BOOL - YES if the validation method passes. NO if the validation method fails.
+ **/
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     
@@ -184,6 +239,17 @@
     }
 }
 
+
+/* Custom Method to validate signup
+ Takes the user input and validates against several constraints - 
+ 1. There is information in all required fields
+ 2. The email is in a valid format
+ 3. Email already has an account
+ 4. Password is 6 characters long
+ 5. Password does not match verify password
+ 
+ Sets the cansegue variable to No if it does not pass the constraints.  Sets the error code to display the correct error code.
+ */
 -(void) validateSignUp {
     NSLog(@"validate conditions");
     
@@ -228,7 +294,9 @@
     
 }
 
-//Validates email address format
+/*
+ Custom Method to Validate email address format
+ */
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
     NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSError *error = NULL;
@@ -245,9 +313,12 @@
     return numberOfMatches > 0;
 }
 
-//Pulls up the Pickers instead of keyboard when appropriate
+/*
+ Pulls up the Pickers instead of keyboard when appropriate.  
+ */
 -(void)updateTextField:(id)sender
 {
+    //Pulls the date picker up for the birth date field
     if([_birthDateTextField isFirstResponder]){
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MM/dd/yyyy"];
@@ -260,20 +331,22 @@
     
 }
 
-//Set up the custom gender picker
+//Set up the custom gender picker.  Sets the number of components to 1
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-    
     return 1;
 }
 
+//Set up the custom gender picker.  Sets the number of items in each row to 1
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     return [_pickerViewArray count];
 }
 
+//Set up the custom gender picker.  Sets the items in the picker to be the variables in the pickerViewArray
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return [_pickerViewArray objectAtIndex:row];
 }
 
+//Sets the text in the gender text field to be equal to that contained within the picker
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {    
     _genderTextField.text = [_pickerViewArray objectAtIndex:row];
 }
@@ -281,16 +354,20 @@
 
 
 //Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
+//Slides the frame up when covered text fields are active
 -(IBAction) slideFrameUp;
 {
     [self slideFrame:YES];
 }
 
+//Code to perform the sliding when the bottom text fields are selected so they are not blocked by the keyboard
+//Slides the frame down when covered text fields become inactive
 -(IBAction) slideFrameDown;
 {
     [self slideFrame:NO];
 }
 
+//Code to determine length of view slide when keyboard blocks currently active text fields.
 -(void) slideFrame:(BOOL) up
 {
     const int movementDistance = 205;
@@ -305,7 +382,15 @@
     [UIView commitAnimations];
 }
 
-//close keyboard when return key is pressed
+/**
+ This method will retract the keyboard when the return button is pressed on the keyboard
+ 
+ param: textField - the textField attached to the keyboard which is visible
+ 
+ return:BOOL - YES if the keyboard is retracted
+ 
+ **/
+
 -(BOOL)textFieldShouldReturn:(UITextView *)textField{
     [textField resignFirstResponder];
     return YES;

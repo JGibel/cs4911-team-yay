@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  DealGenda
 //
-//  Created by Douglas Abrams on 1/28/13.
+//  Created by Douglas Abrams, Kaitlynn Myrick & Jenelle Walker on 1/28/13.
 //  Copyright (c) 2013 DealGenda. All rights reserved.
 // 
 
