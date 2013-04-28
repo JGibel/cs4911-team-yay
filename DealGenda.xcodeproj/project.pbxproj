@@ -27,9 +27,6 @@
 		190101C5172CE8E50075E416 /* 48333450000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B1172CE8E50075E416 /* 48333450000000.pkpass */; };
 		190101C6172CE8E50075E416 /* 81110000000115.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B2172CE8E50075E416 /* 81110000000115.pkpass */; };
 		190101C7172CE8E50075E416 /* 87654350000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B3172CE8E50075E416 /* 87654350000000.pkpass */; };
-		190101C9172CED3D0075E416 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101C8172CED3D0075E416 /* Default.png */; };
-		190101CB172CEDED0075E416 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101CA172CEDED0075E416 /* Default@2x.png */; };
-		190101CD172CEE1A0075E416 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101CC172CEE1A0075E416 /* Default-568h@2x.png */; };
 		1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904370D1712238800BD06C5 /* DetailsViewController.m */; };
 		190EBEA5172878E3001412D7 /* ExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190EBEA4172878E3001412D7 /* ExtensionViewController.m */; };
 		191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191143A0171F26DE00489B1F /* PassKit.framework */; };
@@ -473,9 +470,6 @@
 				190101C5172CE8E50075E416 /* 48333450000000.pkpass in Resources */,
 				190101C6172CE8E50075E416 /* 81110000000115.pkpass in Resources */,
 				190101C7172CE8E50075E416 /* 87654350000000.pkpass in Resources */,
-				190101C9172CED3D0075E416 /* Default.png in Resources */,
-				190101CB172CEDED0075E416 /* Default@2x.png in Resources */,
-				190101CD172CEE1A0075E416 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
