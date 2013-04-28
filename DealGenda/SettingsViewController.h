@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Jenelle Walker on 2/11/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

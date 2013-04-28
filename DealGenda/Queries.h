@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Jenelle Walker on 3/8/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import "FMDatabase.h"
@@ -21,6 +21,7 @@
 +(NSString *) getCouponOffer:(NSString *)barcode;
 +(NSString *) getCouponExpirationDate:(NSString *)barcode;
 +(NSString *) getCouponDetails:(NSString *)barcode;
++(BOOL) couponHasBeenExtended:(NSString *)barcode;
 +(NSMutableArray *) getCoupons;
 +(NSMutableArray *) getRetailers;
 +(NSMutableArray *) getItems;
@@ -33,5 +34,6 @@
 +(void) removeRetailerPref : (NSNumber *) retailer;
 +(void) removeItemPref : (NSString *) category;
 +(void) setLoggedInUser:(NSNumber *)userId;
++(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp;
 
 @end

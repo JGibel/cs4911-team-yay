@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Douglas Abrams on 4/7/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import "DetailsViewController.h"
@@ -19,6 +19,10 @@
 
 @synthesize barcode;
 
+/**
+ *Default iOS method
+ *Sets any kind of custom data when a new instance of the DetailsViewController is created
+ **/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,57 +32,78 @@
     return self;
 }
 
+/**
+ *Default iOS method
+ *This method is called before the PaymentView is loaded onto the screen
+ *It currently sets the back button on the navigation bar to display "Back" instead of
+ *the title of the previous view.  It then tests to see if the pass has already been 
+ *downloaded to Passbook and adjusts the visible controls accordingly.  It then sets
+ *the label texts based on the current coupon.
+ **/
 -(void)viewWillAppear:(BOOL)animated{
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
     
+    //create pass file - hardcoded based on name
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
                           stringByAppendingPathComponent:@"PassSource.pkpass"];
-    
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
-    
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
                                              error:&error];
+    //test to see if the pass is in Passbook already
     if ([PKPassLibrary isPassLibraryAvailable]) {
         PKPassLibrary *lib = [[PKPassLibrary alloc] init];
         if ([lib containsPass:newPass]) {
             _addButton.hidden = YES;
         }
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    //set the labels based on the barcode value passed from the CouponListView
+    
+    //set label texts
     _retailerLabel.text = [Queries getCouponRetailer:barcode];
     _offerLabel.text = [Queries getCouponOffer:barcode];
     _expDateLabel.text = [Queries getCouponExpirationDate:barcode];
     _detailsTextView.text = [Queries getCouponDetails:barcode];
 }
 
+/**
+ *Default iOS method
+ *This method is called when the DetailsView is initially loaded onto the screen
+ **/
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
+/**
+ *Default iOS method
+ **/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams - based on tutorial by Marin Todorov
+ *
+ *This method creates an instance of a pass based on the input file name
+ *and displays that pass in a PKAddPassesViewController
+ *
+ **param:name - the filename of the pass file
+ **/
 -(void)openPassWithName:(NSString*)name
 {
-    //2
+    //create pass file - hardcoded based on name
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
                           stringByAppendingPathComponent: name];
-    
-    //3
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
-    
-    //4
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
                                              error:&error];
-    //5
+    //tests to see if there was an error retrieving the pass
     if (error!=nil) {
         [[[UIAlertView alloc] initWithTitle:@"Passes error"
                                     message:[error
@@ -89,7 +114,7 @@
         return;
     }
     
-    //6
+    //view pass
     PKAddPassesViewController *addController =
     [[PKAddPassesViewController alloc] initWithPass:newPass];
     
@@ -99,8 +124,12 @@
                      completion:nil];
 }
 
-#pragma mark - Pass controller delegate
-
+/**
+ *This method is called when either the Add or Cancel buttons of the 
+ *PKPassesViewController is pressed
+ *
+ **param:controller - the view controller displaying the pass
+ **/
 -(void)addPassesViewControllerDidFinish: (PKAddPassesViewController*) controller
 {
     //pass added
@@ -111,11 +140,25 @@
     }
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams
+ *
+ *This method is called when the Add to Passbook button is pressed
+ *It calls the openPassWithName method - currently hardcoded to display one pass
+ **/
 - (IBAction)addPass:(id)sender {
-//    [self openPassWithName:@"GenericPass.pkpass"];
     [self openPassWithName:@"PassSource.pkpass"];
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams
+ *
+ *This method is called when the Open in Passbook button is pressed
+ *It creates an instance of a pass based on the hardcoded test pass and then
+ *launches the Passbook application to the location of that pass
+ **/
 - (IBAction)openPassbook:(id)sender {
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
                           stringByAppendingPathComponent:@"PassSource.pkpass"];
@@ -134,12 +177,20 @@
     }
 }
 
+/**
+ *Custom method
+ **author: Douglas Abrams
+ *
+ *This method detects if a pass is currently downloaded to Passbook
+ *
+ **param:NSString - the name of the pass being tested
+ *
+ **return:BOOL - TRUE if the pass is currently in Passbook
+ **/
 - (BOOL)hasPassWithName:(NSString *)name {
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
-                          stringByAppendingPathComponent:@"PassSource.pkpass"];
-    
+                          stringByAppendingPathComponent:name];
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
-    
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
                                              error:&error];
@@ -152,14 +203,46 @@
     return NO;
 }
 
+/**
+ *This method is called when a segue is triggered
+ *It determines whether to allow the segue based on if the coupon has already been extended
+ *
+ **param:identifier - the string identifier of the segue being triggered
+ **param: sender - the id sending the call for a segue
+ *
+ **return:BOOL - TRUE if the coupon has not already been extended
+ **/
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if([identifier isEqualToString:@"extensionSegue"]){
+        if (![Queries couponHasBeenExtended:self.barcode]) {
+            return YES;
+        } else {
+            NSString *extendMessage = [[NSString alloc] initWithFormat:@"The coupon with barcode %@ has already been extended", self.barcode];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Coupon Extended" message:extendMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        }
+    }
+    return YES;
+}
+
+/**
+ *This method is called when a segue is triggered
+ *It creates an instance of the ExtensionViewController and sets the parameters 
+ *for that view controller to the appropriate values based on the current coupon
+ *
+ **param:segue - the segue being triggered
+ **param:sender - the id sending the call for a segue
+ **/
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    /* If the segue is pushing to the CouponDetailsView*/
     if([segue.identifier isEqualToString:@"extensionSegue"]){
-        //get instance of view controller we are pushing to
-        ExtensionViewController *controller = segue.destinationViewController;
-        //set the barcode value for the view controller we are navigating to
-        controller.barcode = self.barcode;
+        if (![Queries couponHasBeenExtended:self.barcode]) {
+            //get instance of view controller we are pushing to
+            ExtensionViewController *controller = segue.destinationViewController;
+            //set the barcode value for the view controller we are navigating to
+            controller.barcode = self.barcode;
+        } 
     }
 }
 

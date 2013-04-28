@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Jenelle Walker on 3/8/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import "Queries.h"
@@ -277,6 +277,28 @@
     [fm close];
     [db close];
     return details;
+}
+
+//check if coupon with param barcode has been extended
++(BOOL) couponHasBeenExtended:(NSString *)barcode {
+    //open database connection
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return 0;
+    }
+    //Query database
+    FMResultSet *queryResult = [db executeQuery:@"SELECT hasBeenExtended FROM coupons WHERE barcode = ?", barcode];
+    if ([queryResult next]) {
+        NSString *result = [queryResult stringForColumn:@"hasBeenExtended"];
+        if ([result isEqualToString:@"TRUE"]) {
+            return YES;
+        } else if ([result isEqualToString:@"FALSE"]) {
+            return NO;
+        }
+    }
+
+    return NO;
 }
 
 //Returns all the retailers from the database in alphabetical order
@@ -581,6 +603,16 @@
     }
     appDelegate.user = userId;
     NSLog(@"%@", appDelegate.user);
+    [db close];
+}
+
++(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp {
+    AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    FMDatabase* db = [appDelegate db];
+    if (![db open]) {
+        return;
+    }
+    [db executeUpdate:@"UPDATE coupons SET hasBeenExtended = 'TRUE', expdate = ? WHERE barcode = ?", exp, barcode];
     [db close];
 }
 

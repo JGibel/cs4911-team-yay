@@ -3,7 +3,7 @@
 //  DealGenda
 //
 //  Created by Douglas Abrams on 2/11/13.
-//  Copyright (c) 2013 Douglas Abrams. All rights reserved.
+//  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
 #import "SignUpViewController.h"
@@ -293,7 +293,7 @@
 
 -(void) slideFrame:(BOOL) up
 {
-    const int movementDistance = 213; 
+    const int movementDistance = 205;
     const float movementDuration = 0.3f; 
     
     int movement = (up ? -movementDistance : movementDistance);
