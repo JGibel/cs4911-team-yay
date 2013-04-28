@@ -16,22 +16,6 @@
 
 ----------------------------------------------------------------------------------
 
--- Drop the tables if they already exist
-
-DROP TABLE IF EXISTS version;
-
-DROP TABLE IF EXISTS users;
-
-DROP TABLE IF EXISTS retailers;
-
-DROP TABLE IF EXISTS coupons;
-
-DROP TABLE IF EXISTS userRetailerPreferences;
-
-DROP TABLE IF EXISTS userItemPreferences;
-
-DROP TABLE IF EXISTS items;
-
 --Create table to keep track of app user's version
 CREATE TABLE version(
 	id INTEGER NOT NULL PRIMARY KEY
