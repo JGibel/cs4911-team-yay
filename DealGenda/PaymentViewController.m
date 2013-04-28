@@ -2,7 +2,7 @@
 //  PaymentViewController.m
 //  DealGenda
 //
-//  Created by Douglas Abrams on 4/24/13.
+//  Created by Douglas Abrams, Kaitlynn Myrick & Jenelle Walker on 4/24/13.
 //  Copyright (c) 2013 DealGenda. All rights reserved.
 //
 
