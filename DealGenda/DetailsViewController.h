@@ -10,6 +10,8 @@
 
 @interface DetailsViewController : UIViewController
 
+@property NSMutableArray *passes;
+
 @property (strong, nonatomic) NSString *barcode;
 @property (strong, nonatomic) IBOutlet UILabel *retailerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *offerLabel;

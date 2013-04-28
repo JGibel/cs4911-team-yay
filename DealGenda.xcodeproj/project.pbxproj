@@ -7,11 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190101B4172CE8E50075E416 /* 00000000100865.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A0172CE8E50075E416 /* 00000000100865.pkpass */; };
+		190101B5172CE8E50075E416 /* 00000001113349.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A1172CE8E50075E416 /* 00000001113349.pkpass */; };
+		190101B6172CE8E50075E416 /* 00000001113360.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A2172CE8E50075E416 /* 00000001113360.pkpass */; };
+		190101B7172CE8E50075E416 /* 00000001198335.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A3172CE8E50075E416 /* 00000001198335.pkpass */; };
+		190101B8172CE8E50075E416 /* 00000001234567.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A4172CE8E50075E416 /* 00000001234567.pkpass */; };
+		190101B9172CE8E50075E416 /* 00000006868686.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A5172CE8E50075E416 /* 00000006868686.pkpass */; };
+		190101BA172CE8E50075E416 /* 00000008198335.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A6172CE8E50075E416 /* 00000008198335.pkpass */; };
+		190101BB172CE8E50075E416 /* 00000008765309.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A7172CE8E50075E416 /* 00000008765309.pkpass */; };
+		190101BC172CE8E50075E416 /* 00004811110007.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A8172CE8E50075E416 /* 00004811110007.pkpass */; };
+		190101BD172CE8E50075E416 /* 00037111150000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101A9172CE8E50075E416 /* 00037111150000.pkpass */; };
+		190101BE172CE8E50075E416 /* 00048111090000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AA172CE8E50075E416 /* 00048111090000.pkpass */; };
+		190101BF172CE8E50075E416 /* 00481122500000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AB172CE8E50075E416 /* 00481122500000.pkpass */; };
+		190101C0172CE8E50075E416 /* 07654321000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AC172CE8E50075E416 /* 07654321000000.pkpass */; };
+		190101C1172CE8E50075E416 /* 40000000833349.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AD172CE8E50075E416 /* 40000000833349.pkpass */; };
+		190101C2172CE8E50075E416 /* 48011100010005.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AE172CE8E50075E416 /* 48011100010005.pkpass */; };
+		190101C3172CE8E50075E416 /* 48111100000006.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101AF172CE8E50075E416 /* 48111100000006.pkpass */; };
+		190101C4172CE8E50075E416 /* 48133150000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B0172CE8E50075E416 /* 48133150000000.pkpass */; };
+		190101C5172CE8E50075E416 /* 48333450000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B1172CE8E50075E416 /* 48333450000000.pkpass */; };
+		190101C6172CE8E50075E416 /* 81110000000115.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B2172CE8E50075E416 /* 81110000000115.pkpass */; };
+		190101C7172CE8E50075E416 /* 87654350000000.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 190101B3172CE8E50075E416 /* 87654350000000.pkpass */; };
+		190101C9172CED3D0075E416 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101C8172CED3D0075E416 /* Default.png */; };
+		190101CB172CEDED0075E416 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101CA172CEDED0075E416 /* Default@2x.png */; };
+		190101CD172CEE1A0075E416 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 190101CC172CEE1A0075E416 /* Default-568h@2x.png */; };
 		1904370E1712238800BD06C5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904370D1712238800BD06C5 /* DetailsViewController.m */; };
 		190EBEA5172878E3001412D7 /* ExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190EBEA4172878E3001412D7 /* ExtensionViewController.m */; };
 		191143A1171F26DE00489B1F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191143A0171F26DE00489B1F /* PassKit.framework */; };
-		191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AB171F3D5500489B1F /* GenericPass.pkpass */; };
-		191143B0171F47AD00489B1F /* Test.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 191143AF171F47AD00489B1F /* Test.pkpass */; };
 		1916DD1317286B750025E7B2 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1916DD1217286B750025E7B2 /* PaymentViewController.m */; };
 		1927742A171336770031F135 /* 003.sql in Resources */ = {isa = PBXBuildFile; fileRef = 19277429171336770031F135 /* 003.sql */; };
 		1929A6681709F89C00745F75 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1929A6671709F89C00745F75 /* Coupon.m */; };
@@ -40,7 +61,6 @@
 		19DDFCBD17060ACD002DB404 /* coupons.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBC17060ACD002DB404 /* coupons.png */; };
 		19DDFCC017060C21002DB404 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBE17060C21002DB404 /* heart.png */; };
 		19DDFCC117060C21002DB404 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 19DDFCBF17060C21002DB404 /* settings.png */; };
-		19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = 19E139771721B7DE0071DB9C /* PassSource.pkpass */; };
 		2826CB1C16E313F100AA6BE5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1216E313F100AA6BE5 /* FMDatabase.m */; };
 		2826CB1D16E313F100AA6BE5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1416E313F100AA6BE5 /* FMDatabaseAdditions.m */; };
 		2826CB1E16E313F100AA6BE5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2826CB1616E313F100AA6BE5 /* FMDatabasePool.m */; };
@@ -66,13 +86,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190101A0172CE8E50075E416 /* 00000000100865.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000000100865.pkpass; sourceTree = "<group>"; };
+		190101A1172CE8E50075E416 /* 00000001113349.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000001113349.pkpass; sourceTree = "<group>"; };
+		190101A2172CE8E50075E416 /* 00000001113360.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000001113360.pkpass; sourceTree = "<group>"; };
+		190101A3172CE8E50075E416 /* 00000001198335.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000001198335.pkpass; sourceTree = "<group>"; };
+		190101A4172CE8E50075E416 /* 00000001234567.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000001234567.pkpass; sourceTree = "<group>"; };
+		190101A5172CE8E50075E416 /* 00000006868686.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000006868686.pkpass; sourceTree = "<group>"; };
+		190101A6172CE8E50075E416 /* 00000008198335.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000008198335.pkpass; sourceTree = "<group>"; };
+		190101A7172CE8E50075E416 /* 00000008765309.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00000008765309.pkpass; sourceTree = "<group>"; };
+		190101A8172CE8E50075E416 /* 00004811110007.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00004811110007.pkpass; sourceTree = "<group>"; };
+		190101A9172CE8E50075E416 /* 00037111150000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00037111150000.pkpass; sourceTree = "<group>"; };
+		190101AA172CE8E50075E416 /* 00048111090000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00048111090000.pkpass; sourceTree = "<group>"; };
+		190101AB172CE8E50075E416 /* 00481122500000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 00481122500000.pkpass; sourceTree = "<group>"; };
+		190101AC172CE8E50075E416 /* 07654321000000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 07654321000000.pkpass; sourceTree = "<group>"; };
+		190101AD172CE8E50075E416 /* 40000000833349.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 40000000833349.pkpass; sourceTree = "<group>"; };
+		190101AE172CE8E50075E416 /* 48011100010005.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 48011100010005.pkpass; sourceTree = "<group>"; };
+		190101AF172CE8E50075E416 /* 48111100000006.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 48111100000006.pkpass; sourceTree = "<group>"; };
+		190101B0172CE8E50075E416 /* 48133150000000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 48133150000000.pkpass; sourceTree = "<group>"; };
+		190101B1172CE8E50075E416 /* 48333450000000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 48333450000000.pkpass; sourceTree = "<group>"; };
+		190101B2172CE8E50075E416 /* 81110000000115.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 81110000000115.pkpass; sourceTree = "<group>"; };
+		190101B3172CE8E50075E416 /* 87654350000000.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = 87654350000000.pkpass; sourceTree = "<group>"; };
+		190101C8172CED3D0075E416 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		190101CA172CEDED0075E416 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		190101CC172CEE1A0075E416 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1904370C1712238800BD06C5 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		1904370D1712238800BD06C5 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		190EBEA3172878E3001412D7 /* ExtensionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionViewController.h; sourceTree = "<group>"; };
 		190EBEA4172878E3001412D7 /* ExtensionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionViewController.m; sourceTree = "<group>"; };
 		191143A0171F26DE00489B1F /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
-		191143AB171F3D5500489B1F /* GenericPass.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericPass.pkpass; sourceTree = "<group>"; };
-		191143AF171F47AD00489B1F /* Test.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test.pkpass; sourceTree = "<group>"; };
 		1916DD1117286B750025E7B2 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		1916DD1217286B750025E7B2 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		19277429171336770031F135 /* 003.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 003.sql; sourceTree = "<group>"; };
@@ -113,7 +154,6 @@
 		19DDFCBC17060ACD002DB404 /* coupons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupons.png; sourceTree = "<group>"; };
 		19DDFCBE17060C21002DB404 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		19DDFCBF17060C21002DB404 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		19E139771721B7DE0071DB9C /* PassSource.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = PassSource.pkpass; sourceTree = "<group>"; };
 		2826CB1116E313F100AA6BE5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2826CB1216E313F100AA6BE5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2826CB1316E313F100AA6BE5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -165,11 +205,31 @@
 		192D220A16B7243D00F2D773 = {
 			isa = PBXGroup;
 			children = (
+				190101CC172CEE1A0075E416 /* Default-568h@2x.png */,
+				190101CA172CEDED0075E416 /* Default@2x.png */,
+				190101C8172CED3D0075E416 /* Default.png */,
+				190101A0172CE8E50075E416 /* 00000000100865.pkpass */,
+				190101A1172CE8E50075E416 /* 00000001113349.pkpass */,
+				190101A2172CE8E50075E416 /* 00000001113360.pkpass */,
+				190101A3172CE8E50075E416 /* 00000001198335.pkpass */,
+				190101A4172CE8E50075E416 /* 00000001234567.pkpass */,
+				190101A5172CE8E50075E416 /* 00000006868686.pkpass */,
+				190101A6172CE8E50075E416 /* 00000008198335.pkpass */,
+				190101A7172CE8E50075E416 /* 00000008765309.pkpass */,
+				190101A8172CE8E50075E416 /* 00004811110007.pkpass */,
+				190101A9172CE8E50075E416 /* 00037111150000.pkpass */,
+				190101AA172CE8E50075E416 /* 00048111090000.pkpass */,
+				190101AB172CE8E50075E416 /* 00481122500000.pkpass */,
+				190101AC172CE8E50075E416 /* 07654321000000.pkpass */,
+				190101AD172CE8E50075E416 /* 40000000833349.pkpass */,
+				190101AE172CE8E50075E416 /* 48011100010005.pkpass */,
+				190101AF172CE8E50075E416 /* 48111100000006.pkpass */,
+				190101B0172CE8E50075E416 /* 48133150000000.pkpass */,
+				190101B1172CE8E50075E416 /* 48333450000000.pkpass */,
+				190101B2172CE8E50075E416 /* 81110000000115.pkpass */,
+				190101B3172CE8E50075E416 /* 87654350000000.pkpass */,
 				6780B4D8172923C300964D34 /* LogoNoWordsRetnia.png */,
 				6780B4D61729235C00964D34 /* LogoNoWords.png */,
-				191143AF171F47AD00489B1F /* Test.pkpass */,
-				191143AB171F3D5500489B1F /* GenericPass.pkpass */,
-				19E139771721B7DE0071DB9C /* PassSource.pkpass */,
 				191143A0171F26DE00489B1F /* PassKit.framework */,
 				2864F2E116E311A600680516 /* libsqlite3.dylib */,
 				192D221F16B7243D00F2D773 /* DealGenda */,
@@ -391,11 +451,31 @@
 				1929A66A170A435700745F75 /* 002.sql in Resources */,
 				1927742A171336770031F135 /* 003.sql in Resources */,
 				28C33B931717B14900D91259 /* 004.sql in Resources */,
-				191143AC171F3D5500489B1F /* GenericPass.pkpass in Resources */,
-				191143B0171F47AD00489B1F /* Test.pkpass in Resources */,
-				19E139781721B7DE0071DB9C /* PassSource.pkpass in Resources */,
 				6780B4D71729235C00964D34 /* LogoNoWords.png in Resources */,
 				6780B4D9172923C300964D34 /* LogoNoWordsRetnia.png in Resources */,
+				190101B4172CE8E50075E416 /* 00000000100865.pkpass in Resources */,
+				190101B5172CE8E50075E416 /* 00000001113349.pkpass in Resources */,
+				190101B6172CE8E50075E416 /* 00000001113360.pkpass in Resources */,
+				190101B7172CE8E50075E416 /* 00000001198335.pkpass in Resources */,
+				190101B8172CE8E50075E416 /* 00000001234567.pkpass in Resources */,
+				190101B9172CE8E50075E416 /* 00000006868686.pkpass in Resources */,
+				190101BA172CE8E50075E416 /* 00000008198335.pkpass in Resources */,
+				190101BB172CE8E50075E416 /* 00000008765309.pkpass in Resources */,
+				190101BC172CE8E50075E416 /* 00004811110007.pkpass in Resources */,
+				190101BD172CE8E50075E416 /* 00037111150000.pkpass in Resources */,
+				190101BE172CE8E50075E416 /* 00048111090000.pkpass in Resources */,
+				190101BF172CE8E50075E416 /* 00481122500000.pkpass in Resources */,
+				190101C0172CE8E50075E416 /* 07654321000000.pkpass in Resources */,
+				190101C1172CE8E50075E416 /* 40000000833349.pkpass in Resources */,
+				190101C2172CE8E50075E416 /* 48011100010005.pkpass in Resources */,
+				190101C3172CE8E50075E416 /* 48111100000006.pkpass in Resources */,
+				190101C4172CE8E50075E416 /* 48133150000000.pkpass in Resources */,
+				190101C5172CE8E50075E416 /* 48333450000000.pkpass in Resources */,
+				190101C6172CE8E50075E416 /* 81110000000115.pkpass in Resources */,
+				190101C7172CE8E50075E416 /* 87654350000000.pkpass in Resources */,
+				190101C9172CED3D0075E416 /* Default.png in Resources */,
+				190101CB172CEDED0075E416 /* Default@2x.png in Resources */,
+				190101CD172CEE1A0075E416 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

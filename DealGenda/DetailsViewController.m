@@ -18,6 +18,7 @@
 @implementation DetailsViewController
 
 @synthesize barcode;
+@synthesize passes;
 
 /**
  *Default iOS method
@@ -45,9 +46,10 @@
     self.navigationItem.backBarButtonItem = backButton;
     backButton = nil;
     
-    //create pass file - hardcoded based on name
+    //create pass file
+    NSString *passName = [[NSString alloc] initWithFormat:@"%@.pkpass", barcode];
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
-                          stringByAppendingPathComponent:@"PassSource.pkpass"];
+                          stringByAppendingPathComponent:passName];
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
     NSError* error = nil;
     PKPass *newPass = [[PKPass alloc] initWithData:passData
@@ -74,6 +76,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    passes = [[NSMutableArray alloc] init];
+    
+    //2 load the passes from the resource folder
+    NSString* resourcePath =
+    [[NSBundle mainBundle] resourcePath];
+    
+    NSArray* passFiles = [[NSFileManager defaultManager]
+                          contentsOfDirectoryAtPath:resourcePath
+                          error:nil];
+    
+    //3 loop over the resource files
+    for (NSString* passFile in passFiles) {
+        if ( [passFile hasSuffix:@".pkpass"] ) {
+            [passes addObject: passFile];
+        }
+    }
 }
 
 /**
@@ -134,8 +152,8 @@
 {
     //pass added
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    if ([self hasPassWithName:@"PassSource.pkpass"]) {
+    NSString *passName = [[NSString alloc] initWithFormat:@"%@.pkpass", barcode];
+    if ([self hasPassWithName:passName]) {
         _addButton.hidden = YES;
     }
 }
@@ -148,7 +166,8 @@
  *It calls the openPassWithName method - currently hardcoded to display one pass
  **/
 - (IBAction)addPass:(id)sender {
-    [self openPassWithName:@"PassSource.pkpass"];
+    NSString *passName = [[NSString alloc] initWithFormat:@"%@.pkpass", barcode];
+    [self openPassWithName:passName];
 }
 
 /**
@@ -160,8 +179,9 @@
  *launches the Passbook application to the location of that pass
  **/
 - (IBAction)openPassbook:(id)sender {
+    NSString *passName = [[NSString alloc] initWithFormat:@"%@.pkpass", barcode];
     NSString* passFile = [[[NSBundle mainBundle] resourcePath]
-                          stringByAppendingPathComponent:@"PassSource.pkpass"];
+                          stringByAppendingPathComponent:passName];
     
     NSData *passData = [NSData dataWithContentsOfFile:passFile];
     
