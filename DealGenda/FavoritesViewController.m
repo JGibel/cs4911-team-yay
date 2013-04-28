@@ -220,7 +220,7 @@
         if ([mySwitch isOn]) {
             NSString* retailer = [retailerListFull objectAtIndex:mySwitch.tag];
             NSNumber* retailerID = [Queries getRetailerID: retailer];
-            [Queries addRetailerPref: retailerID : retailersList];
+            [Queries addRetailerPref: retailerID];
             [retailersList addObject: retailer];
 
         } else {
@@ -241,7 +241,7 @@
     else {
         if ([mySwitch isOn]) {
             NSString* category = [itemListFull objectAtIndex:mySwitch.tag];
-            [Queries addItemPref: category : itemsList];
+            [Queries addItemPref: category];
             [itemsList addObject: category];
         } else {
             NSString* category = [itemListFull objectAtIndex:mySwitch.tag];

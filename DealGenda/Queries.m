@@ -606,6 +606,7 @@
     [db close];
 }
 
+//Updates a coupons expiration date
 +(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
