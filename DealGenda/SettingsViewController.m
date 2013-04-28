@@ -19,6 +19,10 @@
 @synthesize activeField;
 @synthesize scrollView;
 
+/**
+ * Default iOS method
+ * Resets labels. This happens every time the view is shown
+ **/
 - (void)viewWillAppear:(BOOL)animated
 {
     _emailTextField.placeholder = [Queries getEmail];
@@ -30,6 +34,10 @@
     _loginLabel.text = @"";
 }
 
+/**
+ * Default iOS method
+ * Logic here happens only when the view loads (after start up)
+ **/
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
@@ -55,6 +63,14 @@
     //disables the save button until the correct fields are filled
 }
 
+/**
+ * Default iOS method
+ * Validates input based on which text field has focus
+ *
+ **param:UITextField aTextField - the text field that currently has focus
+ *
+ **return:BOOL - returns whether the text is a valid email or if the verify password field matches the password field
+ **/
 - (BOOL)validateInputWithString:(UITextField *)aTextField {
     if(aTextField.tag == 0) {
         NSString * const regularExpression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -75,35 +91,54 @@
     }
 }
 
+/**
+ * Default iOS method
+ * sets the active field to the text field that the user is editing
+ **/
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     activeField = textField;
 }
 
+/**
+ * Default iOS method
+ * removes focus from the text field when user returns
+ **/
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {
     [aTextField resignFirstResponder];
     return YES;
 }
 
+/**
+ * Default iOS method
+ * Logic for checking user input while textfield is not being edited
+ *
+ **param:UITextField aTextField - the text field that currently has focus
+ **/
 - (BOOL)textFieldShouldEndEditing:(UITextField *)aTextField
 {
     if([_emailTextField.text isEqual: @""]) {
         _emailLabel.text = @"";
-        
+        //don't show error if email field is empty
     }
     [self validateInputWithString:aTextField];
     activeField = nil;
     return YES;
 }
 
+/**
+ * Default iOS method
+ * Logic for each text field
+ **/
 - (void)validateInputCallback:(id)sender
 {
     bool emailGo = true;
     bool passwordGo = true;
+    //booleans are set to false if validation fails
     
-    //reset this label when changing input
     _loginLabel.text = @"";
+    //reset this label when changing input
     
     if(_emailTextField.isFirstResponder)
         //if the user has the email text field in focus
@@ -151,13 +186,19 @@
     }
 }
 
-
+/**
+ * Default iOS method
+ **/
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ * Default iOS method
+ * Logic for when save button is pressed
+ **/
 - (IBAction)saveSettings:(id)sender {
     bool validEmail = (_emailTextField.text.length > 3) && ![Queries validateEmail:_emailTextField.text];
     bool validPassword = (_verifyTextField.text.length > 5) && [self validateInputWithString:_verifyTextField];
@@ -206,6 +247,11 @@
         _loginLabel.text = @"Email/Password combination is not valid";
     }
 }
+
+/**
+ * Default iOS method
+ * Users invisible button in the background to lose focus on current textfield and hide keyboard when touched outside a textfield
+ **/
 - (IBAction)resignButton:(id)sender {
     [_emailTextField resignFirstResponder];
     [_pwTextField resignFirstResponder];

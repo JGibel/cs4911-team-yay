@@ -12,9 +12,16 @@
 
 @implementation Queries
 
-//Checks version table for user version and compares bundled .sql files
-//If there are more sql files than the user version, the database runs the sql from each file greater
-//than the user version number, and increments the user version until all additional files are run.
+
+/**
+ * Checks version table for user version and compares bundled .sql files
+ * If there are more sql files than the user version, the database runs the sql from each file greater
+ * than the user version number, and increments the user version until all additional files are run.
+ *
+ **param:none
+ *
+ **return:void
+ **/
 +(void) migrateToAppFromSchema
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -68,7 +75,13 @@
     [db close];
 }
 
-//Checks if the param email exists in the database, returns true or false
+/**
+ * Checks if the param email exists in the database, returns true or false
+ *
+ **param:NSString email
+ *
+ **return:BOOL
+ **/
 +(BOOL) validateEmail: (NSString *) email
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -91,7 +104,14 @@
     return emailExists;
 }
 
- //Checks if param password is associated with param email, returns true or false
+/**
+ * Checks if param password is associated with param email, returns true or false
+ *
+ **param:NSString email
+ **param:NSString password
+ *
+ **return:BOOL
+ **/
 +(BOOL) validatePassword: (NSString *) email : (NSString *) password
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -114,7 +134,14 @@
     
 }
 
-//updates database set the param newEmail to the current param email
+/**
+ * updates database set the param newEmail to the current param email
+ *
+ **param:NSString email
+ **param:NSString newEmail
+ *
+ **return:BOOL
+ **/
 +(void) updateEmail: (NSString *) email : (NSString *) newEmail
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -133,8 +160,14 @@
     [db close];
 }
 
-
-//updates the database set param password to entry with param email
+/**
+ * updates the database set param password to entry with param email
+ *
+ **param:NSString email
+ **param:NSString password
+ *
+ **return:void
+ **/
 +(void) updatePassword: (NSString *) email : (NSString *) password
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -152,8 +185,17 @@
     [db close];
 }
 
-
-//Inserts a new user with the params to the database
+/**
+ * Inserts a new user with the params to the database
+ *
+ **param:NSString firstName
+ **param:NSString lastName
+ **param:NSString birthday
+ **param:NSString email
+ **param:NSString password
+ *
+ **return:void
+ **/
 +(void) addUserWithFName:(NSString *)firstName LName:(NSString *)lastName Birthday:(NSString *)birthday Email:(NSString *)email Password:(NSString *)password Gender:(NSString *)gender
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -169,7 +211,13 @@
 }
 
 
-//Returns a user id for the param email from the database
+/**
+ * Returns a user id for the param email from the database
+ *
+ **param:NSString email
+ *
+ **return:NSNumber - user id
+ **/
 +(NSNumber *) getId: (NSString *) email
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -188,7 +236,13 @@
     return user;
 }
 
-//Returns an email from the currently logged in user
+/**
+ * Returns an email from the currently logged in user
+ *
+ **param:none
+ *
+ **return:NSString - user email
+ **/
 +(NSString *) getEmail
 {
     NSString *email;
@@ -206,7 +260,13 @@
     return email;
 }
 
-//Returns the retailer from coupon with param barcode
+/**
+ * Returns the retailer from coupon with param barcode
+ *
+ **param:NSString barcode
+ *
+ **return:NSString - retailer name
+ **/
 +(NSString *) getCouponRetailer:(NSString *)barcode
 {
     NSString *retailer;
@@ -224,8 +284,13 @@
     return retailer;
 }
 
-
-//Returns offer from coupon with param barcode
+/**
+ * Returns offer from coupon with param barcode
+ *
+ **param:NSString barcode
+ *
+ **return:NSString - coupon offer
+ **/
 +(NSString *) getCouponOffer:(NSString *)barcode
 {
     NSString *offer;
@@ -243,7 +308,13 @@
     return offer;
 }
 
-//Returns expiration date from coupon with param barcode
+/**
+ * Returns expiration date from coupon with param barcode
+ *
+ **param:NSString barcode
+ *
+ **return:NSString - coupon expiration date
+ **/
 +(NSString *) getCouponExpirationDate:(NSString *)barcode
 {
     NSString *expDate;
@@ -261,7 +332,13 @@
     return expDate;
 }
 
-//Returns details from coupon with param barcode
+/**
+ * Returns details from coupon with param barcode
+ *
+ **param:NSString barcode
+ *
+ **return:NSString - coupon details
+ **/
 +(NSString *) getCouponDetails:(NSString *)barcode
 {
     NSString *details;
@@ -279,7 +356,13 @@
     return details;
 }
 
-//check if coupon with param barcode has been extended
+/**
+ * check if coupon with param barcode has been extended
+ *
+ **param:NSString barcode
+ *
+ **return:BOOL
+ **/
 +(BOOL) couponHasBeenExtended:(NSString *)barcode {
     //open database connection
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -301,7 +384,13 @@
     return NO;
 }
 
-//Returns all the retailers from the database in alphabetical order
+/**
+ * Returns all the retailers from the database in alphabetical order
+ *
+ **param:none
+ *
+ **return:NSMutableArray - array of all retailers
+ **/
 +(NSMutableArray *) getRetailers
 {
     NSMutableArray *retailersList = [[NSMutableArray alloc] init];
@@ -322,7 +411,13 @@
     return retailersList;
 }
 
-//Returns all the items from the database in alphabetical order
+/**
+ * Returns all the items from the database in alphabetical order
+ *
+ **param:none
+ *
+ **return:NSMutableArray - array of all items
+ **/
 +(NSMutableArray *) getItems
 {
     NSMutableArray *itemsList = [[NSMutableArray alloc] init];
@@ -343,7 +438,13 @@
     return itemsList;
 }
 
-//Returns the retailer preferences for the current user from the database
+/**
+ * Returns the retailer preferences for the current user from the database
+ *
+ **param:none
+ *
+ **return:NSMutableArray - array of retailer names
+ **/
 +(NSMutableArray *) getRetailerPrefs
 {
     NSMutableArray *retailerPrefs = [[NSMutableArray alloc] init];
@@ -368,7 +469,13 @@
     
 }
 
-//Returns the item preferences for the current user from the database
+/**
+ * Returns the item preferences for the current user from the database
+ *
+ **param:none
+ *
+ **return:NSMutableArray - array of item categories
+ **/
 +(NSMutableArray *) getItemPrefs
 {
     NSMutableArray *itemPrefs = [[NSMutableArray alloc] init];
@@ -391,7 +498,13 @@
     return itemPrefs;
 }
 
-//Adds a retailer preference to the current user from the retailer id param to the database
+/**
+ * Adds a retailer preference to the current user from the retailer id param to the database
+ *
+ **param:NSNumber retailer - retailer id
+ *
+ **return:void
+ **/
 +(void) addRetailerPref : (NSNumber *) retailer
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -404,7 +517,14 @@
     [db close];
 }
 
-//Removes a retailer preference to the current user from the retailer id param to the database
+
+/**
+ * Removes a retailer preference to the current user from the retailer id param to the database
+ *
+ **param:NSNumber retailer - retailer id
+ *
+ **return:void
+ **/
 +(void) removeRetailerPref : (NSNumber *) retailer
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -418,7 +538,13 @@
     [db close];
 }
 
-//Adds an item preference to the current user from the item category param to the database
+/**
+ * Adds an item preference to the current user from the item category param to the database
+ *
+ **param:NSString category
+ *
+ **return:void
+ **/
 +(void) addItemPref : (NSString *) category
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -432,7 +558,13 @@
     [db close];
 }
 
-//removes an item preference to the current user from the item category param to the database
+/**
+ * removes an item preference to the current user from the item category param to the database
+ *
+ **param:NSString category
+ *
+ **return:void
+ **/
 +(void) removeItemPref : (NSString *) category
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -446,7 +578,13 @@
     [db close];
 }
 
-//Returns the retailer id from the database from the retailer's name param
+/**
+ * Returns the retailer id from the database from the retailer's name param
+ *
+ **param:NSString retailerName
+ *
+ **return:NSNumber - retailer's id
+ **/
 +(NSNumber *) getRetailerID : (NSString *) retailerName
 {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -464,7 +602,13 @@
     return retailerID;
 }
 
-//Returns the retailer name from the database from the retailer's id param
+/**
+ * Returns the retailer name from the database from the retailer's id param
+ *
+ **param:NSNumber retailerID
+ *
+ **return:NSString - retailer's name
+ **/
 +(NSString *) getRetailerName : (NSNumber *) retailerID
 {
     NSString* name;
@@ -482,7 +626,13 @@
     return name;
 }
 
-//Returns all the coupons from the database
+/**
+ * Returns all the coupons from the database
+ *
+ **param:none
+ *
+ **return:NSMutableArray - array of all coupons
+ **/
 +(NSMutableArray *) getCoupons
 {
     NSMutableArray* tempRetailers = [[NSMutableArray alloc] init];
@@ -594,7 +744,13 @@
     return couponList;
 }
 
-//Store the currently logged in user id into a global variable
+/**
+ * Store the currently logged in user id into a global variable
+ *
+ **param:NSNumber userId
+ *
+ **return:void
+ **/
 +(void) setLoggedInUser:(NSNumber *)userId {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
@@ -606,7 +762,14 @@
     [db close];
 }
 
-//Updates a coupons expiration date
+/**
+ * Updates a coupons expiration date
+ *
+ **param:NSString barcode
+ **param:NSString expdate - exipiration date
+ *
+ **return:void
+ **/
 +(void) updateCoupon:(NSString *)barcode expDate:(NSString *)exp {
     AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     FMDatabase* db = [appDelegate db];
