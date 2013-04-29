@@ -175,7 +175,7 @@
  **author: Douglas Abrams
  *
  *This method is called when the Open in Passbook button is pressed
- *It creates an instance of a pass based on the hardcoded test pass and then
+ *It creates an instance of a pass based on the pass name and then
  *launches the Passbook application to the location of that pass
  **/
 - (IBAction)openPassbook:(id)sender {
