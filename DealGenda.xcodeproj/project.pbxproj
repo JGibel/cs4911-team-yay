@@ -44,7 +44,6 @@
 		192D222E16B7243D00F2D773 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D222D16B7243D00F2D773 /* Default@2x.png */; };
 		192D223016B7243D00F2D773 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D222F16B7243D00F2D773 /* Default-568h@2x.png */; };
 		192D223316B7243D00F2D773 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192D223116B7243D00F2D773 /* MainStoryboard.storyboard */; };
-		192D223616B7243D00F2D773 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 192D223516B7243D00F2D773 /* ViewController.m */; };
 		192D223E16B7243D00F2D773 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D223D16B7243D00F2D773 /* SenTestingKit.framework */; };
 		192D223F16B7243D00F2D773 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221916B7243D00F2D773 /* UIKit.framework */; };
 		192D224016B7243D00F2D773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D221B16B7243D00F2D773 /* Foundation.framework */; };
@@ -131,8 +130,6 @@
 		192D222D16B7243D00F2D773 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		192D222F16B7243D00F2D773 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		192D223216B7243D00F2D773 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		192D223416B7243D00F2D773 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		192D223516B7243D00F2D773 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		192D223C16B7243D00F2D773 /* DealGendaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DealGendaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		192D223D16B7243D00F2D773 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		192D224516B7243D00F2D773 /* DealGendaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DealGendaTests-Info.plist"; sourceTree = "<group>"; };
@@ -275,8 +272,6 @@
 				19CDF06D170B9EF4007456FF /* TabController.m */,
 				287CA82F16C96DD80091010F /* SettingsViewController.h */,
 				287CA83016C96DD80091010F /* SettingsViewController.m */,
-				192D223416B7243D00F2D773 /* ViewController.h */,
-				192D223516B7243D00F2D773 /* ViewController.m */,
 				192D222016B7243D00F2D773 /* Supporting Files */,
 				196F8A0116C96DEE0016B69F /* FavoritesViewController.h */,
 				196F8A0216C96DEE0016B69F /* FavoritesViewController.m */,
@@ -506,7 +501,6 @@
 			files = (
 				192D222616B7243D00F2D773 /* main.m in Sources */,
 				192D222A16B7243D00F2D773 /* AppDelegate.m in Sources */,
-				192D223616B7243D00F2D773 /* ViewController.m in Sources */,
 				196F8A0316C96DEE0016B69F /* FavoritesViewController.m in Sources */,
 				196F8A0616C970920016B69F /* SignUpViewController.m in Sources */,
 				196F8A0916C9762E0016B69F /* CouponListViewController.m in Sources */,
