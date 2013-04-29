@@ -251,7 +251,7 @@
  Sets the cansegue variable to No if it does not pass the constraints.  Sets the error code to display the correct error code.
  */
 -(void) validateSignUp {
-    NSLog(@"validate conditions");
+//    NSLog(@"validate conditions");
     
     //Determine whether there is information in the required fields
     if([_firstName isEqual: @""] || [_lastName isEqual: @""] || [_email isEqual: @""] || [_password isEqual:@""] || [_verifyPassword isEqual: @""]){
@@ -309,7 +309,7 @@
     NSUInteger numberOfMatches = [regEx numberOfMatchesInString:aTextField.text
                                                         options:0
                                                         range:NSMakeRange(0, [aTextField.text length])];
-    NSLog(@"Number of Matches: %d", numberOfMatches);
+//    NSLog(@"Number of Matches: %d", numberOfMatches);
     return numberOfMatches > 0;
 }
 

@@ -39,9 +39,9 @@
     NSArray *files = [[NSBundle mainBundle] pathsForResourcesOfType:@"sql" inDirectory:@""];
     
 
-    int count = [files count];
-    NSLog(@"%d", count);
-    NSLog(@"%d", userVersion);
+//    int count = [files count];
+//    NSLog(@"%d", count);
+//    NSLog(@"%d", userVersion);
     
     for (NSString *file in files) {
         NSInteger version = [[[file lastPathComponent] stringByDeletingPathExtension] intValue];        
@@ -758,7 +758,7 @@
         return;
     }
     appDelegate.user = userId;
-    NSLog(@"%@", appDelegate.user);
+//    NSLog(@"%@", appDelegate.user);
     [db close];
 }
 

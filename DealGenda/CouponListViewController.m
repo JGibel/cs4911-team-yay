@@ -206,13 +206,4 @@
         controller.barcode = [[couponList objectAtIndex:indexPath.row] getBarcode];
     }
 }
-
-/**
- *This method allows for the segue to be reversed so that the view can
- *navigate back to the CouponListView
- *
- **param:segue - the segue being returned
- **/
--(IBAction)returned:(UIStoryboardSegue *)segue {
-}
 @end

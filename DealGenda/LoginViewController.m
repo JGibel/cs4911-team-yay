@@ -161,7 +161,7 @@ If the information does match, it prevents the segue and displays error text to 
  This erases the email and password text fields, reset the variables, and sets the canSegue variable to be YES.  Also removes all error text that is currently displayed 
  **/
 
-- (IBAction)signUpButton:(id)sender;{
+- (IBAction)signUpButton:(id)sender {
     _emailTextField.text = @"";
     _passwordTextField.text = @"";
     
@@ -185,7 +185,7 @@ return:BOOL - YES if the login information is valid or if the signup button is p
 **/
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if([_buttonID isEqualToString:(@"signUpButton")]){
+    if([identifier isEqualToString:(@"signup")]){
         return YES;
     }
     

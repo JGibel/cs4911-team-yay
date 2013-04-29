@@ -163,7 +163,7 @@
  **author: Douglas Abrams
  *
  *This method is called when the Add to Passbook button is pressed
- *It calls the openPassWithName method - currently hardcoded to display one pass
+ *It calls the openPassWithName method
  **/
 - (IBAction)addPass:(id)sender {
     NSString *passName = [[NSString alloc] initWithFormat:@"%@.pkpass", barcode];
